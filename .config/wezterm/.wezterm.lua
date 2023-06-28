@@ -17,34 +17,66 @@ config.initial_cols = 140
 config.initial_rows = 50
 
 -- changing the color scheme:
--- The followings are curated color schemes.
--- Google Dark (Gogh): great 5/5
+-- Below are some of my favorite cool color schemes.
 -- config.color_scheme = 'Google Dark (Gogh)'
--- OceanicMaterial: great 5/5
 -- config.color_scheme = 'OceanicMaterial'
--- Rapture: great 5/5
-config.color_scheme = 'Rapture'
--- Snazzy: great 5/5
+-- config.color_scheme = 'Rapture'
 -- config.color_scheme = 'Snazzy'
--- Solar Flare (base16): great 4/5
 -- config.color_scheme = 'Solar Flare (base15)'
+-- config.color_scheme = 'Solarized Dark (Gogh)'
+-- config.color_scheme = 'Solarized Dark - Patched'
+-- config.color_scheme = 'Solarized Dark Higher Contrast'
 
--- The followings are some of my favorite color schemes.
--- Ayu Mirage: good
--- Ayu Mirage (Gogh): good
--- Colors (base16): great 4/5
--- Dark+: good
--- Helios (base16): good
--- midnight-in-mojave: great
--- Pinky (base16): good
--- Solarized (dark) (terminal.sexy): nice?
--- Wez: great 4/5
+-- Below are some color schemes that I thought were nice.
+-- config.color_scheme = 'Ayu Mirage'
+-- config.color_scheme = 'Ayu Mirage (Gogh)'
+-- config.color_scheme = 'Colors (base16)'
+-- config.color_scheme = 'Dark+'
+-- config.color_scheme = 'Helios (base16)'
+-- config.color_scheme = 'midnight-in-mojave'
+-- config.color_scheme = 'Pinky (base16)'
+-- config.color_scheme = 'Solarized (dark) (terminal.sexy)'
+-- config.color_scheme = 'Wez'
+
+-- The best color scheme I made myself because there isn't one I like.
+-- Check it out!
+config.colors = {
+  foreground = '#839496',
+  background = '#001b21',
+  cursor_bg = '#839496',
+  cursor_fg = '#073642',
+  --   cursor_border = '',
+  selection_fg = '#93a1a1',
+  selection_bg = '#073642',
+  --   scrollbar_thumb = '',
+  --   split = '',
+  ansi = {
+    '#073642',
+    '#dc322f',
+    '#6adf3c',
+    '#e8ae2c',
+    '#268bd2',
+    '#d33682',
+    '#2aa198',
+    '#eee8d5',
+  },
+  brights = {
+    '#073642',
+    '#dc322f',
+    '#6adf3c',
+    '#e8ae2c',
+    '#268bd2',
+    '#d33682',
+    '#2aa198',
+    '#eee8d5',
+  },
+}
 
 -- changing the opacity of window background:
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.8
 
 -- changing the blur of window background:
-config.macos_window_background_blur = 10
+config.macos_window_background_blur = 35
 
 -- Disable window title bar, enable window shadow, and make the window resizable
 config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
