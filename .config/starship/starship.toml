@@ -1,3 +1,11 @@
+right_format = '$time'
+
+[directory]
+truncation_length = 5
+
+[time]
+disabled = false
+
 [buf]
 format = '(with [$symbol$version ]($style))'
 
