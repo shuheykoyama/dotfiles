@@ -77,3 +77,18 @@ inline = 'alias reload="osascript -e \"tell application \"WezTerm\" to do script
 
 [plugins.vim]
 inline = 'alias vim="nvim"'
+
+[plugins.curl]
+inline = 'alias curl="/usr/bin/curl"'
+
+[plugins.pip]
+inline = 'alias pip="~/.asdf/shims/pip"'
+
+[plugins.ruby]
+inline = 'alias ruby="~/.asdf/shims/ruby"'
+
+[plugins.irb]
+inline = 'alias irb="~/.asdf/shims/irb"'
+
+[plugins.python3]
+inline = 'alias python3="~/.asdf/shims/python3"'
