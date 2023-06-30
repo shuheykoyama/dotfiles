@@ -10,6 +10,9 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg='#268bd2''
 # shell builtin command color:
 ZSH_HIGHLIGHT_STYLES[builtin]='fg='#268bd2''
 
+# function color:
+ZSH_HIGHLIGHT_STYLES[function]='fg='#268bd2''
+
 # single-hyphen-option color:
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg='#2aa198''
 
