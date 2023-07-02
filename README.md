@@ -4,7 +4,7 @@
 
 # Shuhey's dotfiles
 
-Warning: Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
+🚨Warning!: Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
 
 ## Contents
 
@@ -14,6 +14,8 @@ Warning: Before using these config files, it is recommended that you understand 
 - zsh config
 
 ## NeoVim setup
+
+Requires NeoVim (>= 0.9.1)
 
 ![Lua coding screenshot](./images/screenshot-1.png)
 
