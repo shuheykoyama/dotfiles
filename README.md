@@ -15,7 +15,7 @@
 
 ## NeoVim setup
 
-Requires NeoVim (>= 0.9.1)
+Requires [NeoVim](https://neovim.io/) (>= 0.9.1)
 
 ![Lua coding screenshot](./images/screenshot-1.png)
 
