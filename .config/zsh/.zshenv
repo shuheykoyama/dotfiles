@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-### 文字コードの指定 ###
-export LANG=ja_JP.UTF-8
-
 ### OpenAI API key ###
 export OPENAI_API_KEY="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"
 
@@ -14,8 +11,8 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 ### Javaの設定 ###
-export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 # UTF-8のコード系で日本語を上手に扱いたいので．UTF-8を使うぞ！
+export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 # export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 # export JAVA_HOME=`/usr/libexec/java_home -v "11"`
 # export JAVA_HOME=`/usr/libexec/java_home -v "17"`
