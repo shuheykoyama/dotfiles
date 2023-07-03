@@ -4,7 +4,7 @@
 
 # Shuhey's dotfiles
 
-🚨Warning!: Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
+🚨 Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
 
 ## Contents
 
