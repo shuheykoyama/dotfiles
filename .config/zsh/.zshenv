@@ -16,10 +16,10 @@ export JAVA_HOME=`/usr/libexec/java_home -v "20"`
 ### Apache Ant ###
 if [ -d "/usr/local/ant" ]
 then
-  export ANT_HOME="/usr/local/ant"
-  echo $PATH | grep --quiet "$ANT_HOME/bin"
-  if [ ! $? = 0 ] ; then PATH=$PATH:$ANT_HOME/bin ; fi
-  export ANT_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -Xss256k"
+    export ANT_HOME="/usr/local/ant"
+    echo $PATH | grep --quiet "$ANT_HOME/bin"
+    if [ ! $? = 0 ] ; then PATH=$PATH:$ANT_HOME/bin ; fi
+    export ANT_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -Xss256k"
 fi
 
 ### Static Code Analysis ###
@@ -29,17 +29,24 @@ if [ ! $? = 0 ] ; then PATH=$PATH:/usr/local/checker/bin ; fi
 ### Subversion ###
 if [ -d "/opt/subversion" ]
 then
-  export SVN_HOME="/opt/subversion"
-  echo $PATH | grep --quiet "$SVN_HOME/bin"
-  if [ ! $? = 0 ] ; then PATH=$SVN_HOME/bin:$PATH ; fi
+    export SVN_HOME="/opt/subversion"
+    echo $PATH | grep --quiet "$SVN_HOME/bin"
+    if [ ! $? = 0 ] ; then PATH=$SVN_HOME/bin:$PATH ; fi
 fi
 
 ### asdf ###
 . "$HOME/.asdf/asdf.sh"
+# export PATH=$PATH:$HOME/.asdf/shims
+# export PATH=$PATH:$HOME/.asdf/bin
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+# Move asdf paths to the end of PATH
+PATH=$(echo "$PATH" | tr ':' '\n' | grep -v "$HOME/.asdf/shims" | grep -v "$HOME/.asdf/bin" | paste -sd ':' -)
+PATH=$PATH:"$HOME/.asdf/shims":"$HOME/.asdf/bin"
+export PATH
 
 ### Rust ###
 . "$HOME/.cargo/env"
