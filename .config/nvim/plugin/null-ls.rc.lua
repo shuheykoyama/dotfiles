@@ -20,13 +20,14 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.eslint_d.with({
 			diagnostics_format = "[eslint] #{m}\n(#{c})",
 		}),
-		null_ls.builtins.diagnostics.zsh, -- zsh diagnostics
+		null_ls.builtins.diagnostics.zsh, -- zsh diagnostic tool
+		null_ls.builtins.formatting.beautysh, -- zsh formatter
 		null_ls.builtins.diagnostics.shellcheck, -- A shell script static analysis tool
 		null_ls.builtins.formatting.shfmt, -- A shell parser, formatter, and interpreter with bash support
 		null_ls.builtins.formatting.clang_format.with({ -- C/C++ formatter
 			filetypes = { "c", "cpp" },
 		}),
-		null_ls.builtins.diagnostics.clang_check, -- C/C++ diagnostics
+		null_ls.builtins.diagnostics.clang_check, -- C/C++ diagnostic tool
 		null_ls.builtins.diagnostics.checkstyle, -- A tool for checking Java source code
 		null_ls.builtins.formatting.google_java_format, -- Java formatter according to Google Java Style
 		null_ls.builtins.formatting.black, -- Python formatter
