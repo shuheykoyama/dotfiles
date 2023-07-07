@@ -71,6 +71,7 @@ format = '(via [$symbol($version )]($style))'
 
 [lua]
 format = '(via [$symbol($version )]($style))'
+disabled = true
 
 [nim]
 format = '(via [$symbol($version )]($style))'
