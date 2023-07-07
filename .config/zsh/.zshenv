@@ -3,14 +3,7 @@
 ### OpenAI API key ###
 export OPENAI_API_KEY="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"
 
-### asdfの設定 ###
-. "$HOME/.asdf/asdf.sh"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
-### Javaの設定 ###
+### Java ###
 # UTF-8のコード系で日本語を上手に扱いたいので．UTF-8を使うぞ！
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 # export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
@@ -19,9 +12,6 @@ export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 # export JAVA_HOME=`/usr/libexec/java_home -v "18"`
 # export JAVA_HOME=`/usr/libexec/java_home -v "19"`
 export JAVA_HOME=`/usr/libexec/java_home -v "20"`
-
-### Rustの設定 ###
-. "$HOME/.cargo/env"
 
 ### Apache Ant ###
 if [ -d "/usr/local/ant" ]
@@ -32,7 +22,7 @@ then
   export ANT_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -Xss256k"
 fi
 
-### 静的コード解析（Static Code Analysis） ###
+### Static Code Analysis ###
 echo $PATH | grep --quiet "/usr/local/checker/bin"
 if [ ! $? = 0 ] ; then PATH=$PATH:/usr/local/checker/bin ; fi
 
@@ -43,6 +33,16 @@ then
   echo $PATH | grep --quiet "$SVN_HOME/bin"
   if [ ! $? = 0 ] ; then PATH=$SVN_HOME/bin:$PATH ; fi
 fi
+
+### asdf ###
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+### Rust ###
+. "$HOME/.cargo/env"
 
 ### Pythonのバージョン管理（pyenvによる） ###
 # if [ -d "$HOME/.pyenv" ]
