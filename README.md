@@ -6,12 +6,18 @@
 
 🚨 Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
 
+- This dotfiles repository is to make my development environment supremely cool and to keep me happy.
+- If you have a better tool or advice on how to do it better, I would be happy to hear it.
+- These configs (especially NeoVim config) are based on [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public) by [@Takuya](https://github.com/craftzdog). Thank you very much.
+- I also referred to many other documents for these configs. Thanks to all open source projects.
+- In addition, some of these configs are written with the reliable copilot, ChatGPT.
+
 ## Contents
 
-- vim (NeoVim) config
-- tmux setting
-- git config
-- zsh config
+- Vim (NeoVim) config
+- tmux config
+- Zsh config
+- WezTerm config
 
 ## NeoVim setup
 
@@ -45,17 +51,23 @@ Requires [NeoVim](https://neovim.io/) (>= 0.9.1)
 
 ## Shell setup (macOS)
 
-- zsh
-- WezTerm
-- Sheldon
-- Starship
-- Nerd Fonts
-- z for zsh
-- Exa
+- [Zsh](https://www.zsh.org/)
+- [WezTerm](https://wezfurlong.org/wezterm/) - Terminal emulator written by [@wez](https://github.com/wez) and implemented in Rust
+- [Sheldon](https://github.com/rossmacarthur/sheldon) - Plugin manager
+- [Starship](https://github.com/starship/starship) - Shell theme. I use [No Empty Icons Preset](https://starship.rs/presets/no-empty-icons.html) with some customization
+- [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use [Hack](https://github.com/source-foundry/Hack).
+- [z - jump around](https://github.com/rupa/z) - Directory jumping
+- [Exa](https://the.exa.website/) - `ls` replacement
+
+## Acknowledgment
+
+- [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public)
 
 ## About me
 
 Shuhey Koyama
 
-- [Twitter @shuheykoyama](https://twitter.com/shuheykoyama)
-- [YouTube Shuhey Koyama](https://www.youtube.com/channel/UCzPjLzS8qL26bRrBDp4iPyw)
+- [Twitter](https://twitter.com/shuheykoyama)
+- [Facebook](https://www.facebook.com/shuhey.koyama/)
+- [Instagram](https://www.instagram.com/shuheykoyama/)
+- [YouTube](https://www.youtube.com/channel/UCzPjLzS8qL26bRrBDp4iPyw)
