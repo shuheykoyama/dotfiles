@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ### OpenAI API key ###
-export OPENAI_API_KEY="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"
+export OPENAI_API_KEY="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"
 
 ### Java ###
 # UTF-8のコード系で日本語を上手に扱いたいので．UTF-8を使うぞ！
