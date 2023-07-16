@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-### OpenAI API key ###
-export OPENAI_API_KEY="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"
-
 ### Java ###
 # UTF-8のコード系で日本語を上手に扱いたいので．UTF-8を使うぞ！
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -36,8 +33,6 @@ fi
 
 ### asdf ###
 . "$HOME/.asdf/asdf.sh"
-# export PATH=$PATH:$HOME/.asdf/shims
-# export PATH=$PATH:$HOME/.asdf/bin
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
