@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ### Java ###
-# UTF-8のコード系で日本語を上手に扱いたいので．UTF-8を使うぞ！
+# handle Japanese well with UTF-8 code system
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 # export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 # export JAVA_HOME=`/usr/libexec/java_home -v "11"`
@@ -37,8 +37,7 @@ fi
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-# Move asdf paths to the end of PATH
+# move asdf paths to the end of PATH
 PATH=$(echo "$PATH" | tr ':' '\n' | grep -v "$HOME/.asdf/shims" | grep -v "$HOME/.asdf/bin" | paste -sd ':' -)
 PATH=$PATH:"$HOME/.asdf/shims":"$HOME/.asdf/bin"
 export PATH
@@ -46,7 +45,7 @@ export PATH
 ### Rust ###
 . "$HOME/.cargo/env"
 
-### Pythonのバージョン管理（pyenvによる） ###
+### Python (pyenv) ###
 # if [ -d "$HOME/.pyenv" ]
 # then
 #   export PYENV_ROOT="$HOME/.pyenv"
@@ -64,7 +63,7 @@ export PATH
 #   fi
 # fi
 
-### Rubyのバージョン管理（rbenvによる） ###
+### Ruby (rbenv) ###
 # if [ -d "$HOME/.rbenv" ]
 # then
 #   export RBENV_ROOT="$HOME/.rbenv"
@@ -79,7 +78,7 @@ export PATH
 #   fi
 # fi
 
-### Node.jsのバージョン管理（nvmによる） ###
+### Node.js (nvm) ###
 # if [ -d "$HOME/.nvm" ]
 # then
 #   export NVM_DIR="$HOME/.nvm"
@@ -91,6 +90,6 @@ export PATH
 #   fi
 # fi
 
-### PHPの設定 ###
+### PHP ###
 # export PATH="/usr/local/opt/php@8.1/bin:$PATH"
 # export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
