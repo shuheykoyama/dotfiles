@@ -5,10 +5,10 @@ eval "$(sheldon source)"
 eval "$(starship init zsh)"
 
 ### 1Password CLI Shell Completion
-### 1Password CLI automatically completes your commands.
+# 1Password CLI automatically completes your commands.
 # eval "$(op completion zsh)"; compdef _op op
-# source /Users/koyamashuhei/.config/op/plugins.sh
+# source /Users/shuhey/.config/op/plugins.sh
 
-# GitHub CLI
+### GitHub CLI
 # Configuration of GitHub CLI command completion.
 eval "$(gh completion -s zsh)"
