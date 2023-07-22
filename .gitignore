@@ -1,5 +1,8 @@
 # System
 .DS_Store
 
+# NeoVim
+packer_compiled.lua
+
 # API keys
 .env
