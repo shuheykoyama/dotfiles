@@ -30,6 +30,7 @@ ts.setup({
 		"java",
 		"javascript",
 		"python",
+		"astro",
 	},
 	autotag = {
 		enable = true,
