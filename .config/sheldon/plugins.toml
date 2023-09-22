@@ -55,10 +55,10 @@ inline = 'alias ls="ls -p -G"'
 inline = 'alias la="ls -A"'
 
 [plugins.ll]
-inline = 'alias ll="exa -l -g --icons"'
+inline = 'alias ll="eza -l -g --icons"'
 
 [plugins.lla]
-inline = 'alias lla="ll -a"'
+inline = 'alias lla="eza -l -g -a --icons"'
 
 [plugins.nl]
 inline = 'alias nl="nl -b a -s \": \" "'
