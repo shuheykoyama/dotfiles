@@ -75,6 +75,9 @@ inline = 'alias b2a="sh ~/bin/b2a.sh"'
 [plugins.reload]
 inline = 'alias reload="osascript -e \"tell application \"WezTerm\" to do script\" ; exit"'
 
+[plugins.g]
+inline = 'alias g="git"'
+
 [plugins.vim]
 inline = 'alias vim="nvim"'
 
