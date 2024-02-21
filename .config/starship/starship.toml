@@ -1,134 +1,87 @@
-right_format = '$time'
+palette = "catppuccin_mocha"
+
+format = """
+[ ┌─ ](surface1)\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$cmd_duration\
+$time\
+[ ─┐ ](surface1)
+[ └──](surface1)\
+$character\
+"""
+
+right_format = """
+[──┘](surface1)
+"""
+
+add_newline = true
 
 [directory]
-truncation_length = 5
+style = "fg:text bg:surface0"
+format = "[](fg:blue)[󰝰 ](fg:mantle bg:blue)[ $path]($style)[ ](fg:surface0)"
+truncation_length = 3
+fish_style_pwd_dir_length = 3
+
+[git_branch]
+symbol = ""
+style = "fg:text bg:surface0"
+format = '[](fg:mauve)[$symbol ](fg:mantle bg:mauve)[ $branch]($style)'
+
+[git_status]
+style = "fg:text bg:surface0"
+format = '[ $all_status$ahead_behind]($style)[ ](fg:surface0)'
+
+[cmd_duration]
+disabled = false
+min_time = 500
+show_milliseconds = true
+style = 'fg:text bg:surface0'
+format = '[ ](fg:peach)[󱦟 ](fg:mantle bg:peach)[ $duration]($style)[](fg:surface0)'
 
 [time]
 disabled = false
+time_format = "%T"
+style = "fg:text bg:surface0"
+format = '[ ](fg:text)[󱑎 ](fg:mantle bg:text)[ $time]($style)[](fg:surface0)'
 
-[buf]
-format = '(with [$symbol$version ]($style))'
+[character]
+disabled = false
+success_symbol = '[ ❯ ](bold teal)'
+error_symbol = '[ ❯ ](bold red)'
+format = '$symbol'
 
-[bun]
-format = '(via [$symbol($version )]($style))'
+[fill]
+disabled = false
+symbol = '─'
+style = 'fg:surface1'
 
-[c]
-format = '(via [$symbol($version(-$name) )]($style))'
-disabled = true
-
-[cmake]
-format = '(via [$symbol($version )]($style))'
-
-[cobol]
-format = '(via [$symbol($version )]($style))'
-
-[crystal]
-format = '(via [$symbol($version )]($style))'
-
-[daml]
-format = '(via [$symbol($version )]($style))'
-
-[dart]
-format = '(via [$symbol($version )]($style))'
-
-[deno]
-format = '(via [$symbol($version )]($style))'
-
-[dotnet]
-format = '(via [$symbol($version )(🎯 $tfm )]($style))'
-
-[elixir]
-format = '(via [$symbol($version \(OTP $otp_version\) )]($style))'
-
-[elm]
-format = '(via [$symbol($version )]($style))'
-
-[erlang]
-format = '(via [$symbol($version )]($style))'
-
-[fennel]
-format = '(via [$symbol($version )]($style))'
-
-[golang]
-format = '(via [$symbol($version )]($style))'
-disabled = true
-
-[haskell]
-format = '(via [$symbol($version )]($style))'
-
-[helm]
-format = '(via [$symbol($version )]($style))'
-
-[java]
-format = '(via [$symbol($version )]($style))'
-disabled = true
-
-[julia]
-format = '(via [$symbol($version )]($style))'
-
-[kotlin]
-format = '(via [$symbol($version )]($style))'
-
-[lua]
-format = '(via [$symbol($version )]($style))'
-disabled = true
-
-[nim]
-format = '(via [$symbol($version )]($style))'
-
-[nodejs]
-format = '(via [$symbol($version )]($style))'
-disabled =true
-
-[ocaml]
-format = '(via [$symbol($version )(\($switch_indicator$switch_name\) )]($style))'
-
-[opa]
-format = '(via [$symbo($version ]($style))"'
-[package]
-format = '(is [$symbol$version]($style) )'
-
-[perl]
-format = '(via [$symbol($version )]($style))'
-
-[php]
-format = '(via [$symbol($version )]($style))'
-
-[purescript]
-format = '(via [$symbol($version )]($style))'
-
-[python]
-format = '(via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style))'
-disabled = true
-
-[raku]
-format = '(via [$symbol($version-$vm_version )]($style))'
-
-[red]
-format = '(via [$symbol($version )]($style))'
-
-[rlang]
-format = '(via [$symbol($version )]($style))'
-
-[ruby]
-format = '(via [$symbol($version )]($style))'
-disabled = true
-
-[rust]
-format = '(via [$symbol($version )]($style))'
-disabled = true
-
-[scala]
-format = '(via [$symbol($version )]($style))'
-
-[swift]
-format = '(via [$symbol($version )]($style))'
-
-[vagrant]
-format = '(via [$symbol($version )]($style))'
-
-[vlang]
-format = '(via [$symbol($version )]($style))'
-
-[zig]
-format = '(via [$symbol($version )]($style))'
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
