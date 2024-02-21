@@ -45,6 +45,13 @@ export PATH
 ### Rust ###
 . "$HOME/.cargo/env"
 
+### TypeScript ###
+export TSSERVER_PATH="~/.asdf/installs/nodejs/20.2.0/lib/node_modules/typescript/lib/"
+
+### Spicetify ###
+source ${HOME}/.ghcup/env
+export PATH=$PATH:/Users/shuhey/.spicetify
+
 ### Python (pyenv) ###
 # if [ -d "$HOME/.pyenv" ]
 # then
