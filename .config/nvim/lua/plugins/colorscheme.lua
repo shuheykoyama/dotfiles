@@ -1,0 +1,77 @@
+return {
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    event = "VimEnter",
+    priority = 1000, -- Ensure it loads first
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = true,
+        styles = {
+          comments = { "italic" },
+          conditionals = {},
+          loops = {},
+          functions = { "italic" },
+          keywords = {},
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = { "italic" },
+          operators = {},
+        },
+        integrations = {
+          barbar = true,
+          lsp_trouble = true,
+          mason = true,
+          mini = {
+            indentscope_color = "mauve",
+          },
+          native_lsp = {
+            underlines = {
+              errors = { "undercurl" },
+              hints = { "undercurl" },
+              warnings = { "undercurl" },
+              information = { "undercurl" },
+            },
+          },
+          neotree = true,
+          noice = true,
+          notify = true,
+          symbols_outline = true,
+          which_key = true,
+        },
+      })
+      vim.cmd([[colorscheme catppuccin-mocha]])
+    end,
+  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       transparent = true,
+  --       styles = {
+  --         comments = { italic = true },
+  --       },
+  --     })
+  --     vim.cmd([[colorscheme tokyonight-night]])
+  --   end,
+  -- },
+  -- {
+  --   "projekt0n/github-nvim-theme",
+  --   priority = 1000,
+  --   config = function()
+  --     require("github-theme").setup({
+  --       options = {
+  --         transparent = true,
+  --         styles = {
+  --           comments = "italic",
+  --         },
+  --       },
+  --     })
+  --     vim.cmd([[colorscheme github_dark]])
+  --   end,
+  -- },
+}
