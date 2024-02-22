@@ -50,7 +50,7 @@ export TSSERVER_PATH="~/.asdf/installs/nodejs/20.2.0/lib/node_modules/typescript
 
 ### Spicetify ###
 source ${HOME}/.ghcup/env
-export PATH=$PATH:/Users/shuhey/.spicetify
+export PATH=$PATH:${HOME}/.spicetify
 
 ### Python (pyenv) ###
 # if [ -d "$HOME/.pyenv" ]
