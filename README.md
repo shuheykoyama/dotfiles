@@ -49,7 +49,7 @@
 - [exa](https://the.exa.website/) - A modern replacement for `ls`
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file) - A `cat` clone with wings
 
-## 😘 Acknowledgment
+## 😘 Acknowledgments
 
 - [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public) - My aspiring individual developer's dotfiles
 - [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files) - Cool dev environment
