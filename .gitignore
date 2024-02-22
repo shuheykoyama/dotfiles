@@ -2,7 +2,10 @@
 .DS_Store
 
 # NeoVim
-packer_compiled.lua
+.config/nvim/lazy-lock.json
 
 # API keys
 .env
+
+# Terminal
+.config/wez/
