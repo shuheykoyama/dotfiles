@@ -1,10 +1,20 @@
-![zsh screenshot](./images/screenshot-1.png)
+# Shuhey's dotfiles - I love Neovim
 
-![nvim screenshot](./images/screenshot-2.png)
+![alpha-nvim](./images/screenshot_01.png)
 
-# Shuhey's dotfiles
+| ![neo-tree](./images/screenshot_02.png) | ![show_documentation](./images/screenshot_03.png) | ![nvim-cmp](./images/screenshot_04.png) |
+| --------------------------------------- | ------------------------------------------------- | --------------------------------------- |
+| 起動画面                                | ドキュメンテーション                              | 補完                                    |
 
-🚨 Before using these config files, it is recommended that you understand what they will set. Use at your own risk!
+<p>
+    <img src="./images/screenshot_02.png" />
+    <img src="./images/screenshot_03.png" />
+</p>
+
+:::note warn
+Warning!
+🚨 Before using these config files, it is recommended that you understand what they will set. Use at your own risk
+:::
 
 - This dotfiles repository is to make my development environment supremely cool and to keep me happy.
 - If you have a better tool or advice on how to do it better, I would be happy to hear it.
@@ -14,17 +24,14 @@
 
 ## Contents
 
-- Vim (NeoVim) config
+- NeoVim config
 - tmux config
 - Zsh config
-- WezTerm config
 
 ## NeoVim setup
 
-Requires [NeoVim](https://neovim.io/) (>= 0.9.1)
+Requires [NeoVim](https://neovim.io/) (>= 0.9.5)
 
-- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) - A plugin manager for NeoVim
-- [svrana/neosolarized.nvim](https://github.com/svrana/neosolarized.nvim) - A truecolor, solarized dark colorscheme
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure NeoVim statusline written in Lua
 - [onsails/lspkind-nvim](https://github.com/onsails/lspkind.nvim) - VSCode-like pictograms
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for NeoVim written in Lua
@@ -52,7 +59,6 @@ Requires [NeoVim](https://neovim.io/) (>= 0.9.1)
 ## Shell setup (macOS)
 
 - [Zsh](https://www.zsh.org/)
-- [WezTerm](https://wezfurlong.org/wezterm/) - Terminal emulator written by [@wez](https://github.com/wez) and implemented in Rust
 - [Sheldon](https://github.com/rossmacarthur/sheldon) - Plugin manager
 - [Starship](https://github.com/starship/starship) - Shell theme. I use [No Empty Icons Preset](https://starship.rs/presets/no-empty-icons.html) with some customization
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use [Hack](https://github.com/source-foundry/Hack).
@@ -61,13 +67,13 @@ Requires [NeoVim](https://neovim.io/) (>= 0.9.1)
 
 ## Acknowledgment
 
-- [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public)
+<https://github.com/craftzdog/dotfiles-public>
 
 ## About me
 
 Shuhey Koyama
 
-- [Twitter](https://twitter.com/shuheykoyama)
+- [X](https://twitter.com/shuheykoyama)
 - [Facebook](https://www.facebook.com/shuhey.koyama/)
 - [Instagram](https://www.instagram.com/shuheykoyama/)
 - [YouTube](https://www.youtube.com/channel/UCzPjLzS8qL26bRrBDp4iPyw)
