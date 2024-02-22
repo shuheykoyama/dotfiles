@@ -27,16 +27,17 @@
 
 ### Requirements
 
-- [Neovim](https://neovim.io/) >= **v0.9.5** (need to be built with **LuaJIT**)
-- [LazyVim](https://www.lazyvim.org/)
+- [**_Neovim_**](https://neovim.io/) >= **v0.9.5** (need to be built with **LuaJIT**)
+- [**_LazyVim_**](https://www.lazyvim.org/)
 - a [Nerd Font](https://www.nerdfonts.com/) >= v3.1.1 **_(optional, but needed to display some icons)_**
-  - I use [PlemolJP](https://github.com/yuru7/PlemolJP).
+  - I use [**_PlemolJP_**](https://github.com/yuru7/PlemolJP).
 - for [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) **_(optional)_**
-  - **live grep**: [ripgrep](https://github.com/BurntSushi/ripgrep)
-  - **find files**: [fd](https://github.com/sharkdp/fd)
+  - live grep: [ripgrep](https://github.com/BurntSushi/ripgrep)
+  - find files: [fd](https://github.com/sharkdp/fd)
 - a terminal that supports true color (below are some of my favorites):
-  - [Rio Terminal](https://raphamorim.io/rio/) - I'm crazy about this terminal emulator.
+  - [**_Rio Terminal_**](https://raphamorim.io/rio/) - I'm crazy about this terminal emulator.
   - [iTerm2](https://iterm2.com/)
+- [**_Catppuccin for Neovim_**](https://github.com/catppuccin/nvim) - My fave
 
 ## 😎 Shell setup (macOS)
 
