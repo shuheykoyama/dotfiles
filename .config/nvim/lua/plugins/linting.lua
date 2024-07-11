@@ -6,14 +6,15 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
+      astro = { "eslint_d" },
       bash = { "shellcheck" },
       java = { "checkstyle" },
       javascript = { "eslint_d" },
       javascriptreact = { "eslint_d" },
       lua = { "selene" },
       markdown = { "markdownlint" },
-      php = { "phpstan" },
-      python = { "flake8" },
+      -- php = { "phpstan" },
+      python = { "ruff" },
       typescript = { "eslint_d" },
       typescriptreact = { "eslint_d" },
     }

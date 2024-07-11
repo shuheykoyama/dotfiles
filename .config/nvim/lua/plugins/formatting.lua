@@ -6,6 +6,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        astro = { "prettierd" },
         bash = { "shfmt" },
         c = { "clang-format" },
         cpp = { "clang-format" },
@@ -17,9 +18,9 @@ return {
         javascriptreact = { "prettierd" },
         json = { "prettierd" },
         lua = { "stylua" },
-        markdown = { "markdownlint" },
-        php = { "pint" },
-        python = { "black", "isort" },
+        markdown = { "prettierd" },
+        -- php = { "pint" },
+        python = { "ruff" },
         rust = { "rustfmt" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },

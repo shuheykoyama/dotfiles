@@ -4,21 +4,20 @@ return {
   event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
+    "nvimtools/none-ls-extras.nvim",
   },
   config = function()
     local mason_null_ls = require("mason-null-ls")
-
     local null_ls = require("null-ls")
-
     local null_ls_utils = require("null-ls.utils")
 
     mason_null_ls.setup({
       ensure_installed = {
         "prettierd", -- prettier formatter
         "stylua", -- lua formatter
-        "black", -- python formatter
-        "isort", -- python formatter
-        "flake8", -- python linter
+        -- "black", -- python formatter
+        -- "isort", -- python formatter
+        -- "flake8", -- python linter
         "eslint_d", -- js linter
         "shfmt",
         "shellcheck",
@@ -27,9 +26,10 @@ return {
         "checkstyle",
         "selene",
         "markdownlint",
-        "pint",
-        "phpstan",
-        "rustfmt",
+        -- "pint",
+        -- "phpstan",
+        -- "rustfmt",
+        "ruff",
       },
     })
 
@@ -49,10 +49,12 @@ return {
       sources = {
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-        formatting.prettierd, -- js/ts formatter
+        formatting.prettierd.with({ -- js/ts formatter
+          extra_filetypes = { "astro" },
+        }),
         formatting.stylua, -- lua formatter
-        formatting.isort,
-        formatting.black,
+        -- formatting.isort,
+        -- formatting.black,
         formatting.shfmt,
         formatting.clang_format,
         -- formatting.clang_format.with({
@@ -61,23 +63,25 @@ return {
         --   end,
         -- }),
         formatting.google_java_format,
-        formatting.markdownlint,
-        formatting.pint.with({
-          condition = function(utils)
-            return utils.root_has_file({ "pint.json" })
-          end,
-        }),
-        formatting.rustfmt,
+        -- formatting.markdownlint,
+        -- formatting.pint.with({
+        --   condition = function(utils)
+        --     return utils.root_has_file({ "pint.json" })
+        --   end,
+        -- }),
+        require("none-ls.formatting.ruff"),
+        -- formatting.rustfmt,
         diagnostics.checkstyle,
         diagnostics.selene,
         diagnostics.markdownlint,
-        diagnostics.phpstan,
-        diagnostics.flake8,
-        diagnostics.eslint_d.with({ -- js/ts linter
+        -- diagnostics.phpstan,
+        -- diagnostics.flake8,
+        require("none-ls.diagnostics.eslint_d").with({
           condition = function(utils)
-            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+            return utils.root_has_file({ ".eslintrc.yml", ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
           end,
         }),
+        require("none-ls.diagnostics.ruff"),
       },
       -- configure format on save
       on_attach = function(current_client, bufnr)

@@ -70,12 +70,13 @@ return {
         "stylua",
         "selene",
         "markdownlint",
-        "pint",
-        "phpstan",
+        -- "pint",
+        -- "phpstan",
         "black", -- python formatter
         "isort", -- python formatter
         "flake8",
         "rustfmt",
+        "ruff",
       },
     })
   end,
