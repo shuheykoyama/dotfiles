@@ -74,13 +74,15 @@ return {
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
-          return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+          return string.format("[%s] %s", diagnostic.source, diagnostic.message)
         end,
       },
       float = {
         border = "rounded",
       },
     })
+
+    require("lspconfig.ui.windows").default_options.border = "rounded"
 
     -- configure astro server
     lspconfig["astro"].setup({
