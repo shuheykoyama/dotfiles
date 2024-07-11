@@ -5,16 +5,17 @@ return {
     "catppuccin",
     "lewis6991/gitsigns.nvim",
     "nvim-tree/nvim-web-devicons",
+    "AndreM222/copilot-lualine",
   },
   config = function()
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
     lualine.setup({
       options = {
-        -- theme = "tokyonight",
-        theme = "catppuccin-mocha",
-        component_separators = "|",
-        section_separators = { left = "", right = "" },
+        theme = "tokyonight-storm",
+        -- theme = "catppuccin-mocha",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
@@ -22,13 +23,18 @@ return {
         lualine_a = {
           {
             "mode",
-            separator = { left = "", right = "" },
-            right_padding = 2,
+            separator = { right = "" },
           },
         },
         lualine_b = {
-          { "filename" },
-          { "branch" },
+          {
+            "filename",
+            color = { bg = "#45475a" },
+            separator = { right = "" },
+          },
+          {
+            "branch",
+          },
           {
             "diff",
             symbols = {
@@ -57,26 +63,34 @@ return {
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
           },
+          { "copilot" },
           { "encoding" },
           { "fileformat" },
           { "filetype" },
-          { "progress" },
-          { "location" },
+          {
+            "progress",
+            color = { bg = "#45475a" },
+            separator = { left = "" },
+          },
         },
         lualine_z = {
           {
-            "datetime",
-            style = " %H:%M",
-            separator = { left = "", right = "" },
-            left_padding = 2,
+            "location",
+            separator = { left = "" },
           },
+          -- {
+          --   "datetime",
+          --   style = " %H:%M",
+          --   separator = { left = "" },
+          --   -- left_padding = 2,
+          -- },
         },
       },
       inactive_sections = {
         lualine_a = {
           {
             "filename",
-            separator = { left = "", right = "" },
+            separator = { right = "" },
             right_padding = 2,
             color = { bg = "#45475a" },
           },
