@@ -20,7 +20,8 @@ require("lazy").setup({
     lazy = true,
   },
   install = {
-    colorscheme = { "catppuccin-mocha" },
+    -- colorscheme = { "catppuccin-mocha" },
+    colorscheme = { "tokyonight-storm" },
   },
   checker = {
     enabled = true,
@@ -48,5 +49,8 @@ require("lazy").setup({
   },
   change_detection = {
     notify = false,
+  },
+  ui = {
+    border = "rounded",
   },
 })
