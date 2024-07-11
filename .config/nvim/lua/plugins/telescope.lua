@@ -91,6 +91,26 @@ return {
       end,
       desc = "Open File Browser with the path of the current buffer",
     },
+    -- Show help actions with telescope
+    {
+      "<leader>ad",
+      function()
+        local actions = require("CopilotChat.actions")
+        require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+      end,
+      desc = "CopilotChat - Help actions",
+      mode = { "n", "v" },
+    },
+    -- Show prompts actions with telescope
+    {
+      "<leader>ap",
+      function()
+        local actions = require("CopilotChat.actions")
+        require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+      end,
+      desc = "CopilotChat - Prompt actions",
+      mode = { "n", "v" },
+    },
   },
   dependencies = {
     {
