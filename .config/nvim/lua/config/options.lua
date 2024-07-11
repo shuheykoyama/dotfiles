@@ -1,3 +1,5 @@
+vim.cmd("language en_US")
+
 local opt = vim.opt -- for conciseness
 
 vim.scriptencoding = "utf-8"
