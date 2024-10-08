@@ -1,97 +1,16 @@
-# `sheldon` configuration file
-#
-# Author: Shuhey Koyama
-# Created: 2023/05/14
-# Last Modified: 2023/07/01
-#
-# 上から順番に読み込まれるので，順番に注意する．
-
 shell = "zsh"
 
-# これを頭でやっておくとデフォルトの挙動としてdefer（非同期読み込み）をしてくれる．
-# 逆に，同期読み込みを明示するときは，apply = ["source"]を追加して対応する．
-# apply = ["defer"]
+[templates]
+defer = ""
 
-### zshコマンドの実行を遅延させる．
-### とりあえずは遅延実行はしなくてよいだろう．
-# [plugins.zsh-defer]
-# github = "romkatv/zsh-defer"
-# apply = ["source"]
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
 
-# [templates]
-# defer = ""
-
-### 補完を有効にする．
-### .zshrcファイルにてcompdefを実行するためにcompinitを遅延実行しない．
-[plugins.compinit]
-inline = 'autoload -Uz compinit && compinit'
-
-### zshコマンドの自動サジェスト機能（zsh-autosuggestions）
-[plugins.zsh-autosuggestions]
-github = "zsh-users/zsh-autosuggestions"
-
-### zshコマンドのシンタックスハイライト機能（zsh-syntax-highlighting）
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-
-### 補完拡張（zsh-completions）
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-### その他のzsh設定を読み込む．
-[plugins.plugins]
-local = "~/zsh/plugins"
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
 
-### z - jump around
-[plugins.z]
-github = "rupa/z"
-
-### エイリアスの設定
-
-[plugins.ls]
-inline = 'alias ls="ls -p -G"'
-
-[plugins.la]
-inline = 'alias la="ls -A"'
-
-[plugins.ll]
-inline = 'alias ll="eza -l -g --icons"'
-
-[plugins.lla]
-inline = 'alias lla="eza -l -g -a --icons"'
-
-[plugins.nl]
-inline = 'alias nl="nl -b a -s \": \" "'
-
-[plugins.path]
-inline = 'alias path="echo $PATH | tr \":\" \"\\n\" "'
-
-[plugins.edit]
-inline = 'alias edit="open -a \"Visual Studio Code\" "'
-
-[plugins.b2a]
-inline = 'alias b2a="sh ~/bin/b2a.sh"'
-
-[plugins.exitrio]
-inline = 'alias exitrio="osascript -e \"tell application \"Rio\" to do script\" ; exit"'
-
-[plugins.g]
-inline = 'alias g="git"'
-
-[plugins.vim]
-inline = 'alias vim="nvim"'
-
-[plugins.pip]
-inline = 'alias pip="~/.asdf/shims/pip"'
-
-[plugins.ruby]
-inline = 'alias ruby="~/.asdf/shims/ruby"'
-
-[plugins.irb]
-inline = 'alias irb="~/.asdf/shims/irb"'
-
-[plugins.python3]
-inline = 'alias python3="~/.asdf/shims/python3"'
-
-[plugins.npm]
-inline = 'alias npm="~/.asdf/shims/npm"'
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
