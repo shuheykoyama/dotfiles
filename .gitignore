@@ -3,9 +3,10 @@
 
 # NeoVim
 .config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
 
 # API keys
 .env
 
-# Terminal
+# WezTerm
 .config/wezterm/
