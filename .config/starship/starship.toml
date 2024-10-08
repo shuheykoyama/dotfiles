@@ -1,121 +1,132 @@
-palette = "catppuccin_mocha"
+palette = "tokyonight"
 
 format = """
+[](fg:#111111)\
+$os\
+[](fg:#111111 bg:#222222)\
 $directory\
 $git_branch\
 $git_status\
-$java\
-$nodejs\
-$package\
-$php\
+[](fg:#222222)\
+$fill\
+[](fg:#222222)\
+$cmd_duration\
+$time\
+[](fg:#222222)
+$character\
+"""
+
+right_format = """
 $python\
 $rust\
-$fill\
-$cmd_duration\
-$time
-$character\
+$nodejs\
+$java\
+$php\
+$docker_context\
 """
 
 add_newline = true
 
-[character]
+[os]
+format = "[$symbol]($style)"
+style = 'fg:foreground bg:#111111'
 disabled = false
-success_symbol = '[  ](bold #56d364)'
-error_symbol = '[  ](bold #f78166)'
-format = '$symbol'
 
-[cmd_duration]
-disabled = false
-min_time = 500
-show_milliseconds = true
-format = '[took ](fg:white)[$duration ](fg:peach)'
+[os.symbols]
+Macos = "  "
 
 [directory]
-format = '[ $path ](fg:blue)'
-read_only = " "
 truncation_length = 3
+truncation_symbol = " ~"
+truncate_to_repo = false
 fish_style_pwd_dir_length = 3
-
-[fill]
-disabled = false
-symbol = ' '
+home_symbol = " ~"
+style = "bold fg:cyan bg:#222222"
+read_only = " 󰌾 "
+read_only_style = "fg:red bg:#222222"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
 
 [git_branch]
-symbol = "[ ](mauve)"
-format = '[on ](fg:white)[$symbol](fg:mauve)[$branch ](fg:mauve)'
+symbol = ' '
+truncation_symbol = ''
+style = 'fg:magenta bg:#222222'
+format = '[](fg:cyan bg:#222222)[ $symbol$branch(:$remote_branch)]($style)'
 
 [git_status]
-style = "fg:text bg:surface0"
-format = '[$all_status$ahead_behind ](fg:red)'
+style = 'fg:magenta bg:#222222'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕'
+up_to_date = '✓'
+untracked = '?'
+stashed = '$'
+modified = '!${count}'
+renamed = '»'
+deleted = '✘'
+format = '[ $all_status$ahead_behind ]($style)'
+
+[fill]
+symbol = ' '
+style = '#222222'
+
+[character]
+#    ❯ 󰳓
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
+
+[cmd_duration]
+min_time = 1
+style = 'fg:yellow bg:#222222'
+format = "[  $duration]($style)[ ](fg:foreground bg:#222222)"
 
 [time]
 disabled = false
-time_format = "%T"
-format = '[at ](fg:white)[$time ](fg:yellow)'
-
-[c]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[docker_context]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[java]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[nodejs]
-symbol = " "
-
-[package]
-symbol = "󰏗 "
-
-[php]
-symbol = " "
+style = 'fg:foreground bg:#222222'
+format = '[  $time]($style)'
+time_format = '%T'
+utc_time_offset = '+9'
 
 [python]
-symbol = " "
-
-[ruby]
-symbol = " "
+symbol = ' '
+format = '[  ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+pyenv_version_name = false
+style = 'fg:yellow'
 
 [rust]
-symbol = " "
+symbol = ""
+format = '[  $symbol $version](red)'
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+[nodejs]
+symbol = ""
+format = '[  $symbol $version](green)'
+
+[java]
+symbol = "󰛊"
+format = '[  $symbol $version](red)'
+
+[php]
+symbol = ""
+format = '[  $symbol $version](magenta)'
+
+[golang]
+symbol = ""
+format = '[  $symbol $version](cyan)'
+
+[docker_context]
+symbol = "󰡨"
+format = '[  $symbol $context](cyan)'
+
+[palettes.tokyonight]
+background = '#1a1b26'
+foreground = '#c0caf5'
+selection-background = '#33467c'
+selection-foreground = '#c0caf5'
+black = '#15161e'
+red = '#f7768e'
+green = '#9ece6a'
+yellow = '#e0af68'
+blue = '#7aa2f7'
+magenta = '#bb9af7'
+cyan = '#7dcfff'
+white = '#a9b1d6'
