@@ -3,9 +3,11 @@ return {
   keys = {
     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
     { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+    { "te", "<Cmd>tabedit<CR>", desc = "New tab" },
   },
   version = "*",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "echasnovski/mini.icons" },
   config = function()
     require("bufferline").setup({
       -- highlights = require("catppuccin.groups.integrations.bufferline").get({
