@@ -1,7 +1,7 @@
 # System
 .DS_Store
 
-# NeoVim
+# Neovim
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
 
@@ -10,3 +10,6 @@
 
 # WezTerm
 .config/wezterm/
+
+# tmux
+.config/tmux/
