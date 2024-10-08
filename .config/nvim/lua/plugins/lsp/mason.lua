@@ -8,6 +8,7 @@ return {
     "MasonLog",
     "MasonUpdate",
   },
+  -- event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -42,11 +43,11 @@ return {
         "cssls",
         "html",
         "jdtls",
-        "tsserver",
+        "vtsls",
         "jsonls",
         "lua_ls",
         "marksman",
-        "intelephense",
+        -- "intelephense",
         "rust_analyzer",
         "tailwindcss",
         "taplo",
@@ -67,14 +68,10 @@ return {
         "google-java-format",
         "checkstyle",
         "eslint_d", -- js linter
-        "stylua",
         "selene",
         "markdownlint",
         -- "pint",
         -- "phpstan",
-        "black", -- python formatter
-        "isort", -- python formatter
-        "flake8",
         "rustfmt",
         "ruff",
       },
