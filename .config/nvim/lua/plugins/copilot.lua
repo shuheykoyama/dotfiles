@@ -5,7 +5,12 @@ return {
   build = ":Copilot auth",
   config = function()
     require("copilot").setup({
-      suggestion = { enabled = false },
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<Tab>",
+        },
+      },
       panel = { enabled = false },
       filetypes = {
         astro = true,
