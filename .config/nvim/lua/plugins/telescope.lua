@@ -1,5 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
+  dependencies = {
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+    "nvim-telescope/telescope-file-browser.nvim",
+  },
   keys = {
     {
       "<leader>fP",
@@ -91,6 +98,14 @@ return {
       end,
       desc = "Open File Browser with the path of the current buffer",
     },
+    {
+      "gd",
+      function()
+        local builtin = require("telescope.builtin")
+        builtin.lsp_definitions()
+      end,
+      desc = "Show LSP definitions",
+    },
     -- Show help actions with telescope
     {
       "<leader>ad",
@@ -111,13 +126,6 @@ return {
       desc = "CopilotChat - Prompt actions",
       mode = { "n", "v" },
     },
-  },
-  dependencies = {
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-    },
-    "nvim-telescope/telescope-file-browser.nvim",
   },
   config = function(_, opts)
     local telescope = require("telescope")
