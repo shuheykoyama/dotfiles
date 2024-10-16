@@ -1,7 +1,6 @@
 return {
   "b0o/incline.nvim",
-  event = "BufRead",
-  priority = 1200,
+  event = { "FocusLost", "CursorHold" },
   config = function()
     local colors = require("tokyonight.colors.storm")
     require("incline").setup({
