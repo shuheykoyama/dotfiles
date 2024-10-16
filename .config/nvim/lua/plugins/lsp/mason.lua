@@ -42,17 +42,17 @@ return {
         "clangd",
         "cssls",
         "html",
+        -- "intelephense",
         "jdtls",
-        "vtsls",
         "jsonls",
         "lua_ls",
         "marksman",
-        -- "intelephense",
+        "pyright",
         "rust_analyzer",
         "tailwindcss",
         "taplo",
+        "vtsls",
         "yamlls",
-        "pyright",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -60,20 +60,21 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "shfmt",
-        "shellcheck",
-        "clang-format",
-        "prettierd",
-        "stylua", -- lua formatter
-        "google-java-format",
+        "biome",
         "checkstyle",
+        "clang-format",
         "eslint_d", -- js linter
-        "selene",
+        "google-java-format",
         "markdownlint",
-        -- "pint",
         -- "phpstan",
-        "rustfmt",
+        -- "pint",
+        "prettierd",
         "ruff",
+        "rustfmt",
+        "selene",
+        "shellcheck",
+        "shfmt",
+        "stylua", -- lua formatter
       },
     })
   end,

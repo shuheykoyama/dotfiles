@@ -115,6 +115,10 @@ return {
           filetypes = { "sh" },
         })
       end,
+      ["biome"] = function()
+        -- configure javascript/typescript server
+        -- lspconfig["biome"].setup()
+      end,
       ["clangd"] = function()
         -- configure c/c++ server
         lspconfig["clangd"].setup({
@@ -136,25 +140,21 @@ return {
           filetypes = { "html" },
         })
       end,
+      -- ["intelephense"] = function()
+      --   -- configure php server
+      --   lspconfig["intelephense"].setup({
+      --     capabilities = capabilities,
+      --     on_attach = on_attach,
+      --     root_dir = function()
+      --       return vim.loop.cwd()
+      --     end,
+      --   })
+      -- end,
       ["jdtls"] = function()
         -- configure java server
         lspconfig["jdtls"].setup({
           capabilities = capabilities,
           filetypes = { "java" },
-        })
-      end,
-      ["vtsls"] = function()
-        -- configure javascript/typescript server with plugin
-        lspconfig["vtsls"].setup({
-          capabilities = capabilities,
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-          },
         })
       end,
       ["jsonls"] = function()
@@ -188,16 +188,13 @@ return {
           filetypes = { "markdown", "markdown.mdx" },
         })
       end,
-      -- ["intelephense"] = function()
-      --   -- configure php server
-      --   lspconfig["intelephense"].setup({
-      --     capabilities = capabilities,
-      --     on_attach = on_attach,
-      --     root_dir = function()
-      --       return vim.loop.cwd()
-      --     end,
-      --   })
-      -- end,
+      ["pyright"] = function()
+        -- configure python server
+        lspconfig["pyright"].setup({
+          capabilities = capabilities,
+          filetypes = { "python" },
+        })
+      end,
       ["rust_analyzer"] = function()
         -- configure rust server
         lspconfig["rust_analyzer"].setup({
@@ -247,18 +244,25 @@ return {
           filetypes = { "toml" },
         })
       end,
+      ["vtsls"] = function()
+        -- configure javascript/typescript server
+        lspconfig["vtsls"].setup({
+          capabilities = capabilities,
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
+        })
+      end,
       ["yamlls"] = function()
         -- configure yaml server
         lspconfig["yamlls"].setup({
           capabilities = capabilities,
           filetypes = { "yaml" },
-        })
-      end,
-      ["pyright"] = function()
-        -- configure python server
-        lspconfig["pyright"].setup({
-          capabilities = capabilities,
-          filetypes = { "python" },
         })
       end,
     })

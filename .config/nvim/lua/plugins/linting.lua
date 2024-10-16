@@ -6,17 +6,21 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      astro = { "eslint_d" },
+      astro = { "biomejs" },
       bash = { "shellcheck" },
+      css = { "biomejs" },
+      html = { "prettierd" },
       java = { "checkstyle" },
-      javascript = { "eslint_d" },
-      javascriptreact = { "eslint_d" },
+      javascript = { "biomejs" },
+      javascriptreact = { "biomejs" },
+      json = { "biomejs" },
       lua = { "selene" },
       markdown = { "markdownlint" },
       -- php = { "phpstan" },
       python = { "ruff" },
-      typescript = { "eslint_d" },
-      typescriptreact = { "eslint_d" },
+      scss = { "prettierd" },
+      typescript = { "biomejs" },
+      typescriptreact = { "biomejs" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
