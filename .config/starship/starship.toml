@@ -17,11 +17,12 @@ $character\
 """
 
 right_format = """
+$golang\
+$java\
+$nodejs\
+$php\
 $python\
 $rust\
-$nodejs\
-$java\
-$php\
 $docker_context\
 """
 
