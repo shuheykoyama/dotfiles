@@ -40,7 +40,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.opt.title = true
 vim.opt.cursorline = true
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 
 -- sign
 vim.opt.signcolumn = "yes"
