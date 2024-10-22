@@ -37,6 +37,7 @@ return {
         "markdown_inline",
         "php",
         "phpdoc",
+        "prisma",
         "python",
         "rust",
         "scss",
