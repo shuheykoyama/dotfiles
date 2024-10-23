@@ -1,18 +1,16 @@
-palette = "tokyonight"
-
 format = """
-[](fg:#111111)\
+[](fg:black)\
 $os\
-[](fg:#111111 bg:#222222)\
+[](fg:black bg:#333333)\
 $directory\
 $git_branch\
 $git_status\
-[](fg:#222222)\
+[](fg:#333333)\
 $fill\
-[](fg:#222222)\
+[](fg:#333333)\
 $cmd_duration\
 $time\
-[](fg:#222222)
+[](fg:#333333)
 $character\
 """
 
@@ -28,9 +26,11 @@ $docker_context\
 
 add_newline = true
 
+palette = "tokyonight"
+
 [os]
 format = "[$symbol]($style)"
-style = 'fg:foreground bg:#111111'
+style = 'fg:foreground bg:black'
 disabled = false
 
 [os.symbols]
@@ -42,19 +42,19 @@ truncation_symbol = " ~"
 truncate_to_repo = false
 fish_style_pwd_dir_length = 3
 home_symbol = " ~"
-style = "bold fg:cyan bg:#222222"
+style = "bold fg:cyan bg:#333333"
 read_only = " 󰌾 "
-read_only_style = "fg:red bg:#222222"
+read_only_style = "fg:red bg:#333333"
 format = "[ $path ]($style)[$read_only]($read_only_style)"
 
 [git_branch]
 symbol = ' '
 truncation_symbol = ''
-style = 'fg:magenta bg:#222222'
-format = '[](fg:cyan bg:#222222)[ $symbol$branch(:$remote_branch)]($style)'
+style = 'fg:magenta bg:#333333'
+format = '[](fg:cyan bg:#333333)[ $symbol$branch(:$remote_branch)]($style)'
 
 [git_status]
-style = 'fg:magenta bg:#222222'
+style = 'fg:magenta bg:#333333'
 conflicted = '='
 ahead = '⇡${count}'
 behind = '⇣${count}'
@@ -69,7 +69,7 @@ format = '[ $all_status$ahead_behind ]($style)'
 
 [fill]
 symbol = ' '
-style = '#222222'
+style = '#333333'
 
 [character]
 #    ❯ 󰳓
@@ -78,12 +78,12 @@ error_symbol = '[](bold red)'
 
 [cmd_duration]
 min_time = 1
-style = 'fg:yellow bg:#222222'
-format = "[  $duration]($style)[ ](fg:foreground bg:#222222)"
+style = 'fg:yellow bg:#333333'
+format = "[  $duration]($style)[ ](fg:foreground bg:#333333)"
 
 [time]
 disabled = false
-style = 'fg:foreground bg:#222222'
+style = 'fg:foreground bg:#333333'
 format = '[  $time]($style)'
 time_format = '%T'
 utc_time_offset = '+9'
