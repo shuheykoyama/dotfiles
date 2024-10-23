@@ -16,5 +16,6 @@ alias gd="git diff"
 alias gs="git status"
 alias gp="git push"
 alias gf="git fetch"
+alias lg="lazygit"
 
 alias b2a="sh ~/bin/b2a.sh"
