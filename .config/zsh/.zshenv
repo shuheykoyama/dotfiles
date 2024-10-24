@@ -1,6 +1,7 @@
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 export DOTPATH=~/dotfiles
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Java
 # handle Japanese well with UTF-8 code system
@@ -25,3 +26,9 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# fzf
+export FZF_DEFAULT_OPTS_FILE="$DOTPATH"/.config/fzf/config
+
+# eza
+export EZA_CONFIG_DIR=~/.config/eza/
