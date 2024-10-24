@@ -1,0 +1,29 @@
+[include]
+  path = ~/.config/git/delta/themes/tokyonight_night.gitconfig
+[user]
+  name = shuheykoyama
+  email = shuheykoyama@gmail.com
+[core]
+  excludesfile = ~/.gitignore
+  editor = nvim
+  pager = delta
+[color]
+  ui = auto
+[hub]
+  protocol = ssh
+[github]
+  user = shuheykoyama
+[diff]
+  colorMoved = default
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+  true-color = always
+  features = tokyonight_night
+[merge]
+  conflictstyle = diff3
+[init]
+	defaultBranch = main
