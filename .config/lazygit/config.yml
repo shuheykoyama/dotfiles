@@ -1,0 +1,54 @@
+git:
+  branchPrefix: "shuheykoyama/"
+  paging:
+    externalDiffCommand: "difft --color=always"
+  mainBranches:
+    - "main"
+    - "master"
+    - "develop"
+  parseEmoji: true
+
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#ff9e64"
+      - "bold"
+    inactiveBorderColor:
+      - "#27a1b9"
+    searchingActiveBorderColor:
+      - "#ff9e64"
+      - "bold"
+    optionsTextColor:
+      - "#7aa2f7"
+    selectedLineBgColor:
+      - "#283457"
+    cherryPickedCommitFgColor:
+      - "#7aa2f7"
+    cherryPickedCommitBgColor:
+      - "#bb9af7"
+    markedBaseCommitFgColor:
+      - "#7aa2f7"
+    markedBaseCommitBgColor:
+      - "#e0af68"
+    unstagedChangesColor:
+      - "#db4b4b"
+    defaultFgColor:
+      - "#c0caf5"
+
+confirmOnQuit: true
+quitOnTopLevelReturn: true
+
+customCommands:
+  - key: "c"
+    command: "czg ai"
+    description: "commit with AI powered commitizen"
+    context: "files"
+    loadingText: "opening AI powered commitizen commit tool"
+    subprocess: true
+  - key: "C"
+    command: "git cz"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
