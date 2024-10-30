@@ -25,6 +25,7 @@ return {
             { find = "%d+L, %d+B" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
+            { find = "AutoSave: saved at" },
           },
         },
         view = "mini",
@@ -32,9 +33,7 @@ return {
       {
         filter = {
           event = "notify",
-          any = {
-            { find = "saved" },
-          },
+          find = "Conform: formatted with",
         },
         view = "mini",
       },
