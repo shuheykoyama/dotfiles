@@ -1,7 +1,9 @@
 git:
   branchPrefix: "shuheykoyama/"
   paging:
-    externalDiffCommand: "difft --color=always"
+    # externalDiffCommand: "difft --color=always"
+    colorArg: always
+    pager: delta --dark --paging=never
   mainBranches:
     - "main"
     - "master"
@@ -35,6 +37,9 @@ gui:
       - "#db4b4b"
     defaultFgColor:
       - "#c0caf5"
+  authorColors:
+    "*": "#b4befe"
+  showIcons: true
 
 confirmOnQuit: true
 quitOnTopLevelReturn: true
