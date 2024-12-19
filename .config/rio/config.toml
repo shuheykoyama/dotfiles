@@ -1,4 +1,5 @@
 padding-x = 3
+padding-y = [-25, 0]
 use-fork = false
 
 [cursor]
@@ -12,9 +13,10 @@ args = []
 [window]
 width = 1050
 height = 650
-opacity = 0.75
+opacity = 0.85
 blur = true
 decorations = "Buttonless"
+macos-use-unified-titlebar = false
 
 [renderer]
 performance = "High"
@@ -23,30 +25,37 @@ disable-renderer-when-unfocused = false
 
 [fonts]
 size = 12
-family = "BlexMono Nerd Font"
+# family = "BlexMono Nerd Font"
 # family = "CaskaydiaCove Nerd Font"
 # family = "Hack Nerd Font"
 # family = "Moralerspace Argon HWNF"
 # family = "PlemolJP35 Console NF"
 # family = "UDEV Gothic 35NF"
+family = "Firple"
+# family = "Bizin Gothic NF"
+# family = "Explex Console NF"
 
 [fonts.regular]
-family = "BlexMono Nerd Font"
+family = "Firple"
+# family = "UDEV Gothic 35NF"
 style = "Normal"
 weight = 500
 
 [fonts.bold]
-family = "BlexMono Nerd Font"
+family = "Firple"
+# family = "UDEV Gothic 35NF"
 style = "Normal"
 weight = 1000
 
 [fonts.italic]
-family = "BlexMono Nerd Font"
+family = "Firple"
+# family = "UDEV Gothic 35NF"
 style = "Italic"
 weight = 500
 
 [fonts.bold-italic]
-family = "BlexMono Nerd Font"
+family = "Firple"
+# family = "UDEV Gothic 35NF"
 style = "Italic"
 weight = 1000
 
@@ -55,7 +64,7 @@ family = "Apple Color Emoji"
 style = "Normal"
 
 [fonts.ui]
-family = "Hiragino Sans"
+family = "SF Pro"
 style = "Normal"
 
 [scroll]
@@ -64,13 +73,15 @@ divider = 1.0
 
 [navigation]
 # mode = "NativeTab"
-mode = "TopTab"
+# mode = "TopTab"
 # mode = "BottomTab"
 # mode = "Bookmark"
+mode = "Plain"
 clickable = true
 hide-if-single = true
 use-current-path = true
 use-split = true
+open-config-with-split = true
 
 [shell]
 program = "/bin/zsh"
@@ -95,10 +106,13 @@ yellow = '#e0af68'
 # Navigation
 tabs = '#12B5E5'
 tabs-foreground = '#707070'
-tabs-active = '#15161e'
-# tabs-active-highlight = '#f712ff'
-tabs-active-highlight = '#ff1545'
-tabs-active-foreground = '#c0caf5'
+tabs-active = '#151515'
+# tabs-active-highlight = '#000000'
+tabs-active-highlight = '#f712ff'
+# tabs-active-highlight = '#ff1545'
+# tabs-active-highlight = '#FF007C'
+# tabs-active-foreground = '#c0caf5'
+tabs-active-foreground = '#ffffff'
 bar = '#000000'
 
 # Search
