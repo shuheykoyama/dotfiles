@@ -5,9 +5,9 @@ $os\
 $directory\
 $git_branch\
 $git_status\
-[](fg:#333333)\
+[](fg:#333333)\
 $fill\
-[](fg:#333333)\
+[](fg:#333333)\
 $cmd_duration\
 $time\
 [](fg:#333333)
