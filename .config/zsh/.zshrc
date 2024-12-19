@@ -62,3 +62,6 @@ eval "$(~/.local/bin/mise activate zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
+
+# Haskell for Tidal Cycles
+source ${HOME}/.ghcup/env
