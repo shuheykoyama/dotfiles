@@ -2,8 +2,12 @@
 
 # Shuhey's dotfiles
 
-![screenshot_01](./images/screenshot_01.png)
-![screenshot_02](./images/screenshot_02.png)
+![thumbnail](./images/neovim_screenshot_01.png)
+
+<p align="center">
+  <img src="./images/neovim_screenshot_02.png" alt="coding_astro" width="49%">
+  <img src="./images/neovim_screenshot_03.png" alt="show_documentation" width="49%">
+</p>
 
 </div>
 
