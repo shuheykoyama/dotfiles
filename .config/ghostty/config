@@ -1,0 +1,21 @@
+font-family = "PlemolJP Console NF"
+font-size = 12.5
+
+shell-integration-features = no-cursor
+
+mouse-hide-while-typing = true
+
+cursor-style = block
+
+theme = GitHub Dark
+
+window-theme = ghostty
+window-height = 45
+window-width = 160
+window-padding-balance = true
+
+background = #000000
+background-opacity = 0.9
+background-blur-radius = 30
+
+macos-titlebar-style = hidden
