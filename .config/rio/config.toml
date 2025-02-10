@@ -1,6 +1,5 @@
 padding-x = 3
 padding-y = [-25, 0]
-use-fork = false
 
 [cursor]
 shape = 'block'
@@ -13,7 +12,7 @@ args = []
 [window]
 width = 1050
 height = 650
-opacity = 0.85
+opacity = 0.8
 blur = true
 decorations = "Buttonless"
 macos-use-unified-titlebar = false
