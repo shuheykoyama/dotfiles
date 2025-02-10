@@ -1,18 +1,10 @@
 format = """
-[](fg:#333333)\
 $directory\
 $git_branch\
 $git_status\
-[](fg:#333333)\
+[](fg:#1a1b26)\
 $fill\
-[](fg:#333333)\
-$cmd_duration\
-$time\
-[](fg:#333333)
-$character\
-"""
-
-right_format = """
+[](fg:#1a1b26)\
 $golang\
 $java\
 $nodejs\
@@ -20,6 +12,9 @@ $php\
 $python\
 $rust\
 $docker_context\
+$cmd_duration\
+$time
+$character\
 """
 
 add_newline = true
@@ -28,88 +23,86 @@ palette = "tokyonight"
 
 [directory]
 truncation_length = 3
-truncation_symbol = " ~"
+truncation_symbol = "~"
 truncate_to_repo = false
 fish_style_pwd_dir_length = 3
-home_symbol = " ~"
-style = "fg:blue bg:#333333"
+home_symbol = "~"
+style = "fg:#00B0FF bg:#1a1b26"
 read_only = " 󰌾 "
-read_only_style = "fg:red bg:#333333"
+read_only_style = "fg:red bg:#1a1b26"
 format = "[ $path ]($style)[$read_only]($read_only_style)"
-before_repo_root_style = "fg:blue bg:#333333"
-repo_root_style = "bold fg:blue bg:#333333"
-repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ](bold fg:blue bg:#333333)[$read_only]($read_only_style)"
+before_repo_root_style = "fg:#00b0ff bg:#1a1b26"
+repo_root_style = "bold fg:#00b0ff bg:#1a1b26"
+repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ](bold fg:#00b0ff bg:#1a1b26)[$read_only]($read_only_style)"
 
 [git_branch]
 symbol = ' '
 truncation_symbol = ''
-style = 'fg:green bg:#333333'
-format = '[│](fg:foreground bg:#333333)[ $symbol$branch(:$remote_branch)]($style)'
+style = 'fg:#5fd801 bg:#1a1b26'
+format = '[](fg:foreground bg:#1a1b26)[ $symbol$branch(:$remote_branch)]($style)'
 
 [git_status]
-style = 'fg:green bg:#333333'
-conflicted = '='
+style = 'fg:#5fd801 bg:#1a1b26'
+# conflicted = '='
 ahead = '⇡${count}'
 behind = '⇣${count}'
-diverged = '⇕'
-up_to_date = '✓'
-untracked = '?'
-stashed = '$'
+# diverged = '⇕'
+# up_to_date = '✓'
+untracked = '?${count}'
+# stashed = '$'
 modified = '!${count}'
-renamed = '»'
-deleted = '✘'
+# renamed = '»'
+# deleted = '✘'
 format = '[ $all_status$ahead_behind ]($style)'
 
 [fill]
 symbol = ' '
-style = '#333333'
 
 [character]
 #    ❯ 󰳓
-success_symbol = '[❯](bold green)'
-error_symbol = '[❯](bold red)'
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red)'
 
 [cmd_duration]
 min_time = 1
-style = 'fg:yellow bg:#333333'
-format = "[ $duration]($style)[ │](fg:foreground bg:#333333)"
+style = 'fg:foreground bg:#1a1b26'
+format = "[ $duration]($style)[ ](fg:foreground bg:#1a1b26)"
 
 [time]
 disabled = false
-style = 'fg:foreground bg:#333333'
-format = '[ $time]($style)'
+style = 'fg:foreground bg:#1a1b26'
+format = '[ $time ]($style)'
 time_format = '%T'
-utc_time_offset = '+9'
 
 [python]
 symbol = ' '
-format = '[  ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)[ ](fg:foreground bg:#1a1b26)'
 pyenv_version_name = false
-style = 'fg:yellow'
+style = 'fg:yellow bg:#1a1b26'
 
 [rust]
 symbol = ""
-format = '[  $symbol $version](red)'
+format = '[ $symbol $version](fg:red bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [nodejs]
 symbol = ""
-format = '[  $symbol $version](green)'
+format = '[ $symbol $version](fg:green bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [java]
 symbol = "󰛊"
-format = '[  $symbol $version](red)'
+format = '[ $symbol $version](fg:red bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [php]
 symbol = ""
-format = '[  $symbol $version](magenta)'
+format = '[ $symbol $version](fg:magenta bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [golang]
 symbol = ""
-format = '[  $symbol $version](cyan)'
+format = '[ $symbol $version](fg:cyan bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [docker_context]
 symbol = "󰡨"
-format = '[  $symbol $context](cyan)'
+format = '[ $symbol $context](fg:cyan bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
 
 [palettes.tokyonight]
 background = '#101216'
