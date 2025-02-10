@@ -2,7 +2,8 @@ return {
   "b0o/incline.nvim",
   event = { "FocusLost", "CursorHold" },
   config = function()
-    local colors = require("tokyonight.colors.storm")
+    local colors = require("tokyonight.colors.night")
+    -- local colors = require("github-theme.palette").load("github_dark")
     require("incline").setup({
       highlight = {
         groups = {
