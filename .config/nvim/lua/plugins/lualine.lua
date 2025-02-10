@@ -16,6 +16,7 @@ return {
 
     lualine.setup({
       options = {
+        -- theme = "github_dark",
         theme = "tokyonight-night",
         -- theme = "catppuccin-mocha",
         component_separators = { left = "", right = "" },
