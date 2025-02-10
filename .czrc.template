@@ -1,0 +1,21 @@
+{
+  "path": "cz-git",
+  "$schema": "https://cdn.jsdelivr.net/gh/Zhengqbbb/cz-git@1.10.1/docs/public/schema/cz-git.json",
+  "openAIToken": "",
+  "apiEndpoint": "https://models.inference.ai.azure.com",
+  "apiModel": "gpt-4o",
+  "useEmoji": true,
+  "types": [
+    { "value": "feat", "name": "feat:     🎸  A new feature", "emoji": ":guitar:" },
+    { "value": "fix", "name": "fix:      🐛  A bug fix", "emoji": ":bug:" },
+    { "value": "docs", "name": "docs:     ✏️   Documentation only changes", "emoji": ":pencil2:" },
+    { "value": "style", "name": "style:    💄  Markup, white-space, formatting, missing semi-colons...", "emoji": ":lipstick:" },
+    { "value": "refactor", "name": "refactor: 💡  A code change that neither fixes a bug or adds a feature", "emoji": ":bulb:" },
+    { "value": "perf", "name": "perf:     ⚡️  A code change that improves performance", "emoji": ":zap:" },
+    { "value": "test", "name": "test:     💍  Adding missing tests", "emoji": ":ring:" },
+    { "value": "build", "name": "build:    📦️   Changes that affect the build system or external dependencies", "emoji": ":package:" },
+    { "value": "ci", "name": "ci:       🎡  CI related changes", "emoji": ":ferris_wheel:" },
+    { "value": "chore", "name": "chore:    🤖  Build process or auxiliary tool changes", "emoji": ":robot:" },
+    { "value": "release", "name": "release:  🏹  Create a release commit", "emoji": ":bow_and_arrow:" }
+  ]
+}
