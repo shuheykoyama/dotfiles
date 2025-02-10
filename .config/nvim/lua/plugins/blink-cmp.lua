@@ -116,17 +116,26 @@ return {
             },
           },
           border = "rounded",
+          -- winblend = 15,
         },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
           window = {
             border = "rounded",
+            -- winblend = 15,
           },
         },
         -- ghost_text = {
         --   enabled = true,
         -- },
+      },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+          -- winblend = 15,
+        },
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
