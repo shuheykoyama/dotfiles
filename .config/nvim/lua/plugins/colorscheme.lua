@@ -63,6 +63,15 @@ return {
     end,
   },
   -- {
+  --   "craftzdog/solarized-osaka.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     vim.cmd([[colorscheme solarized-osaka]])
+  --   end,
+  -- },
+  -- {
   --   "projekt0n/github-nvim-theme",
   --   lazy = false,
   --   priority = 1000,
