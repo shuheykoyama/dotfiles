@@ -8,7 +8,7 @@ return {
       suggestion = {
         auto_trigger = true,
       },
-      panel = { enabled = false },
+      panel = { enabled = true },
       filetypes = {
         astro = true,
         bash = true,

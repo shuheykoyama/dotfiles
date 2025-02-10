@@ -3,6 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   cmd = { "LspInfo", "LspInstall", "LspStart" },
   dependencies = {
+    "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
@@ -10,71 +11,58 @@ return {
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
-    -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
 
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds
         opts.desc = "Show LSP references"
-        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
         opts.desc = "Go to declaration"
-        keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-        -- opts.desc = "Show LSP definitions"
-        -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
         opts.desc = "Show LSP implementations"
-        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
         opts.desc = "See available code actions"
-        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
         opts.desc = "Smart rename"
-        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
         opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
         opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
         opts.desc = "Go to previous diagnostic"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 
         opts.desc = "Go to next diagnostic"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+        keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-        opts.desc = "Show documentation for what is under cursor"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+        opts.desc = "Show documentation for word under cursor"
+        keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
         opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- blink.cmp の拡張 capabilities を取得
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    -- (not in youtube nvim video)
+    -- 各種診断シンボルの定義
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
@@ -87,140 +75,101 @@ return {
           return string.format("[%s] %s", diagnostic.source, diagnostic.message)
         end,
       },
-      float = {
-        border = "rounded",
-      },
+      float = { border = "rounded" },
     })
 
     require("lspconfig.ui.windows").default_options.border = "rounded"
 
     mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
+      -- デフォルトハンドラ：各サーバーに共通の capabilities を適用
       function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
         })
       end,
+      -- 各サーバーごとの固有設定
       ["astro"] = function()
-        -- configure astro server
         lspconfig["astro"].setup({
           capabilities = capabilities,
           filetypes = { "astro" },
         })
       end,
       ["bashls"] = function()
-        -- configure bash server
         lspconfig["bashls"].setup({
           capabilities = capabilities,
           filetypes = { "sh" },
         })
       end,
-      ["biome"] = function()
-        -- configure javascript/typescript server
-        -- lspconfig["biome"].setup()
-      end,
       ["clangd"] = function()
-        -- configure c/c++ server
         lspconfig["clangd"].setup({
           capabilities = capabilities,
           filetypes = { "c", "cpp" },
         })
       end,
       ["cssls"] = function()
-        -- configure css/scss server
         lspconfig["cssls"].setup({
           capabilities = capabilities,
           filetypes = { "css", "scss", "less" },
         })
       end,
       ["html"] = function()
-        -- configure html server
         lspconfig["html"].setup({
           capabilities = capabilities,
           filetypes = { "html" },
         })
       end,
-      -- ["intelephense"] = function()
-      --   -- configure php server
-      --   lspconfig["intelephense"].setup({
-      --     capabilities = capabilities,
-      --     on_attach = on_attach,
-      --     root_dir = function()
-      --       return vim.loop.cwd()
-      --     end,
-      --   })
-      -- end,
       ["jdtls"] = function()
-        -- configure java server
         lspconfig["jdtls"].setup({
           capabilities = capabilities,
           filetypes = { "java" },
         })
       end,
       ["jsonls"] = function()
-        -- configure json server
         lspconfig["jsonls"].setup({
           capabilities = capabilities,
           filetypes = { "json", "jsonc" },
         })
       end,
       ["lua_ls"] = function()
-        -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
+          -- lua_ls 固有の設定と、blink.cmp の capabilities をマージ
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
           settings = {
             Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
+              diagnostics = { globals = { "vim" } },
+              completion = { callSnippet = "Replace" },
             },
           },
         })
       end,
       ["marksman"] = function()
-        -- configure markdown server
         lspconfig["marksman"].setup({
           capabilities = capabilities,
           filetypes = { "markdown", "markdown.mdx" },
         })
       end,
       ["pyright"] = function()
-        -- configure python server
         lspconfig["pyright"].setup({
           capabilities = capabilities,
           filetypes = { "python" },
         })
       end,
       ["rust_analyzer"] = function()
-        -- configure rust server
         lspconfig["rust_analyzer"].setup({
           filetypes = { "rust" },
           settings = {
             ["rust-analyzer"] = {
               imports = {
-                granularity = {
-                  group = "module",
-                },
+                granularity = { group = "module" },
                 prefix = "self",
               },
-              cargo = {
-                buildScripts = {
-                  enable = true,
-                },
-              },
-              procMacro = {
-                enable = true,
-              },
+              cargo = { buildScripts = { enable = true } },
+              procMacro = { enable = true },
             },
           },
         })
       end,
       ["tailwindcss"] = function()
-        -- configure tailwindcss server
         lspconfig["tailwindcss"].setup({
           capabilities = capabilities,
           filetypes = {
@@ -238,14 +187,12 @@ return {
         })
       end,
       ["taplo"] = function()
-        -- configure toml server
         lspconfig["taplo"].setup({
           capabilities = capabilities,
           filetypes = { "toml" },
         })
       end,
       ["vtsls"] = function()
-        -- configure javascript/typescript server
         lspconfig["vtsls"].setup({
           capabilities = capabilities,
           filetypes = {
@@ -259,7 +206,6 @@ return {
         })
       end,
       ["yamlls"] = function()
-        -- configure yaml server
         lspconfig["yamlls"].setup({
           capabilities = capabilities,
           filetypes = { "yaml" },
