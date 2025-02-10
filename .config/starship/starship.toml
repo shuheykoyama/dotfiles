@@ -1,7 +1,5 @@
 format = """
-[](fg:black)\
-$os\
-[](fg:black bg:#333333)\
+[](fg:#333333)\
 $directory\
 $git_branch\
 $git_status\
@@ -28,33 +26,28 @@ add_newline = true
 
 palette = "tokyonight"
 
-[os]
-format = "[$symbol]($style)"
-style = 'fg:foreground bg:black'
-disabled = false
-
-[os.symbols]
-Macos = "  "
-
 [directory]
 truncation_length = 3
 truncation_symbol = " ~"
 truncate_to_repo = false
 fish_style_pwd_dir_length = 3
 home_symbol = " ~"
-style = "bold fg:cyan bg:#333333"
+style = "fg:blue bg:#333333"
 read_only = " 󰌾 "
 read_only_style = "fg:red bg:#333333"
 format = "[ $path ]($style)[$read_only]($read_only_style)"
+before_repo_root_style = "fg:blue bg:#333333"
+repo_root_style = "bold fg:blue bg:#333333"
+repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ](bold fg:blue bg:#333333)[$read_only]($read_only_style)"
 
 [git_branch]
 symbol = ' '
 truncation_symbol = ''
-style = 'fg:magenta bg:#333333'
-format = '[](fg:cyan bg:#333333)[ $symbol$branch(:$remote_branch)]($style)'
+style = 'fg:green bg:#333333'
+format = '[│](fg:foreground bg:#333333)[ $symbol$branch(:$remote_branch)]($style)'
 
 [git_status]
-style = 'fg:magenta bg:#333333'
+style = 'fg:green bg:#333333'
 conflicted = '='
 ahead = '⇡${count}'
 behind = '⇣${count}'
@@ -73,18 +66,18 @@ style = '#333333'
 
 [character]
 #    ❯ 󰳓
-success_symbol = '[](bold green)'
-error_symbol = '[](bold red)'
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
 
 [cmd_duration]
 min_time = 1
 style = 'fg:yellow bg:#333333'
-format = "[  $duration]($style)[ ](fg:foreground bg:#333333)"
+format = "[ $duration]($style)[ │](fg:foreground bg:#333333)"
 
 [time]
 disabled = false
 style = 'fg:foreground bg:#333333'
-format = '[  $time]($style)'
+format = '[ $time]($style)'
 time_format = '%T'
 utc_time_offset = '+9'
 
@@ -119,15 +112,15 @@ symbol = "󰡨"
 format = '[  $symbol $context](cyan)'
 
 [palettes.tokyonight]
-background = '#1a1b26'
-foreground = '#c0caf5'
-selection-background = '#33467c'
-selection-foreground = '#c0caf5'
-black = '#15161e'
-red = '#f7768e'
-green = '#9ece6a'
-yellow = '#e0af68'
-blue = '#7aa2f7'
-magenta = '#bb9af7'
-cyan = '#7dcfff'
-white = '#a9b1d6'
+background = '#101216'
+foreground = '#8b949e'
+selection-background = '#3b5070'
+selection-foreground = '#ffffff'
+black = '#000000'
+red = '#f78166'
+green = '#56d364'
+yellow = '#e3b341'
+blue = '#6ca4f8'
+magenta = '#db61a2'
+cyan = '#2b7489'
+white = '#ffffff'
