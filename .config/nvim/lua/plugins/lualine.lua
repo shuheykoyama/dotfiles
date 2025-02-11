@@ -55,7 +55,7 @@ return {
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         globalstatus = true,
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter", "snacks_dashboard" } },
       },
       sections = {
         lualine_a = { "mode" },
@@ -129,7 +129,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      -- extensions = { "neo-tree", "lazy" },
+      extensions = { "neo-tree", "lazy" },
     })
   end,
 }
