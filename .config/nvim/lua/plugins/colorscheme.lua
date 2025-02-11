@@ -46,12 +46,29 @@ return {
   --     vim.cmd([[colorscheme catppuccin-mocha]])
   --   end,
   -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       transparent = true,
+  --       styles = {
+  --         comments = { italic = true },
+  --         sidebars = "transparent",
+  --         floats = "transparent",
+  --       },
+  --     })
+  --     vim.cmd([[colorscheme tokyonight-night]])
+  --   end,
+  -- },
   {
-    "folke/tokyonight.nvim",
+    "craftzdog/solarized-osaka.nvim",
     lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
-      require("tokyonight").setup({
+      require("solarized-osaka").setup({
         transparent = true,
         styles = {
           comments = { italic = true },
@@ -59,18 +76,10 @@ return {
           floats = "transparent",
         },
       })
-      vim.cmd([[colorscheme tokyonight-night]])
+      vim.cmd([[colorscheme solarized-osaka]])
+      vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#000000" })
     end,
   },
-  -- {
-  --   "craftzdog/solarized-osaka.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd([[colorscheme solarized-osaka]])
-  --   end,
-  -- },
   -- {
   --   "projekt0n/github-nvim-theme",
   --   lazy = false,
