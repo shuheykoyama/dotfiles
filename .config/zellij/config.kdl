@@ -272,28 +272,50 @@ plugins {
 // Add this file to your `CONFIG_DIR/themes` directory as described here:
 // https://zellij.dev/documentation/themes#getting-zellij-to-pick-up-the-theme
 
+// themes {
+//     tokyonight_night {
+//         fg "#c0caf5"
+//         bg "#292e42"
+//         // Black should match the terminal background color
+//         // This ensures the top and bottom bars are transparent
+//         black "#000000"
+//         red "#f7768e"
+//         green "#9ece6a"
+//         yellow "#e0af68"
+//         blue "#7aa2f7"
+//         magenta "#bb9af7"
+//         cyan "#7dcfff"
+//         white "#a9b1d6"
+//         orange "#ff9e64"
+//     }
+// }
+
+// Solarized Osaka Zellij Colors
+// Add this file to your `CONFIG_DIR/themes` directory as described here:
+// https://zellij.dev/documentation/themes#getting-zellij-to-pick-up-the-theme
+
 themes {
-    tokyonight_night {
-        fg "#c0caf5"
-        bg "#292e42"
+    solarized_osaka_dark {
+        fg "#839395"
+        bg "#000000"
         // Black should match the terminal background color
         // This ensures the top and bottom bars are transparent
         black "#000000"
-        red "#f7768e"
-        green "#9ece6a"
-        yellow "#e0af68"
-        blue "#7aa2f7"
-        magenta "#bb9af7"
-        cyan "#7dcfff"
-        white "#a9b1d6"
-        orange "#ff9e64"
+        red "#db302d"
+        green "#849900"
+        yellow "#b28500"
+        blue "#268bd3"
+        magenta "#d23681"
+        cyan "#29a298"
+        white "#9eabac"
+        orange "#c94c16"
     }
 }
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-// theme "tokyonight-storm"
+theme "solarized_osaka_dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
