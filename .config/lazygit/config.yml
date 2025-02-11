@@ -10,35 +10,63 @@ git:
     - "develop"
   parseEmoji: true
 
+# tokyonight_night
+# gui:
+#   nerdFontsVersion: "3"
+#   theme:
+#     activeBorderColor:
+#       - "#ff9e64"
+#       - "bold"
+#     inactiveBorderColor:
+#       - "#27a1b9"
+#     searchingActiveBorderColor:
+#       - "#ff9e64"
+#       - "bold"
+#     optionsTextColor:
+#       - "#7aa2f7"
+#     selectedLineBgColor:
+#       - "#283457"
+#     cherryPickedCommitFgColor:
+#       - "#7aa2f7"
+#     cherryPickedCommitBgColor:
+#       - "#bb9af7"
+#     markedBaseCommitFgColor:
+#       - "#7aa2f7"
+#     markedBaseCommitBgColor:
+#       - "#e0af68"
+#     unstagedChangesColor:
+#       - "#db4b4b"
+#     defaultFgColor:
+#       - "#c0caf5"
 gui:
   nerdFontsVersion: "3"
   theme:
     activeBorderColor:
-      - "#ff9e64"
+      - "#c94c16"
       - "bold"
     inactiveBorderColor:
-      - "#27a1b9"
+      - "#664c00"
     searchingActiveBorderColor:
-      - "#ff9e64"
+      - "#c94c16"
       - "bold"
     optionsTextColor:
-      - "#7aa2f7"
+      - "#268bd3"
     selectedLineBgColor:
-      - "#283457"
+      - "#1a6397"
     cherryPickedCommitFgColor:
-      - "#7aa2f7"
+      - "#268bd3"
     cherryPickedCommitBgColor:
-      - "#bb9af7"
+      - "#d23681"
     markedBaseCommitFgColor:
-      - "#7aa2f7"
+      - "#268bd3"
     markedBaseCommitBgColor:
-      - "#e0af68"
+      - "#b28500"
     unstagedChangesColor:
-      - "#db4b4b"
+      - "#f55350"
     defaultFgColor:
-      - "#c0caf5"
-  authorColors:
-    "*": "#b4befe"
+      - "#839395"
+  # authorColors:
+  #   "*": "#b4befe"
   showIcons: true
 
 confirmOnQuit: true

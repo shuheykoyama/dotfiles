@@ -1,9 +1,19 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/shuhey/dotfiles
+    - /Users/shuhey/Developments/BONSAISTUDIOJP/dai-video-database
+    - /Users/shuhey/Research/DNG/prj_ai_contact/AI-Contact
+    - /Users/shuhey/Research/DNG/genAIVideo_onomatopoeia
+    - /Users/shuhey/Developments/portfolio
+    - /Users/shuhey/Developments/01lab/maisoku
+    - /Users/shuhey/Developments/01lab/playwork
+    - /Users/shuhey/Research/DNG/prj_gaze_indirect_manipulation/gaze-indirect-manipulation
+    - /Users/shuhey/Developments/01lab/discord-bot
 startuppopupversion: 5
 lastversion: 0.44.1
-customcommandshistory: []
+customcommandshistory:
+    - q
+    - qa
 hidecommandlog: false
 ignorewhitespaceindiffview: false
 diffcontextsize: 3
