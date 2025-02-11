@@ -115,15 +115,15 @@ return {
               },
             },
           },
-          border = "rounded",
-          -- winblend = 15,
+          border = "none",
+          winblend = 10,
         },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
           window = {
             border = "rounded",
-            -- winblend = 15,
+            winblend = 10,
           },
         },
         -- ghost_text = {
@@ -134,7 +134,7 @@ return {
         enabled = true,
         window = {
           border = "rounded",
-          -- winblend = 15,
+          winblend = 10,
         },
       },
       sources = {
