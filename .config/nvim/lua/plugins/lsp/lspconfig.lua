@@ -154,6 +154,11 @@ return {
           filetypes = { "python" },
         })
       end,
+      ["ruff"] = function()
+        lspconfig["ruff"].setup({
+          autostart = false,
+        })
+      end,
       ["rust_analyzer"] = function()
         lspconfig["rust_analyzer"].setup({
           filetypes = { "rust" },
