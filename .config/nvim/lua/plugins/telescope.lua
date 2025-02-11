@@ -153,6 +153,7 @@ return {
     }
     opts.extensions = {
       file_browser = {
+        cwd = vim.fn.expand("%:p:h"),
         theme = "dropdown",
         -- disables netrw and use telescope-file-browser in its place
         hijack_netrw = true,
@@ -179,6 +180,7 @@ return {
             ["<PageDown>"] = actions.preview_scrolling_down,
           },
         },
+        layout_config = { width = 100 },
       },
     }
     telescope.setup(opts)
