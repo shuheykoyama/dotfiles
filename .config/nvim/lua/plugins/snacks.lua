@@ -1,26 +1,31 @@
 return {
   "folke/snacks.nvim",
-  event = "VimEnter",
-  cond = function()
-    return vim.fn.argc() == 0
-  end,
+  priority = 1000,
+  lazy = false,
+  -- event = { "VimEnter", "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" },
+  -- cond = function()
+  --   return vim.fn.argc() == 0
+  -- end,
   dependencies = { "echasnovski/mini.icons" },
+  ---@type snacks.Config
   opts = {
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+      style = "compact",
+    },
+    styles = {
+      notification = {
+        wo = { wrap = true },
+      },
+    },
+    indent = {
+      char = "▏",
+    },
     dashboard = {
       width = 60,
-      row = nil, -- dashboard position. nil for center
-      col = nil, -- dashboard position. nil for center
-      pane_gap = 4, -- empty columns between vertical panes
-      autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
-      -- These settings are used by some built-in sections
+      autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       preset = {
-        -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-        ---@type fun(cmd:string, opts:table)|nil
-        pick = nil,
-        -- Used by the `keys` section to show keymaps.
-        -- Set your custom keymaps here.
-        -- When using a function, the `items` argument are the default keymaps.
-        ---@type snacks.dashboard.Item[]
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
@@ -36,7 +41,6 @@ return {
           { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
-        -- Used by the `header` section
         header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
@@ -119,6 +123,29 @@ return {
         end,
         { section = "startup" },
       },
+    },
+  },
+  keys = {
+    {
+      "<leader>e",
+      function()
+        Snacks.explorer()
+      end,
+      desc = "File Explorer",
+    },
+    {
+      "<leader>lg",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "Lazygit",
+    },
+    {
+      "<c-/>",
+      function()
+        Snacks.terminal()
+      end,
+      desc = "Toggle Terminal",
     },
   },
 }
