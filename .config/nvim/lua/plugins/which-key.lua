@@ -1,7 +1,7 @@
 return {
   "folke/which-key.nvim",
   -- cmd = { "WhichKey" },
-  event = "VeryLazy",
+  event = { "FocusLost", "CursorHold" },
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 500
