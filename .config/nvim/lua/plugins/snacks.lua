@@ -9,6 +9,9 @@ return {
   dependencies = { "echasnovski/mini.icons" },
   ---@type snacks.Config
   opts = {
+    indent = {
+      char = "▏",
+    },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -18,9 +21,9 @@ return {
       notification = {
         wo = { wrap = true },
       },
-    },
-    indent = {
-      char = "▏",
+      lazygit = {
+        border = "rounded",
+      },
     },
     dashboard = {
       width = 60,
