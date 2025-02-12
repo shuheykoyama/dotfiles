@@ -27,6 +27,9 @@ return {
     },
     dashboard = {
       width = 60,
+      row = 5,
+      -- col = 15,
+      pane_gap = 10,
       autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       preset = {
         keys = {
@@ -53,7 +56,7 @@ return {
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
       },
       sections = {
-        { section = "header" },
+        { section = "header", padding = 4 },
         {
           pane = 2,
           section = "terminal",
@@ -61,7 +64,7 @@ return {
           height = 5,
           padding = 1,
         },
-        { section = "keys", gap = 1, padding = 1 },
+        { section = "keys", gap = 2, padding = 1 },
         {
           pane = 2,
           icon = " ",
@@ -94,7 +97,7 @@ return {
                 vim.fn.jobstart("gh issue list --web", { detach = true })
               end,
               icon = " ",
-              height = 7,
+              height = 5,
             },
             {
               icon = " ",
@@ -104,13 +107,13 @@ return {
               action = function()
                 vim.fn.jobstart("gh pr list --web", { detach = true })
               end,
-              height = 7,
+              height = 5,
             },
             {
               icon = " ",
               title = "Git Status",
               cmd = "git --no-pager diff --stat -B -M -C",
-              height = 10,
+              height = 5,
             },
           }
           return vim.tbl_map(function(cmd)
