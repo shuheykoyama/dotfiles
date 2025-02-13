@@ -147,7 +147,7 @@ return {
       desc = "Lazygit",
     },
     {
-      "<c-/>",
+      "<leader>/",
       function()
         Snacks.terminal()
       end,
