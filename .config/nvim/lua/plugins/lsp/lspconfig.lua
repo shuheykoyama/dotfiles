@@ -6,7 +6,7 @@ return {
     "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "hrsh7th/cmp-nvim-lsp",
+    -- "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
