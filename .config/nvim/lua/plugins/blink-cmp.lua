@@ -10,6 +10,7 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "giuxtaposition/blink-cmp-copilot",
+      "L3MON4D3/LuaSnip",
     },
     opts_extend = {
       "sources.default",
@@ -17,15 +18,7 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      snippets = {
-        expand = function(snippet, _)
-          if _G.LazyVim and _G.LazyVim.cmp and _G.LazyVim.cmp.expand then
-            return _G.LazyVim.cmp.expand(snippet)
-          else
-            require("luasnip").lsp_expand(snippet.body)
-          end
-        end,
-      },
+      snippets = { preset = "luasnip" },
       appearance = {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = "mono",
