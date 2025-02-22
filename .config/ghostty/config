@@ -19,3 +19,4 @@ background-opacity = 0.9
 background-blur-radius = 30
 
 macos-titlebar-style = hidden
+macos-icon = blueprint
