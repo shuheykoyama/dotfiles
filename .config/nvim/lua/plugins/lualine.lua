@@ -105,11 +105,11 @@ return {
             color = { fg = "#c94c16" },
           },
           { "copilot" },
-          {
-            function()
-              return "🎧"
-            end,
-          },
+          -- {
+          --   function()
+          --     return "🎧"
+          --   end,
+          -- },
           -- { "encoding" },
           -- { "fileformat" },
         },
