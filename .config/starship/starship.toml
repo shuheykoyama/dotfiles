@@ -2,9 +2,7 @@ format = """
 $directory\
 $git_branch\
 $git_status\
-[](fg:#1a1b26)\
-$fill\
-[](fg:#1a1b26)\
+$package\
 $golang\
 $java\
 $nodejs\
@@ -12,14 +10,18 @@ $php\
 $python\
 $rust\
 $docker_context\
-$cmd_duration\
-$time
+$cmd_duration
 $character\
 """
 
 add_newline = true
-
 palette = "tokyonight"
+
+[c]
+symbol = " "
+
+[dart]
+symbol = " "
 
 [directory]
 truncation_length = 3
@@ -27,82 +29,115 @@ truncation_symbol = "~"
 truncate_to_repo = false
 fish_style_pwd_dir_length = 3
 home_symbol = "~"
-style = "fg:#00B0FF bg:#1a1b26"
-read_only = " 󰌾 "
-read_only_style = "fg:red bg:#1a1b26"
-format = "[ $path ]($style)[$read_only]($read_only_style)"
-before_repo_root_style = "fg:#00b0ff bg:#1a1b26"
-repo_root_style = "bold fg:#00b0ff bg:#1a1b26"
-repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ](bold fg:#00b0ff bg:#1a1b26)[$read_only]($read_only_style)"
+read_only = " "
+format = "[$path ](fg:blue)[$read_only]($read_only_style)"
+before_repo_root_style = "fg:blue"
+repo_root_style = "bold fg:blue"
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root$path ]($repo_root_style)[$read_only]($read_only_style)"
+
+[docker_context]
+symbol = " "
+format = "[via ](fg:foreground)[$symbol$context]($style) "
 
 [git_branch]
-symbol = ' '
-truncation_symbol = ''
-style = 'fg:#5fd801 bg:#1a1b26'
-format = '[](fg:foreground bg:#1a1b26)[ $symbol$branch(:$remote_branch)]($style)'
+symbol = " "
+format = "[on ](fg:foreground)[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
-style = 'fg:#5fd801 bg:#1a1b26'
-# conflicted = '='
-ahead = '⇡${count}'
-behind = '⇣${count}'
-# diverged = '⇕'
-# up_to_date = '✓'
-untracked = '?${count}'
-# stashed = '$'
-modified = '!${count}'
-# renamed = '»'
-# deleted = '✘'
-format = '[ $all_status$ahead_behind ]($style)'
-
-[fill]
-symbol = ' '
+# ahead = '⇡${count}'
+# behind = '⇣${count}'
+# untracked = '?${count}'
+# modified = '!${count}'
+# format = '[$all_status$ahead_behind]($style) '
 
 [character]
-#    ❯ 󰳓
 success_symbol = '[❯](green)'
 error_symbol = '[❯](red)'
 
 [cmd_duration]
 min_time = 1
-style = 'fg:foreground bg:#1a1b26'
-format = "[ $duration]($style)[ ](fg:foreground bg:#1a1b26)"
-
-[time]
-disabled = false
-style = 'fg:foreground bg:#1a1b26'
-format = '[ $time ]($style)'
-time_format = '%T'
-
-[python]
-symbol = ' '
-format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)[ ](fg:foreground bg:#1a1b26)'
-pyenv_version_name = false
-style = 'fg:yellow bg:#1a1b26'
-
-[rust]
-symbol = ""
-format = '[ $symbol $version](fg:red bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
-
-[nodejs]
-symbol = ""
-format = '[ $symbol $version](fg:green bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
-
-[java]
-symbol = "󰛊"
-format = '[ $symbol $version](fg:red bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
-
-[php]
-symbol = ""
-format = '[ $symbol $version](fg:magenta bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
+style = 'fg:yellow'
+format = "[took ](fg:foreground)[ $duration]($style)"
 
 [golang]
-symbol = ""
-format = '[ $symbol $version](fg:cyan bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
+symbol = " "
 
-[docker_context]
-symbol = "󰡨"
-format = '[ $symbol $context](fg:cyan bg:#1a1b26)[ ](fg:foreground bg:#1a1b26)'
+[haskell]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[nodejs]
+symbol = " "
+# symbol = " "
+format = "[via ](fg:foreground)[$symbol$version]($style) "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+format = "[is ](fg:foreground)[$symbol$version]($style) "
+
+[php]
+symbol = " "
+format = "[via ](fg:foreground)[$symbol$version]($style) "
+
+[python]
+symbol = " "
+format = '[via ](fg:foreground)[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
+pyenv_version_name = false
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
 
 [palettes.tokyonight]
 background = '#101216'
