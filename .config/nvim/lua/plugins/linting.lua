@@ -18,7 +18,7 @@ return {
       markdown = { "markdownlint" },
       -- php = { "phpstan" },
       python = { "ruff" },
-      scss = { "prettierd" },
+      scss = { "biomejs" },
       typescript = { "biomejs" },
       typescriptreact = { "biomejs" },
     }
