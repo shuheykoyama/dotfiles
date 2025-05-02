@@ -217,5 +217,29 @@ return {
         })
       end,
     })
+
+    lspconfig.sourcekit.setup({
+      cmd = {
+        "sourcekit-lsp",
+        "-Xswiftc",
+        "-sdk",
+        "-Xswiftc",
+        -- '`xcrun --sdk iphonesimulator --show-sdk-path`',
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk",
+        "-Xswiftc",
+        "-target",
+        "-Xswiftc",
+        -- 'x86_64-apple-ios`xcrun --sdk iphonesimulator --show-sdk-platform-version`-simulator',
+        "x86_64-apple-ios18.2-simulator",
+      },
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      },
+      filetypes = { "swift" },
+    })
   end,
 }

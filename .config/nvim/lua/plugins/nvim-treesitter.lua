@@ -41,6 +41,7 @@ return {
         "python",
         "rust",
         "scss",
+        "swift",
         "toml",
         "tsx",
         "typescript",

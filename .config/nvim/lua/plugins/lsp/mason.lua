@@ -49,6 +49,7 @@ return {
         "marksman",
         "pyright",
         "rust_analyzer",
+        -- "sourcekit",
         "tailwindcss",
         "taplo",
         "vtsls",
