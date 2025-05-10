@@ -56,7 +56,7 @@ error_symbol = '[❯](red)'
 
 [cmd_duration]
 min_time = 1
-style = 'fg:yellow'
+style = 'bold fg:yellow'
 format = "[took ](fg:foreground)[ $duration]($style)"
 
 [golang]
