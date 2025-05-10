@@ -1,5 +1,5 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   cmd = {
     "Mason",
     "MasonInstall",
@@ -8,9 +8,9 @@ return {
     "MasonLog",
     "MasonUpdate",
   },
-  -- event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
@@ -57,6 +57,9 @@ return {
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
+      automatic_enable = {
+        exclude = { "ruff" },
+      },
     })
 
     mason_tool_installer.setup({
