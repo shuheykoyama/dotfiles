@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = true,
+  -- lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
