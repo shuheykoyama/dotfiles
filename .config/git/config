@@ -1,5 +1,5 @@
 [include]
-  path = ~/.config/git/delta/themes/solarized_osaka_dark.gitconfig
+  path = ~/.config/git/delta/themes/tokyonight_night.gitconfig
 [user]
   name = shuheykoyama
   email = shuheykoyama@gmail.com
@@ -22,7 +22,7 @@
   line-numbers = true
   side-by-side = true
   true-color = always
-  features = solarized_osaka_dark
+  features = tokyonight_night
 [merge]
   conflictstyle = diff3
 [init]
