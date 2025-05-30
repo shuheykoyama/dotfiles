@@ -1,6 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  -- event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     -- "catppuccin",
     "lewis6991/gitsigns.nvim",

@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.animate",
+    lazy = true,
     recommended = true,
     event = { "BufReadPre", "BufNewFile" },
     opts = function()
@@ -36,6 +37,7 @@ return {
   },
   {
     "echasnovski/mini.indentscope",
+    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
     opts = {

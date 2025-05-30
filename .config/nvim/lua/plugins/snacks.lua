@@ -1,8 +1,8 @@
 return {
   "folke/snacks.nvim",
   priority = 1000,
-  lazy = false,
-  -- event = { "VimEnter", "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" },
+  lazy = true,
+  event = { "VimEnter", "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" },
   -- cond = function()
   --   return vim.fn.argc() == 0
   -- end,

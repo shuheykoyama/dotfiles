@@ -1,5 +1,6 @@
 return {
   "danymat/neogen",
+  lazy = true,
   keys = {
     {
       "<leader>cc",

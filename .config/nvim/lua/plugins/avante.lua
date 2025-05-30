@@ -1,18 +1,38 @@
 return {
   "yetone/avante.nvim",
-  -- event = "VeryLazy",
-  -- lazy = false,
+  lazy = true,
+  event = "VeryLazy",
   cmd = "AvanteAsk",
+  version = false,
   opts = {
-    -- add any opts here
+    provider = "copilot",
+    auto_suggestions_provider = "copilot",
+    copilot = {
+      endpoint = "https://api.githubcopilot.com",
+      model = "claude-sonnet-4",
+    },
+    -- behaviour = {
+    --   auto_suggestions = false,
+    --   auto_set_highlight_group = true,
+    --   auto_set_keymaps = true,
+    --   auto_apply_diff_after_generation = false,
+    --   support_paste_from_clipboard = false,
+    --   minimize_diff = true,
+    -- },
   },
-  build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
+    "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
     "echasnovski/mini.icons",
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
@@ -33,7 +53,7 @@ return {
       },
     },
     {
-      -- Make sure to setup it properly if you have lazy=true
+      -- Make sure to set this up properly if you have lazy=true
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },

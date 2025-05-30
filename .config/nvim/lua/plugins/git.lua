@@ -1,5 +1,6 @@
 return {
   "dinhhuy258/git.nvim",
+  lazy = true,
   event = "BufReadPre",
   opts = {
     keymaps = {

@@ -4,6 +4,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    lazy = true,
     version = not vim.g.lazyvim_blink_main and "*",
     build = vim.g.lazyvim_blink_main and "cargo build --release",
     event = "InsertEnter",
@@ -11,6 +12,7 @@ return {
       "rafamadriz/friendly-snippets",
       "giuxtaposition/blink-cmp-copilot",
       "L3MON4D3/LuaSnip",
+      "Kaiser-Yang/blink-cmp-avante",
     },
     opts_extend = {
       "sources.default",
@@ -131,7 +133,7 @@ return {
         },
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = { "avante", "lsp", "path", "snippets", "buffer", "copilot" },
         providers = {
           -- lsp = {
           --   name = "lsp",
@@ -152,6 +154,11 @@ return {
           --   module = "blink.cmp.sources.snippets",
           --   score_offset = 900, -- the higher the number, the higher the priority
           -- },
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+            opts = {},
+          },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",

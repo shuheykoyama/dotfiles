@@ -1,5 +1,6 @@
 return {
   "Pocco81/auto-save.nvim",
+  lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("auto-save").setup({

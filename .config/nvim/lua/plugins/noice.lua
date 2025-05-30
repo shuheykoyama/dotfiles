@@ -1,5 +1,6 @@
 return {
   "folke/noice.nvim",
+  lazy = true,
   event = { "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
