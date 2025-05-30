@@ -1,12 +1,17 @@
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
-  branch = "canary",
+  branch = "main",
   cmd = "CopilotChat",
+  dependencies = {
+    { "zbirenbaum/copilot.lua" },
+    { "nvim-lua/plenary.nvim" },
+  },
   opts = function()
     local user = vim.env.USER or "User"
     user = user:sub(1, 1):upper() .. user:sub(2)
     return {
-      model = "o3-mini",
+      model = "claude-sonnet-4",
+      debug = true,
       auto_insert_mode = true,
       show_help = true,
       question_header = "  " .. user .. " ",
