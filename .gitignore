@@ -5,6 +5,10 @@
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
 
+# Fish
+.config/fish/fish_variables*
+.config/fish/.claude/
+
 # API keys
 .env
 
