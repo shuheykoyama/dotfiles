@@ -1,4 +1,4 @@
-font-family = "FirgeNerd Console"
+font-family = "UDEV Gothic NF"
 font-size = 11
 
 shell-integration-features = no-cursor
@@ -6,17 +6,19 @@ shell-integration-features = no-cursor
 mouse-hide-while-typing = true
 
 cursor-style = block
+cursor-color = #c8c093
 
-theme = tokyonight_night
+theme = Kanagawa Dragon
 
 window-theme = auto
-window-height = 45
-window-width = 170
+window-height = 48
+window-width = 192
 window-padding-balance = true
 
+background-opacity = 0.7
+background-blur-radius = 20
 background = #000000
-background-opacity = 0.9
-background-blur-radius = 30
 
-macos-titlebar-style = hidden
-macos-icon = glass
+macos-titlebar-style = tabs
+
+keybind = shift+enter=text:\x1b\r
