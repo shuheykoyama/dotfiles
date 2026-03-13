@@ -7,7 +7,6 @@
 set -g tide_left_prompt_items pwd git newline character
 
 # pwd: Kanagawa Dragon colors
-set -g tide_pwd_bg_color 0D0C0C        # black (near terminal bg)
 set -g tide_pwd_color_anchors C5C9C5   # brwhite (foreground) - current dir
 set -g tide_pwd_color_dirs 8BA4B0      # blue - parent dirs
 set -g tide_pwd_color_truncated_dirs A6A69C  # brblack - truncated
