@@ -5,7 +5,7 @@ function clean
     type -q mise && mise prune
 
     set -l CONFIG_CACHE $FISH_CACHE_DIR/config.fish
-    test -e $CONFIG_CACHE && rm -rf $CONFIG_CACHE
+    test -e $CONFIG_CACHE && command rm -f $CONFIG_CACHE
 
     init
     exit
