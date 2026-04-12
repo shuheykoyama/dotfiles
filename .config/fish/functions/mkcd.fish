@@ -6,5 +6,5 @@ function mkcd
 
     set dirname $argv[1]
     mkdir -p $dirname
-    eval cd $dirname
+    cd -- $dirname
 end
