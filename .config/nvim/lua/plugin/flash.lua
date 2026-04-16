@@ -5,7 +5,7 @@ return {
   ---@type Flash.Config
   opts = {
     modes = {
-      char = { enabled = false },
+      -- char mode enabled: replaces quick-scope (f/t highlights) and mini.jump (enhanced f/F)
       search = { enabled = false },
       treesitter = { enabled = false },
     },
