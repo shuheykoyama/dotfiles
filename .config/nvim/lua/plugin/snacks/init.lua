@@ -298,6 +298,10 @@ return {
     bigfile = {
       enabled = true,
     },
+    words = {
+      enabled = true,
+      debounce = 500,
+    },
     notifier = {
       enabled = true,
     },

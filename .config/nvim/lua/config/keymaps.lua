@@ -132,3 +132,22 @@ end
 keymap.set("", "<c-i>", "<c-i>")
 keymap.set("n", "<C-m>", "<C-i>") -- distinguish <C-m> from <C-i> in terminal
 keymap.set("n", "g<leader>", "<cmd>QuickLook<cr>")
+
+-- literal search: \V (very nomagic) prefix so special chars don't need escaping
+keymap.set("n", "g/", "/\\V")
+keymap.set("n", "g?", "?\\V")
+
+-- stay-star: search word under cursor without moving cursor (replaces vim-asterisk z*)
+-- sets @/ register + search direction so n/N work correctly after
+local function stay_star(whole_word, forward)
+  local word = vim.fn.expand("<cword>")
+  local pattern = whole_word and ("\\<" .. word .. "\\>") or word
+  vim.fn.setreg("/", pattern)
+  vim.fn.histadd("search", pattern)
+  vim.v.searchforward = forward and 1 or 0
+  vim.cmd("set hlsearch")
+end
+keymap.set("n", "*",  function() stay_star(true,  true)  end)
+keymap.set("n", "#",  function() stay_star(true,  false) end)
+keymap.set("n", "g*", function() stay_star(false, true)  end)
+keymap.set("n", "g#", function() stay_star(false, false) end)
