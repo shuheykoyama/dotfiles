@@ -1,0 +1,23 @@
+---@type vim.lsp.Config
+return {
+  settings = {
+    yaml = {
+      schemas = require("schemastore").yaml.schemas({
+        extra = {
+          {
+            name = "openAPI 3.0",
+            url = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.yaml",
+            fileMatch = { "openapi.yml", "openapi.yaml", "openapi.json" },
+          },
+          {
+            name = "openAPI 3.1",
+            url = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.yaml",
+            fileMatch = { "openapi.yml", "openapi.yaml", "openapi.json" },
+          },
+        },
+      }),
+      validate = true,
+      format = { enable = true },
+    },
+  },
+}
