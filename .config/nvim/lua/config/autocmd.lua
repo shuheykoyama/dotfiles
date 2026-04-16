@@ -111,6 +111,16 @@ vim.api.nvim_create_autocmd("User", {
   desc = "check if file is modified on idle tick",
 })
 
+-- Auto-create parent directories on save (replaces mkdir.nvim)
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function(args)
+    local dir = vim.fn.expand("<afile>:p:h")
+    if dir:find("%l+://") ~= 1 and vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end,
+})
+
 -- Remove auto-comment continuation from formatoptions (c=wrap, r=Enter, o=o/O)
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = "*",
