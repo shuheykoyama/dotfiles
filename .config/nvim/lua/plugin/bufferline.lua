@@ -1,0 +1,19 @@
+return {
+  "akinsho/bufferline.nvim",
+  event = { "BufAdd", "TabEnter" },
+  config = function()
+    require("bufferline").setup({
+      options = {
+        mode = "tabs",
+        always_show_bufferline = false,
+        show_buffer_close_icons = false,
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(_, _, diag)
+          local ret = (diag.error and " " .. diag.error .. " " or "")
+            .. (diag.warning and " " .. diag.warning or "")
+          return vim.trim(ret)
+        end,
+      },
+    })
+  end,
+}
