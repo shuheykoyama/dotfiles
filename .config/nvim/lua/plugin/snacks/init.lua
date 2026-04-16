@@ -229,6 +229,13 @@ return {
       end,
       desc = "Lazygit Log File",
     },
+    {
+      "<leader>go",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "Git Browse",
+    },
     -- lazygit ]]
     -- zen [[
     {
