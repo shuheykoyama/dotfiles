@@ -132,6 +132,11 @@ end
 keymap.set("", "<c-i>", "<c-i>")
 keymap.set("n", "<C-m>", "<C-i>") -- distinguish <C-m> from <C-i> in terminal
 keymap.set("n", "g<leader>", "<cmd>QuickLook<cr>")
+keymap.set("n", "<leader>L", function()
+  local path = vim.fn.expand("%:p") .. ":" .. vim.fn.line(".")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Copy absolute path to clipboard" })
 
 -- literal search: \V (very nomagic) prefix so special chars don't need escaping
 keymap.set("n", "g/", "/\\V")

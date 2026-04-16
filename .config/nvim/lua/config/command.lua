@@ -28,17 +28,6 @@ vim.api.nvim_create_user_command("ToggleCursorline", function()
   vim.wo.cursorcolumn = not vim.wo.cursorcolumn
 end, { nargs = 0, force = true })
 
-vim.api.nvim_create_user_command("CopyPath", function(opts)
-  local path
-  if opts.bang then
-    path = vim.fn.expand("%:.")
-  else
-    path = vim.fn.expand("%:p")
-  end
-  vim.fn.setreg("+", path)
-  vim.notify("Copied: " .. path)
-end, { nargs = 0, bang = true, force = true })
-
 -- Capture ex command output into a scratch buffer (equivalent to tyru/capture.vim)
 vim.api.nvim_create_user_command("Capture", function(opts)
   local cmd = opts.args
@@ -67,6 +56,11 @@ vim.api.nvim_create_user_command("Capture", function(opts)
   vim.cmd("botright split")
   vim.api.nvim_win_set_buf(0, buf)
 end, { nargs = "+", complete = "command", force = true })
+
+vim.api.nvim_create_user_command("CdGitRoot", function()
+  local root = vim.fs.root(0, ".git")
+  if root then vim.cmd("cd " .. root) end
+end, { nargs = 0, force = true })
 
 vim.api.nvim_create_user_command("QuickLook", function()
   -- get current buffer absolute path
