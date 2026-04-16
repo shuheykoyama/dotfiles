@@ -9,7 +9,6 @@ return {
       "L3MON4D3/LuaSnip",
       "Kaiser-Yang/blink-cmp-avante",
       -- icon & color
-      "onsails/lspkind.nvim",
       "brenoprata10/nvim-highlight-colors",
       -- sources
       "ribru17/blink-cmp-spell",
@@ -116,14 +115,6 @@ return {
                     end
                   end
 
-                  -- Step 3: lspkind symbol_map for everything else
-                  local ok_lk, lspkind = pcall(require, "lspkind")
-                  if ok_lk and lspkind.symbol_map then
-                    local icon = lspkind.symbol_map[kind_str]
-                    if icon then
-                      return icon .. " "
-                    end
-                  end
 
                   return ctx.kind_icon .. ctx.icon_gap
                 end,
