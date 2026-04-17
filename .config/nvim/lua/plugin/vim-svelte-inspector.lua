@@ -5,6 +5,6 @@ return {
     "willothy/flatten.nvim",
     "lewis6991/fileline.nvim",
   },
-  lazy = false,
+  ft = "svelte",
   config = true,
 }
