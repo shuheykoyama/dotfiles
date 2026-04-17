@@ -14,6 +14,14 @@ return {
             ),
             enableForWorkspaceTypeScriptVersions = true,
           },
+          {
+            -- Enable cross-file TS analysis for .astro <-> .ts (props, references, rename)
+            name = "@astrojs/ts-plugin",
+            location = vim.fn.expand(
+              "$HOME/.local/share/nvim/mason/packages/astro-language-server/node_modules/@astrojs/ts-plugin"
+            ),
+            enableForWorkspaceTypeScriptVersions = true,
+          },
         },
       },
     },
