@@ -300,6 +300,20 @@ return {
       desc = "Select Scratch Buffer",
     },
     -- scratch ]]
+    -- registers [[
+    {
+      '"',
+      function() Snacks.picker.registers() end,
+      mode = { "n", "x" },
+      desc = "Registers (copy to default)",
+    },
+    {
+      "<C-r>",
+      function() Snacks.picker.registers({ confirm = { "paste", "close" } }) end,
+      mode = "i",
+      desc = "Registers (paste at cursor)",
+    },
+    -- registers ]]
   },
   ---@type snacks.Config
   opts = {
