@@ -1,6 +1,6 @@
 return {
   "tani/vim-artemis",
-  lazy = false,
+  lazy = true,
   config = function()
     _G.vimx = require("artemis")
   end,
