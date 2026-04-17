@@ -284,6 +284,22 @@ return {
       desc = "Dismiss All Notifications",
     },
     -- notification ]]
+    -- scratch [[
+    {
+      "<leader>.",
+      function()
+        Snacks.scratch()
+      end,
+      desc = "Toggle Scratch Buffer",
+    },
+    {
+      "<leader>S",
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = "Select Scratch Buffer",
+    },
+    -- scratch ]]
   },
   ---@type snacks.Config
   opts = {
