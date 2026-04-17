@@ -186,6 +186,13 @@ return {
       end,
       desc = "LSP symbols",
     },
+    {
+      ",u",
+      function()
+        Snacks.picker.undo()
+      end,
+      desc = "Undo tree",
+    },
     -- Picker ]]
     -- Dim [[
     {
