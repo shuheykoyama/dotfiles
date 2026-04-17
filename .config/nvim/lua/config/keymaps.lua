@@ -19,7 +19,7 @@ end, { expr = true, silent = true })
 -- disable keys
 -- keymap.set("n", "H", "<Nop>")
 -- keymap.set("n", "J", "<Nop>")
--- keymap.set("n", "K", "<Nop>")
+keymap.set("n", "K", "<Nop>")
 -- keymap.set("n", "L", "<Nop>")
 keymap.set({ "n", "v" }, "s", "<Nop>")
 keymap.set({ "n", "v" }, "S", "<Nop>")
