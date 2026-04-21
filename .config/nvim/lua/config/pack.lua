@@ -6,6 +6,10 @@ if vim.env.NVIM_COLORSCHEME == nil then
   vim.env.NVIM_COLORSCHEME = "kanagawa-dragon"
 end
 
+local disabled_plugins = vim.tbl_map(function(b)
+  return b.rtp
+end, require("config.builtins"))
+
 -- load plugins
 lazy.setup({
   spec = {
@@ -18,24 +22,14 @@ lazy.setup({
   install = { missing = true, colorscheme = { "kanagawa" } },
   checker = { enabled = false },
   concurrency = 64,
+  local_spec = false,
+  pkg = { sources = { "lazy" } },
   performance = {
     cache = {
       enabled = true,
     },
     rtp = {
-      disabled_plugins = {
-        "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
-        "netrw",
-        "tarPlugin",
-        "tar",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-        "zip",
-      },
+      disabled_plugins = disabled_plugins,
     },
   },
 })

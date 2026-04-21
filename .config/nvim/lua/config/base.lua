@@ -1,21 +1,19 @@
+-- Apply canonical builtin-disable guards (single source of truth in config/builtins.lua).
+for _, b in ipairs(require("config.builtins")) do
+  vim.g[b.guard] = 1
+end
+
+-- Other builtins NOT in the canonical table (not scanned as runtime/plugin on 0.12,
+-- kept for defense-in-depth on legacy paths).
 vim.g.loaded_2html_plugin = 1
 vim.g.loaded_getscript = 1
 vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_remote_plugins = 1
-vim.g.loaded_shada_plugin = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_gzip = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_tar = 1
 vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_man = 1
+-- :Man is used via MANPAGER="nvim +Man!" in fish config; keep it enabled.
 
 vim.g.loaded_fzf = 1
 vim.g.loaded_gtags = 1
