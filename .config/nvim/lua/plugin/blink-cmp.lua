@@ -6,7 +6,6 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "L3MON4D3/LuaSnip",
       "Kaiser-Yang/blink-cmp-avante",
       -- icon & color
       "brenoprata10/nvim-highlight-colors",
@@ -53,7 +52,7 @@ return {
       enabled = function()
         return not vim.tbl_contains({ "snacks_picker_input", "snacks_input" }, vim.bo[0].filetype)
       end,
-      snippets = { preset = "luasnip" },
+      snippets = { preset = "default" },
       appearance = {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = "mono",
