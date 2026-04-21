@@ -3,7 +3,7 @@
 return {
   "echasnovski/mini.ai",
   branch = "stable",
-  event = { "BufReadPost", "BufNew" },
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     {
       "echasnovski/mini.extra",

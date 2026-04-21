@@ -1,4 +1,9 @@
 return {
   "mg979/vim-visual-multi",
-  event = "VeryLazy",
+  keys = {
+    { "<C-n>", mode = { "n", "v" } },
+    { "<C-Down>", mode = { "n", "v" } },
+    { "<C-Up>", mode = { "n", "v" } },
+    { "\\\\A", mode = "n" },
+  },
 }

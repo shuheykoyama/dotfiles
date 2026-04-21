@@ -2,7 +2,14 @@
 return {
   "echasnovski/mini.surround",
   version = "*",
-  event = "VeryLazy",
+  keys = {
+    { "sa", mode = { "n", "v" } },
+    { "sd" },
+    { "sf" },
+    { "sF" },
+    { "sr" },
+    { "sn" },
+  },
   enabled = true,
   opts = {
     n_lines = 100,

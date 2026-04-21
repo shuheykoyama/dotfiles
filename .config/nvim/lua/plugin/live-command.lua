@@ -1,6 +1,6 @@
 return {
   "smjonas/live-command.nvim",
-  event = "VeryLazy",
+  cmd = { "Norm" },
   opts = {
     commands = {
       Norm = { cmd = "norm" },

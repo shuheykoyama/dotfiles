@@ -1,6 +1,12 @@
 return {
   "uga-rosa/ccc.nvim",
-  event = { "BufReadPost" },
+  cmd = {
+    "CccPick",
+    "CccConvert",
+    "CccHighlighterEnable",
+    "CccHighlighterDisable",
+    "CccHighlighterToggle",
+  },
   opts = {
     highlighter = {
       auto_enable = false,
