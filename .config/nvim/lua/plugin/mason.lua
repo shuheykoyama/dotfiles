@@ -14,11 +14,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
-    local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-    local mason_tool_installer = require("mason-tool-installer")
-
-    mason.setup({
+    require("mason").setup({
       ui = {
         border = "rounded",
         icons = {
@@ -29,85 +25,93 @@ return {
       },
     })
 
-    mason_lspconfig.setup({
-      ensure_installed = {
-        -- config files
-        "jsonls",
-        "yamlls",
-        "gh_actions_ls",
-        "dockerls",
-        "docker_compose_language_service",
+    vim.schedule(function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          -- config files
+          "jsonls",
+          "yamlls",
+          "gh_actions_ls",
+          "dockerls",
+          "docker_compose_language_service",
 
-        -- web/javascript
-        "svelte",
-        "vtsls",
-        "prismals",
-        "astro",
-        "biome",
-        "eslint",
-        "oxlint",
-        "emmet_ls",
-        "tailwindcss",
-        "cssmodules_ls",
-        "unocss",
-        "html",
-        "stylelint_lsp",
-        "oxfmt",
+          -- web/javascript
+          "svelte",
+          "vtsls",
+          "prismals",
+          "astro",
+          "biome",
+          "eslint",
+          "oxlint",
+          "emmet_ls",
+          "tailwindcss",
+          "cssmodules_ls",
+          "unocss",
+          "html",
+          "stylelint_lsp",
+          "oxfmt",
 
-        -- lua
-        "lua_ls",
+          -- lua
+          "lua_ls",
 
-        -- markdown
-        "markdown_oxide",
+          -- markdown
+          "markdown_oxide",
 
-        -- python
-        "basedpyright",
-        "ruff",
+          -- python
+          "basedpyright",
+          "ruff",
 
-        -- rust（rustaceanvim が LSP を管理するため vim.lsp.enable には追加しない）
-        "rust_analyzer",
+          -- rust（rustaceanvim が LSP を管理するため vim.lsp.enable には追加しない）
+          "rust_analyzer",
 
-        -- java (nvim-jdtls manages LSP lifecycle, not vim.lsp.enable)
-        "jdtls",
+          -- java (nvim-jdtls manages LSP lifecycle, not vim.lsp.enable)
+          "jdtls",
 
-        -- bash
-        "bashls",
+          -- bash
+          "bashls",
 
-        -- c/c++
-        "clangd",
+          -- c/c++
+          "clangd",
 
-        -- sql
-        "postgres_lsp",
-        "sqruff",
+          -- sql
+          "postgres_lsp",
+          "sqruff",
 
-        -- misc
-        "typos_lsp",
-      },
-      automatic_enable = false,
-    })
+          -- misc
+          "typos_lsp",
+        },
+        automatic_enable = false,
+      })
 
-    mason_tool_installer.setup({
-      ensure_installed = {
-        -- formatters（ryoppippi 準拠）
-        "biome",
-        "fixjson",
-        "prettier",
-        "ruff",
-        "stylua",
-        -- formatters（ユーザー独自）
-        "clang-format",
-        "shfmt",
-        "yamlfmt",
-        -- sql
-        "sqruff",
-        -- linters（ryoppippi 準拠）
-        "shellcheck",
-        "markdownlint-cli2",
-        "hadolint",
-        "actionlint",
-        "textlint",
-        "yamllint",
-      },
-    })
+      require("mason-tool-installer").setup({
+        run_on_start = false,
+        integrations = {
+          ["mason-null-ls"] = false,
+          ["mason-lspconfig"] = false,
+          ["mason-nvim-dap"] = false,
+        },
+        ensure_installed = {
+          -- formatters（ryoppippi 準拠）
+          "biome",
+          "fixjson",
+          "prettier",
+          "ruff",
+          "stylua",
+          -- formatters（ユーザー独自）
+          "clang-format",
+          "shfmt",
+          "yamlfmt",
+          -- sql
+          "sqruff",
+          -- linters（ryoppippi 準拠）
+          "shellcheck",
+          "markdownlint-cli2",
+          "hadolint",
+          "actionlint",
+          "textlint",
+          "yamllint",
+        },
+      })
+    end)
   end,
 }
