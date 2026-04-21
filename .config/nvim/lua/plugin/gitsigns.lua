@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "lewis6991/gitsigns.nvim",
-  event = { "BufReadPost" },
+  event = { "BufReadPost", "BufNewFile" },
   cmd = { "Gitsigns" },
   keys = {
     { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>",            mode = "n", desc = "Stage buffer" },
@@ -26,6 +26,9 @@ return {
       changedelete = { text = "~_" },
     },
     current_line_blame = true,
+    current_line_blame_opts = {
+      delay = 2000,
+    },
   },
   config = true,
 }

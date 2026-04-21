@@ -1,6 +1,6 @@
 return {
   "lewis6991/satellite.nvim",
-  event = { "BufReadPost" },
+  event = "VeryLazy",
   dependencies = {
     "lewis6991/gitsigns.nvim",
   },
