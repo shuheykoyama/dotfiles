@@ -15,7 +15,8 @@ vim.opt.wrap = false
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
+-- cursorcolumn is toggled by numbertoggle autocmd (lua/config/autocmd.lua) on focus/mode changes.
+-- Setting here causes a redundant initial redraw before the autocmd takes over.
 vim.opt.title = true
 vim.opt.virtualedit = "onemore"
 vim.opt.visualbell = true
