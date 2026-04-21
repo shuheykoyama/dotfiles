@@ -6,7 +6,6 @@ return {
     "saghen/blink.cmp",
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
-    { "antosha417/nvim-lsp-file-operations", config = true },
     "b0o/schemastore.nvim",
   },
   init = function()
