@@ -64,60 +64,12 @@ return {
     end)
 
     vim.schedule(function()
+      local lsp_servers = require("core.lsp_servers")
+      local ensure_installed = {}
+      vim.list_extend(ensure_installed, lsp_servers.mason_common)
+      vim.list_extend(ensure_installed, lsp_servers.mason_external)
       require("mason-lspconfig").setup({
-        ensure_installed = {
-          -- config files
-          "jsonls",
-          "yamlls",
-          "gh_actions_ls",
-          "dockerls",
-          "docker_compose_language_service",
-
-          -- web/javascript
-          "svelte",
-          "vtsls",
-          "prismals",
-          "astro",
-          "biome",
-          "eslint",
-          "oxlint",
-          "emmet_ls",
-          "tailwindcss",
-          "cssmodules_ls",
-          "unocss",
-          "html",
-          "stylelint_lsp",
-          "oxfmt",
-
-          -- lua
-          "lua_ls",
-
-          -- markdown
-          "markdown_oxide",
-
-          -- python
-          "basedpyright",
-          "ruff",
-
-          -- rust（rustaceanvim が LSP を管理するため vim.lsp.enable には追加しない）
-          "rust_analyzer",
-
-          -- java (nvim-jdtls manages LSP lifecycle, not vim.lsp.enable)
-          "jdtls",
-
-          -- bash
-          "bashls",
-
-          -- c/c++
-          "clangd",
-
-          -- sql
-          "postgres_lsp",
-          "sqruff",
-
-          -- misc
-          "typos_lsp",
-        },
+        ensure_installed = ensure_installed,
         automatic_enable = false,
       })
     end)
