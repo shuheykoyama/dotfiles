@@ -26,58 +26,11 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     require("lspconfig.ui.windows").default_options.border = "rounded"
     vim.lsp.config("*", { capabilities = capabilities })
-    vim.lsp.enable({
-      -- config files
-      "jsonls",
-      "yamlls",
-      "gh_actions_ls",
-      "dockerls",
-      "docker_compose_language_service",
 
-      -- web/javascript
-      "svelte",
-      "vtsls",
-      "prismals",
-      "astro",
-      "biome",
-      "eslint",
-      "oxlint",
-      "emmet_ls",
-      "tailwindcss",
-      "cssmodules_ls",
-      "unocss",
-      "html",
-      "stylelint_lsp",
-      "oxfmt",
-
-      -- lua
-      "lua_ls",
-
-      -- markdown
-      "markdown_oxide",
-
-      -- fish (fish-lsp is not in Mason; install via: brew install fish-lsp)
-      "fish_lsp",
-
-      -- bash
-      "bashls",
-
-      -- swift
-      "sourcekit",
-
-      -- python
-      "basedpyright",
-      "ruff",
-
-      -- c/c++
-      "clangd",
-
-      -- sql
-      "postgres_lsp",
-      "sqruff",
-
-      -- misc
-      "typos_lsp",
-    })
+    local lsp_servers = require("core.lsp_servers")
+    local enabled = {}
+    vim.list_extend(enabled, lsp_servers.mason_common)
+    vim.list_extend(enabled, lsp_servers.non_mason)
+    vim.lsp.enable(enabled)
   end,
 }
