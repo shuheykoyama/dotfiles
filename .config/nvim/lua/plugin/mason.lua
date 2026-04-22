@@ -35,7 +35,6 @@ return {
       "markdownlint-cli2",
       "hadolint",
       "actionlint",
-      "textlint",
       "yamllint",
     },
   },
