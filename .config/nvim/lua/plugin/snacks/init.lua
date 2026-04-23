@@ -193,6 +193,52 @@ return {
       end,
       desc = "Undo tree",
     },
+    -- Trouble-style <leader>x*/<leader>c* aliases (migrated from trouble.nvim)
+    {
+      "<leader>xx",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "Diagnostics",
+    },
+    {
+      "<leader>xX",
+      function()
+        Snacks.picker.diagnostics_buffer()
+      end,
+      desc = "Buffer Diagnostics",
+    },
+    {
+      "<leader>cs",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "Document Symbols",
+    },
+    {
+      -- Closest equivalent to `Trouble lsp` (combined definitions/references/implementations
+      -- tree). Snacks has no combined picker, so map to references which is the most common
+      -- use. For individual views, use gd/gt/gI/gr (LSP on_attach keymaps).
+      "<leader>cS",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      desc = "LSP references",
+    },
+    {
+      "<leader>xL",
+      function()
+        Snacks.picker.loclist()
+      end,
+      desc = "Location List",
+    },
+    {
+      "<leader>xQ",
+      function()
+        Snacks.picker.qflist()
+      end,
+      desc = "Quickfix List",
+    },
     -- Picker ]]
     -- Dim [[
     {

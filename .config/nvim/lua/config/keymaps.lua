@@ -156,3 +156,13 @@ keymap.set("n", "*",  function() stay_star(true,  true)  end)
 keymap.set("n", "#",  function() stay_star(true,  false) end)
 keymap.set("n", "g*", function() stay_star(false, true)  end)
 keymap.set("n", "g#", function() stay_star(false, false) end)
+
+-- Quickfix navigation (unimpaired-style, migrated from trouble.nvim without the panel check)
+keymap.set("n", "[q", function()
+  local ok, err = pcall(vim.cmd.cprev)
+  if not ok then vim.notify(err, vim.log.levels.ERROR) end
+end, { desc = "Previous Quickfix Item" })
+keymap.set("n", "]q", function()
+  local ok, err = pcall(vim.cmd.cnext)
+  if not ok then vim.notify(err, vim.log.levels.ERROR) end
+end, { desc = "Next Quickfix Item" })
