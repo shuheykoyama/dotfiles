@@ -6,7 +6,6 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "Kaiser-Yang/blink-cmp-avante",
       -- icon & color
       "brenoprata10/nvim-highlight-colors",
       -- sources
@@ -223,7 +222,6 @@ return {
       },
       sources = {
         default = {
-          "avante",    -- user addition (≈ ryoppippi's AI tool)
           "lsp",       -- ryoppippi: priority=100
           "path",      -- ryoppippi: priority=100
           "snippets",  -- ryoppippi: luasnip priority=20
@@ -244,27 +242,20 @@ return {
           -- ryoppippi: git, ghq, luasnip, nvim_lsp, async_path, emoji, codecompanion
           --          → buffer, omni, spell, calc, treesitter, look
           gitcommit = {
-            "git", "ghq", "avante", "lsp", "path", "snippets", "emoji",
+            "git", "ghq", "lsp", "path", "snippets", "emoji",
             "buffer", "omni", "spell", "calc", "treesitter", "dictionary",
           },
           octo = {
-            "git", "ghq", "avante", "lsp", "path", "snippets", "emoji",
+            "git", "ghq", "lsp", "path", "snippets", "emoji",
             "buffer", "omni", "spell", "calc", "treesitter", "dictionary",
           },
           markdown = {
-            "git", "ghq", "avante", "lsp", "path", "snippets", "emoji",
+            "git", "ghq", "lsp", "path", "snippets", "emoji",
             "buffer", "omni", "spell", "calc", "treesitter", "dictionary",
           },
         },
         providers = {
-          -- User additions (AI sources)
-          avante = {
-            module = "blink-cmp-avante",
-            name = "Avante",
-            score_offset = 90,
-            fallbacks = { "buffer" },
-          },
-          -- ryoppippi group1 (priority=100, highest among non-AI)
+          -- ryoppippi group1 (priority=100, highest)
           lsp = {
             name = "LSP",
             score_offset = 5, -- ryoppippi: priority=100, equal to path
