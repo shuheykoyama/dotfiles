@@ -37,42 +37,18 @@ return {
     end
 
     local has = require("core.plugin").has
-    local has_glance = has("glance.nvim")
     local has_action_preview = has("actions-preview.nvim")
     local has_inc_rename = has("inc-rename.nvim")
 
     -- hover doc
     keyset("n", "gh", vim.lsp.buf.hover, opts("hover doc"))
 
-    -- jump to
-    keyset("n", "gd", function()
-      if has_glance then
-        vim.cmd([[Glance definitions]])
-        return
-      end
-      Snacks.picker.lsp_definitions()
-    end, opts("jump to definition"))
-    keyset("n", "gt", function()
-      if has_glance then
-        vim.cmd([[Glance type_definitions]])
-        return
-      end
-      Snacks.picker.lsp_type_definitions()
-    end, opts("jump to type_definition"))
-    keyset("n", "gI", function()
-      if has_glance then
-        vim.cmd([[Glance implementations]])
-        return
-      end
-      Snacks.picker.lsp_implementations()
-    end, opts("jump to implementation"))
-    keyset("n", "gr", function()
-      if has_glance then
-        vim.cmd([[Glance references]])
-        return
-      end
-      Snacks.picker.lsp_references()
-    end, opts("jump to references"))
+    -- jump to (Snacks.picker has auto_confirm = true for LSP sources,
+    -- so a single result jumps directly; multiple results open the picker.)
+    keyset("n", "gd", function() Snacks.picker.lsp_definitions() end, opts("jump to definition"))
+    keyset("n", "gt", function() Snacks.picker.lsp_type_definitions() end, opts("jump to type_definition"))
+    keyset("n", "gI", function() Snacks.picker.lsp_implementations() end, opts("jump to implementation"))
+    keyset("n", "gr", function() Snacks.picker.lsp_references() end, opts("jump to references"))
 
     -- signature_help
     keyset("i", "<C-k>", vim.lsp.buf.signature_help, opts("signature_help"))
