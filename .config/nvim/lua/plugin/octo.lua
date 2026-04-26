@@ -1,10 +1,12 @@
 return {
   "pwntester/octo.nvim",
+  cmd = "Octo",
+  opts = {
+    picker = "snacks",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    "folke/snacks.nvim",
     "echasnovski/mini.icons",
   },
-  config = true,
-  cmd = "Octo",
 }
