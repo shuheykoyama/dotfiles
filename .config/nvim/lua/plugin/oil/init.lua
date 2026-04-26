@@ -27,17 +27,12 @@ return {
 		end)
 		if isDir or isOilPath then require("oil") end
     -- stylua: ignore end
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "OilActionsPost",
-      callback = function(event)
-        if event.data.actions.type == "move" then
-          Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-        end
-      end,
-    })
-    vim.api.nvim_create_autocmd("Filetype", {
+    -- LSP rename on file move is delegated to oil's built-in lsp_file_methods
+    -- (enabled by default; see opts). Hooking Snacks.rename via OilActionsPost
+    -- would duplicate the workspace/willRenameFiles request.
+    vim.api.nvim_create_autocmd("FileType", {
       pattern = "oil",
-      callback = function(event)
+      callback = function()
         vim.b.snacks_main = true
       end,
     })
@@ -64,8 +59,10 @@ return {
         ["<C-h>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
       },
+      columns = { "icon", "permissions", "size", "mtime" },
       view_options = {
         show_hidden = true,
+        case_insensitive = true,
         is_always_hidden = function(name, _)
           local ignore_list = { ".DS_Store" }
           return vim.tbl_contains(ignore_list, name)
@@ -73,7 +70,12 @@ return {
       },
       use_default_keymaps = false,
       delete_to_trash = true,
-      experimental_watch_for_changes = false,
+      skip_confirm_for_simple_edits = true,
+      watch_for_changes = true,
+      lsp_file_methods = {
+        enabled = true,
+        autosave_changes = true,
+      },
       win_options = {
         signcolumn = "yes:2",
       },
