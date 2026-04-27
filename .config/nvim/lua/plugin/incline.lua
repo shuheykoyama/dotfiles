@@ -1,7 +1,7 @@
 return {
   "b0o/incline.nvim",
   event = "VeryLazy",
-  priority = 1200,
+  dependencies = { "nvim-mini/mini.icons" },
   config = function()
     -- Defer the heavy kanagawa.colors.setup + incline.setup (~500ms) past
     -- the first buffer render. Winbar appears ~1s after file is visible.
