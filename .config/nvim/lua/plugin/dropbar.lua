@@ -27,12 +27,13 @@ return {
     return {
       bar = {
         enable = function(buf, win)
-          local disable_ft = { "oil" }
+          local bufname = vim.api.nvim_buf_get_name(buf)
+          local stat = bufname ~= "" and vim.uv.fs_stat(bufname) or nil
           return not vim.api.nvim_win_get_config(win).zindex
             and vim.bo[buf].buftype == ""
-            and vim.api.nvim_buf_get_name(buf) ~= ""
-            and not vim.tbl_contains(disable_ft, vim.api.nvim_get_option_value("filetype", { buf = buf }))
+            and bufname ~= ""
             and not vim.wo[win].diff
+            and (not stat or stat.size <= 1024 * 1024)
         end,
         pick = {
           pivots = "asdfghjklzxcvbnm,./qwertyuiop",
