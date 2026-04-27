@@ -395,6 +395,9 @@ return {
     notifier = {
       enabled = true,
     },
+    statuscolumn = {
+      enabled = true,
+    },
     scratch = {
       enabled = true,
     },
