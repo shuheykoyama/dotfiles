@@ -26,7 +26,7 @@ return {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = {
-          statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
+          statusline = { "snacks_dashboard" },
         },
       },
       sections = {
@@ -113,7 +113,7 @@ return {
           end,
         },
       },
-      extensions = { "oil", "lazy" },
+      extensions = { "oil", "lazy", "mason", "quickfix" },
     }
   end,
 }
