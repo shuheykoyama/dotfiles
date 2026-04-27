@@ -1,5 +1,5 @@
 return {
   "folke/persistence.nvim",
-  event = "BufReadPre",
+  event = "VeryLazy",
   opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
 }
