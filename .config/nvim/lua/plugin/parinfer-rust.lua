@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
-  "gpanders/nvim-parinfer",
+  "eraserhd/parinfer-rust",
+  build = "cargo build --release",
   ft = {
     "clojure",
     "scheme",
