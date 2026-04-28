@@ -1,11 +1,22 @@
 ---@type LazySpec
 return {
   "mrjones2014/smart-splits.nvim",
+  init = function()
+    -- Skip the multiplexer auto-detection probe and prevent
+    -- `mux_utils.startup()` from registering zellij CLI autocmds on
+    -- VimResume / VimEnter / VimResized / FocusGained. We don't wire up
+    -- move_cursor_* keymaps (cross-mux navigation is unused), so all the
+    -- mux-side work is wasted. Setting `vim.g` here ensures the probe
+    -- inside `plugin/smart-splits.lua` early-returns when the plugin
+    -- finally loads on first <C-h/j/k/l> press.
+    --
+    -- Documented pattern from the smart-splits README:
+    --   "You can also set the desired multiplexer integration in lazy
+    --    environments before the plugin is loaded by setting
+    --    vim.g.smart_splits_multiplexer_integration."
+    vim.g.smart_splits_multiplexer_integration = false
+  end,
   opts = {
-    -- This config doesn't wire up move_cursor_* keymaps, so the cross-mux
-    -- navigation feature is unused. Disable auto-detection to make that
-    -- explicit and skip the multiplexer probe that runs at startup.
-    multiplexer_integration = false,
     -- The upstream default `{ "NvimTree" }` doesn't match anything in this
     -- config (oil is the file browser). Drop the dead entry.
     ignored_filetypes = {},
