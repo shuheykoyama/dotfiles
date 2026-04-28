@@ -1,6 +1,15 @@
 ---@type LazySpec
 return {
   "mrjones2014/smart-splits.nvim",
+  opts = {
+    -- This config doesn't wire up move_cursor_* keymaps, so the cross-mux
+    -- navigation feature is unused. Disable auto-detection to make that
+    -- explicit and skip the multiplexer probe that runs at startup.
+    multiplexer_integration = false,
+    -- The upstream default `{ "NvimTree" }` doesn't match anything in this
+    -- config (oil is the file browser). Drop the dead entry.
+    ignored_filetypes = {},
+  },
   keys = {
     -- resize
     { "<C-h>", function() require("smart-splits").resize_left() end,   desc = "Resize left" },
