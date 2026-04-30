@@ -3,18 +3,24 @@
 #   red=#C4746E   brred=#E46876   black=#0D0C0C   brblack=#A6A69C
 #   white=#C8C093 brwhite=#C5C9C5 foreground=#C5C9C5
 
-# left prompt: remove os icon
-set -g tide_left_prompt_items pwd git newline character
+# left prompt: include os section
+set -g tide_left_prompt_items os pwd git newline character
+
+# os: macOS apple icon (tide default for darwin)
+set -g tide_os_icon 
+set -g tide_os_bg_color 1D1C19      # dragonBlack2
+set -g tide_os_color D6D6D6
 
 # pwd: Kanagawa Dragon colors
+set -g tide_pwd_bg_color 393836      # dragonBlack5
 set -g tide_pwd_color_anchors C5C9C5   # brwhite (foreground) - current dir
 set -g tide_pwd_color_dirs 8BA4B0      # blue - parent dirs
 set -g tide_pwd_color_truncated_dirs A6A69C  # brblack - truncated
 
-# pwd: remove icons
-set -g tide_pwd_icon ''
-set -g tide_pwd_icon_home ''
-set -g tide_pwd_icon_unwritable ''
+# pwd: tide default icons (folder-open / home / lock)
+set -g tide_pwd_icon 
+set -g tide_pwd_icon_home 
+set -g tide_pwd_icon_unwritable 
 
 # git: background colors
 set -g tide_git_bg_color 7FB4CA        # brblue - clean
