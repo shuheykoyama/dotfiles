@@ -16,8 +16,8 @@ window-width = 192
 window-padding-balance = true
 
 background-opacity = 0.7
-background-blur = macos-glass-clear
 background-blur-radius = 20
+background = #000000
 
 macos-titlebar-style = tabs
 
