@@ -1,9 +1,8 @@
 return {
-  "echasnovski/mini.animate",
-  lazy = true,
-  recommended = true,
+  "nvim-mini/mini.animate",
   event = "VeryLazy",
-  opts = function()
+  cond = vim.g.neovide == nil,
+  opts = function(_, opts)
     -- don't use animate when scrolling with the mouse
     local mouse_scrolled = false
     for _, scroll in ipairs({ "Up", "Down" }) do
@@ -14,8 +13,22 @@ return {
       end, { expr = true })
     end
 
+    -- schedule setting the mapping to override the default mapping from `keymaps.lua`
+    -- seems `keymaps.lua` is the last event to execute on `VeryLazy` and it overwrites it
+    vim.schedule(function()
+      Snacks.toggle({
+        name = "Mini Animate",
+        get = function()
+          return not vim.g.minianimate_disable
+        end,
+        set = function(state)
+          vim.g.minianimate_disable = not state
+        end,
+      }):map("<leader>ua")
+    end)
+
     local animate = require("mini.animate")
-    return {
+    return vim.tbl_deep_extend("force", opts, {
       resize = {
         timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
       },
@@ -31,6 +44,6 @@ return {
           end,
         }),
       },
-    }
+    })
   end,
 }
