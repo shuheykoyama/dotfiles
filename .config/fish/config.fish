@@ -129,3 +129,7 @@ end
 
 set -g NA_PACKAGE_MANAGER_LIST bun deno pnpm npm yarn
 set -g NA_FUZZYFINDER_OPTIONS --bind 'one:accept' --query '^'
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
