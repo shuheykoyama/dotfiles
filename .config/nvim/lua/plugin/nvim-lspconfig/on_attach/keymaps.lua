@@ -48,7 +48,6 @@ return {
     keyset("n", "gd", function() Snacks.picker.lsp_definitions() end, opts("jump to definition"))
     keyset("n", "gt", function() Snacks.picker.lsp_type_definitions() end, opts("jump to type_definition"))
     keyset("n", "gI", function() Snacks.picker.lsp_implementations() end, opts("jump to implementation"))
-    keyset("n", "gr", function() Snacks.picker.lsp_references() end, opts("jump to references"))
 
     -- signature_help
     keyset("i", "<C-k>", vim.lsp.buf.signature_help, opts("signature_help"))
