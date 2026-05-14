@@ -356,6 +356,10 @@ return {
     bigfile = {
       enabled = true,
     },
+    indent = {
+      enabled = true,
+      chunk = { enabled = true },
+    },
     words = {
       enabled = true,
       debounce = 500,
