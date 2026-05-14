@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "jmbuhr/otter.nvim",
+  enabled = false,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   ft = { "markdown", "html" },
   opts = {

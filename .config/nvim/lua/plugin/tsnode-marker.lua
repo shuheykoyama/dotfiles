@@ -1,5 +1,6 @@
 return {
   "atusy/tsnode-marker.nvim",
+  enabled = false,
   lazy = true,
   ft = "markdown",
   init = function()
