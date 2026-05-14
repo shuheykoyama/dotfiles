@@ -18,13 +18,13 @@ return {
     "tpope/vim-repeat",
   },
   opts = {
-    signs = {
-      add = { text = "+" },
-      change = { text = "~" },
-      delete = { text = "_" },
-      topdelete = { text = "‾" },
-      changedelete = { text = "~_" },
-    },
+    -- signs = {
+    --   add = { text = "+" },
+    --   change = { text = "~" },
+    --   delete = { text = "_" },
+    --   topdelete = { text = "‾" },
+    --   changedelete = { text = "~_" },
+    -- },
     current_line_blame = true,
     current_line_blame_opts = {
       delay = 2000,
