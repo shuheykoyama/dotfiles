@@ -60,9 +60,21 @@ return {
       end,
     })
 
+    -- Resolve lualine theme name from NVIM_COLORSCHEME. kanagawa ships a single
+    -- `lualine/themes/kanagawa.lua` that reads `_CURRENT_THEME` at runtime, so all
+    -- kanagawa-* variants (dragon/wave/lotus) collapse to "kanagawa" and still
+    -- follow the active theme. Other colorschemes pass through unchanged.
+    local function lualine_theme()
+      local cs = vim.env.NVIM_COLORSCHEME or "kanagawa"
+      if vim.startswith(cs, "kanagawa") then
+        return "kanagawa"
+      end
+      return cs
+    end
+
     return {
       options = {
-        theme = "auto",
+        theme = lualine_theme(),
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = {
           statusline = { "snacks_dashboard" },
