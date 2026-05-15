@@ -6,19 +6,15 @@ end
 
 return {
   "rebelot/kanagawa.nvim",
+  -- Load kanagawa on UIEnter (after Neovim's UI is attached) to keep the
+  -- colorscheme off the startup-time critical path. lazy.nvim registers its
+  -- UIEnter autocmd before snacks', so kanagawa's colorscheme is applied
+  -- synchronously within UIEnter handling and snacks.dashboard still renders
+  -- with theme highlights. A brief default-color flash in the Neovim TUI
+  -- initial-draw phase is accepted as a trade-off for faster startup.
   priority = isKanagawa() and 1000 or 50,
   event = isKanagawa() and { "UiEnter" } or { "ColorScheme" },
   build = ":KanagawaCompile",
-  init = function()
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      callback = function(args)
-        if not vim.startswith(args.match, "kanagawa") then
-          return
-        end
-        vim.g.colors_name = args.match
-      end,
-    })
-  end,
   opts = function()
     return {
       overrides = function(colors)
@@ -46,7 +42,6 @@ return {
           NoiceCmdlinePopupBorder = { fg = theme.ui.float.fg_border, bg = theme.ui.float.bg },
         }
       end,
-      globalStatus = true,
       transparent = TRANSPARENT,
       compile = true,
     }
