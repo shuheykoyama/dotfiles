@@ -1,6 +1,6 @@
 return {
   "chomosuke/term-edit.nvim",
-  event = "TermEnter",
+  event = "TermOpen",
   version = "1.*",
   opts = {
     prompt_end = "❯ ",
