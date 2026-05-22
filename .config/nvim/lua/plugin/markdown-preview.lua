@@ -4,7 +4,7 @@ return {
   cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewRefresh" },
   keys = {
     {
-      "<leader>cp",
+      "<leader>mp",
       ft = "markdown",
       "<cmd>MarkdownPreview<cr>",
       desc = "Markdown Preview",

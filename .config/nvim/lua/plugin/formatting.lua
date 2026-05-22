@@ -3,7 +3,7 @@ return {
   lazy = true,
   keys = {
     {
-      "<leader>cf",
+      "<leader>f",
       function()
         local conform = require("conform")
         local bufnr = vim.api.nvim_get_current_buf()
