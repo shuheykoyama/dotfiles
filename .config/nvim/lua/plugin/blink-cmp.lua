@@ -39,7 +39,6 @@ return {
       },
       "dmitmel/cmp-cmdline-history",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      { "kristijanhusak/vim-dadbod-completion", optional = true },
     },
     opts_extend = {
       "sources.default",
@@ -236,9 +235,6 @@ return {
           "dictionary", -- ryoppippi の look ソース代替 (cmp-look は nvim-cmp 依存のため)
         },
         per_filetype = {
-          sql   = { "dadbod", "lsp", "path", "snippets", "buffer" },
-          mysql = { "dadbod", "lsp", "path", "snippets", "buffer" },
-          plsql = { "dadbod", "lsp", "path", "snippets", "buffer" },
           -- ryoppippi: git, ghq, luasnip, nvim_lsp, async_path, emoji, codecompanion
           --          → buffer, omni, spell, calc, treesitter, look
           gitcommit = {
@@ -334,11 +330,6 @@ return {
             score_offset = 50,
           },
           -- Cmdline-only providers
-          dadbod = {
-            name = "Dadbod",
-            module = "vim_dadbod_completion.blink",
-            score_offset = 10,
-          },
           cmdline_history = {
             name = "cmdline_history",
             module = "blink.compat.source",
