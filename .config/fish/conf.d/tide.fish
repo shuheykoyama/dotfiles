@@ -3,13 +3,8 @@
 #   red=#C4746E   brred=#E46876   black=#0D0C0C   brblack=#A6A69C
 #   white=#C8C093 brwhite=#C5C9C5 foreground=#C5C9C5
 
-# left prompt: include os section
-set -g tide_left_prompt_items os pwd git newline character
-
-# os: macOS apple icon (tide default for darwin)
-set -g tide_os_icon 
-set -g tide_os_bg_color 1D1C19      # dragonBlack2
-set -g tide_os_color D6D6D6
+# left prompt: omit os section
+set -g tide_left_prompt_items pwd git newline character
 
 # pwd: Kanagawa Dragon colors
 set -g tide_pwd_bg_color 393836      # dragonBlack5
