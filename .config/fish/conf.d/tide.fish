@@ -44,3 +44,7 @@ set -g tide_python_color E6C384        # bryellow
 
 # node: green
 set -g tide_node_color 87A987          # brgreen
+
+# prompt outer edges: rounded (left-edge of left prompt, right-edge of right prompt)
+set -g tide_left_prompt_prefix 
+set -g tide_right_prompt_suffix 
