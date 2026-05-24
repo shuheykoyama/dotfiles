@@ -24,6 +24,10 @@ return {
           -- SignColumn = { bg = "NONE" },
           -- FoldColumn = { bg = "NONE" },
 
+          -- Show the `~` filler character after the end of the buffer
+          -- (kanagawa hides it by default by linking fg to theme.ui.bg).
+          EndOfBuffer = { fg = theme.ui.nontext },
+
           SatelliteBar = { bg = theme.ui.special },
 
           RainbowDelimiterRed = { fg = theme.syn.preproc },
