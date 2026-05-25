@@ -12,11 +12,9 @@ vim.opt.mouse = "a"
 vim.opt.shortmess:append("I")
 
 vim.opt.wrap = false
-vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = true
--- cursorcolumn is toggled by numbertoggle autocmd (lua/config/autocmd.lua) on focus/mode changes.
--- Setting here causes a redundant initial redraw before the autocmd takes over.
+vim.opt.cursorcolumn = true
 vim.opt.title = true
 vim.opt.virtualedit = "onemore"
 vim.opt.visualbell = true
@@ -67,6 +65,7 @@ vim.opt.pumblend = 10
 vim.opt.laststatus = 3
 
 vim.opt.signcolumn = "yes"
+vim.opt.statuscolumn = [[%!v:lua.statuscolumn()]]
 vim.opt.cmdheight = 0
 
 -- Undercurl

@@ -26,16 +26,19 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   group = restoreCursor,
 })
 
--- Toggle relative line numbers based on mode and focus
+-- Toggle relative line numbers, cursorline and cursorcolumn based on mode and
+-- focus. Use vim.wo (window-local) instead of vim.opt to avoid touching the
+-- global option, and skip the explicit redraw because option changes already
+-- trigger one.
 local augroup = vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" }, {
   pattern = "*",
   group = augroup,
   callback = function()
-    if vim.o.nu and vim.api.nvim_get_mode().mode ~= "i" then
-      vim.opt.relativenumber = true
-      vim.opt.cursorline = true
-      vim.opt.cursorcolumn = true
+    if vim.wo.number and vim.api.nvim_get_mode().mode ~= "i" then
+      vim.wo.relativenumber = true
+      vim.wo.cursorline = true
+      vim.wo.cursorcolumn = true
     end
   end,
 })
@@ -44,11 +47,10 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEn
   pattern = "*",
   group = augroup,
   callback = function()
-    if vim.o.nu then
-      vim.opt.relativenumber = false
-      vim.opt.cursorline = true
-      vim.opt.cursorcolumn = false
-      vim.cmd("redraw")
+    if vim.wo.number then
+      vim.wo.relativenumber = false
+      vim.wo.cursorline = true
+      vim.wo.cursorcolumn = false
     end
   end,
 })

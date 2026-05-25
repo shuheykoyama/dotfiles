@@ -33,3 +33,8 @@ end
 _G.is_macos = function()
   return vim.uv.os_uname().sysname == "Darwin"
 end
+
+-- Safe wrapper around snacks to prevent errors when snacks hasn't loaded yet
+_G.statuscolumn = function()
+  return package.loaded.snacks and require("snacks.statuscolumn").get() or ""
+end
