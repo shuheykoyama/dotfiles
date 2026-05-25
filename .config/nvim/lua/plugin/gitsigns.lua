@@ -1,34 +1,82 @@
 ---@type LazySpec
 return {
-  "lewis6991/gitsigns.nvim",
-  event = { "BufReadPost", "BufNewFile" },
-  cmd = { "Gitsigns" },
-  keys = {
-    { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>",            mode = "n", desc = "Stage buffer" },
-    { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>",              mode = "n", desc = "Stage hunk" },
-    { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>",         mode = "n", desc = "Undo stage hunk" },
-    { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>",              mode = "n", desc = "Reset hunk" },
-    { "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>",            mode = "n", desc = "Preview hunk" },
-    { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>",            mode = "n", desc = "Reset buffer" },
-    { "<leader>gd", "<cmd>Gitsigns diffthis split=rightbelow<cr>", mode = "n", desc = "Diff this" },
-    { "<leader>gb", "<cmd>Gitsigns blame<cr>",                   mode = "n", desc = "Blame" },
-    { "<leader>gB", "<cmd>Gitsigns blame_line<cr>",              mode = "n", desc = "Blame line" },
-  },
-  dependencies = {
-    "tpope/vim-repeat",
-  },
-  opts = {
-    -- signs = {
-    --   add = { text = "+" },
-    --   change = { text = "~" },
-    --   delete = { text = "_" },
-    --   topdelete = { text = "‾" },
-    --   changedelete = { text = "~_" },
-    -- },
-    current_line_blame = true,
-    current_line_blame_opts = {
-      delay = 2000,
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    dependencies = {
+      "tpope/vim-repeat",
+    },
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      signs_staged = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+      },
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 2000,
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc, silent = true })
+        end
+
+        -- stylua: ignore start
+        map("n", "]h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
+          end
+        end, "Next Hunk")
+        map("n", "[h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
+          end
+        end, "Prev Hunk")
+        map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+        map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+
+        map({ "n", "x" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map({ "n", "x" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
+        map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
+        map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
+        map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>gB", function() gs.blame() end, "Blame Buffer")
+        map("n", "<leader>gd", gs.diffthis, "Diff This")
+        map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
+      end,
     },
   },
-  config = true,
+  {
+    "gitsigns.nvim",
+    opts = function()
+      Snacks.toggle({
+        name = "Git Signs",
+        get = function()
+          return require("gitsigns.config").config.signcolumn
+        end,
+        set = function(state)
+          require("gitsigns").toggle_signs(state)
+        end,
+      }):map("<leader>uG")
+    end,
+  },
 }
