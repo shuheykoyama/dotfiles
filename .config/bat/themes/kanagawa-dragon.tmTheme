@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Local modification of apcamargo PR #306 (dragon-lotus-tmtheme) to rebelot/kanagawa.nvim:
-  <key>name</key> renamed from "Kanagawa" to "Kanagawa Dragon"
-  so it can coexist with kanagawa.tmTheme in `bat cache --build`.
+  Sourced from apcamargo PR #306 (dragon-lotus-tmtheme branch) to rebelot/kanagawa.nvim.
   Note: PR #306 is OPEN, not yet merged; content may change before merge.
+  https://github.com/rebelot/kanagawa.nvim/pull/306
 -->
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
     <key>name</key>
-    <string>Kanagawa Dragon</string>
+    <string>Kanagawa</string>
     <key>settings</key>
     <array>
       <dict>

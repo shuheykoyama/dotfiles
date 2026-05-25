@@ -1,8 +1,3 @@
-<!--
-  Local modification of upstream craftzdog/solarized-osaka.nvim/extras/sublime/solarized_osaka_dark.tmTheme:
-  <key>name</key> renamed from "solarized-osaka" to "solarized-osaka-dark"
-  so the light variant (same upstream name) can coexist in `bat cache --build`.
--->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -11,7 +6,7 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>name</key>
-	<string>solarized-osaka-dark</string>
+	<string>solarized-osaka</string>
 	<key>semanticClass</key>
 	<string>enki.theme.tokyo</string>
 	<key>settings</key>
