@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Source:   https://github.com/rebelot/kanagawa.nvim/blob/master/extras/tmTheme/kanagawa.tmTheme
-  Upstream: rebelot/kanagawa.nvim (PR #188, merged)
-  License:  MIT (see https://github.com/rebelot/kanagawa.nvim/blob/master/LICENSE)
-  Local modifications: none (byte-identical to upstream)
--->
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
