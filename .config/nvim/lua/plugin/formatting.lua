@@ -76,6 +76,10 @@ return {
         cpp = { "clang-format" },
         -- sql: sqruff（スタイルフォーマット）
         sql = { "sqruff" },
+        -- dart: dart format CLI（conform は stdin=false で $FILENAME を渡すため
+        -- analysis_options.yaml の page_width / tall style を尊重。dart は mise の
+        -- flutter SDK 経由で PATH にある）
+        dart = { "dart_format" },
       },
       formatters = {
         prettier = {
