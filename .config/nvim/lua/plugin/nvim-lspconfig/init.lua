@@ -31,6 +31,14 @@ return {
     local enabled = {}
     vim.list_extend(enabled, lsp_servers.mason_common)
     vim.list_extend(enabled, lsp_servers.non_mason)
-    vim.lsp.enable(enabled)
+
+    -- vim.lsp.enable resolves every named server's config up front (reads and
+    -- executes each after/lsp/<name>.lua to build the merged config), regardless
+    -- of the current filetype. Deferring it off the BufReadPre critical path
+    -- lets the buffer render first; servers attach one tick later (imperceptible,
+    -- replayed onto the open buffer via the FileType autocmd). Mirrors mason (A).
+    vim.schedule(function()
+      vim.lsp.enable(enabled)
+    end)
   end,
 }
