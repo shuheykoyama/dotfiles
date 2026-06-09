@@ -4,10 +4,15 @@ return {
     lazy = true,
     version = "1.*",
     event = { "InsertEnter", "CmdlineEnter" },
+    -- NOTE: completion-source plugins are intentionally NOT listed here.
+    -- Listing them as dependencies makes lazy.nvim load them when blink loads,
+    -- and blink is force-loaded at BufReadPre (nvim-lspconfig declares it as a
+    -- dependency for get_lsp_capabilities()). To keep the source-loading cost
+    -- off the BufReadPre wave, the heavy sources are split into standalone specs
+    -- below, deferred to InsertEnter/CmdlineEnter or first-completion require.
+    -- Only sources cheap enough (or already deferred) to load with blink stay.
     dependencies = {
       "rafamadriz/friendly-snippets",
-      -- icon & color
-      "brenoprata10/nvim-highlight-colors",
       -- sources
       "ribru17/blink-cmp-spell",
       "moyiz/blink-emoji.nvim",
@@ -17,8 +22,6 @@ return {
         lazy = true,
         opts = {},
       },
-      "hrsh7th/cmp-calc",
-      "ray-x/cmp-treesitter",
       -- lazydev.nvim: Neovim Lua API 補完 (cmp-nvim-lua の代替、lsp ソース経由で動作)
       {
         "folke/lazydev.nvim",
@@ -30,15 +33,6 @@ return {
         },
       },
       { "Kaiser-Yang/blink-cmp-dictionary", dependencies = { "nvim-lua/plenary.nvim" } },
-      "delphinus/cmp-ghq",    -- ghq source (requires ghq installed)
-      {
-        "petertriho/cmp-git",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = { filetypes = { "gitcommit", "octo", "markdown" } },
-        config = true,
-      },
-      "dmitmel/cmp-cmdline-history",
-      "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
     opts_extend = {
       "sources.default",
@@ -321,12 +315,14 @@ return {
           },
           ghq = {
             name = "ghq",
-            module = "blink.compat.source",
-            score_offset = 50, -- ryoppippi: filetype group1 (high priority)
+            module = "blink-cmp-ghq", -- native blink source (not via blink.compat)
+            async = true,             -- shells out to `ghq list -p`; don't block blink
+            score_offset = 50,        -- ryoppippi: filetype group1 (high priority)
           },
           git = {
             name = "Git",
-            module = "blink.compat.source",
+            module = "cmp_git.blink", -- native blink source (not via blink.compat)
+            opts = { filetypes = { "gitcommit", "octo", "markdown" } },
             score_offset = 50,
           },
           -- Cmdline-only providers
@@ -404,4 +400,25 @@ return {
       },
     },
   },
+
+  -- Completion-source plugins, split out of blink's `dependencies` so they do
+  -- NOT load on the BufReadPre wave (blink itself stays at BufReadPre for
+  -- get_lsp_capabilities()). Deliberate exception to the one-file-per-plugin
+  -- rule: these are all blink.cmp sources whose provider wiring lives above.
+  --
+  -- Native blink sources: blink `require(module)`s these lazily at first
+  -- completion in their context, so no event trigger is needed.
+  { "delphinus/cmp-ghq", lazy = true },
+  {
+    "petertriho/cmp-git",
+    lazy = true,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- blink.compat sources: blink.compat only finds them once their own
+  -- after/plugin has registered them, so each needs a load trigger before its
+  -- first query. Buffer sources → InsertEnter; cmdline sources → CmdlineEnter.
+  { "hrsh7th/cmp-calc", event = "InsertEnter" },
+  { "ray-x/cmp-treesitter", event = "InsertEnter" },
+  { "dmitmel/cmp-cmdline-history", event = "CmdlineEnter" },
+  { "hrsh7th/cmp-nvim-lsp-document-symbol", event = "CmdlineEnter" },
 }
