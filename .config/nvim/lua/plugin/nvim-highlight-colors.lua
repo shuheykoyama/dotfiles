@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "brenoprata10/nvim-highlight-colors",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   opts = {
     render = "background",
     enable_tailwind = true,

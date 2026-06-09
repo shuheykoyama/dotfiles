@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   opts = {
     enable = true,
     max_lines = 3,

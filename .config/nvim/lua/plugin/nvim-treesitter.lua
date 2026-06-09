@@ -4,9 +4,6 @@ return {
   build = ":TSUpdate",
   dependencies = {
     { "David-Kunz/treesitter-unit" },
-
-    -- UI
-    { "haringsrob/nvim_context_vt" },
   },
   config = function()
     require("nvim-treesitter").setup({
