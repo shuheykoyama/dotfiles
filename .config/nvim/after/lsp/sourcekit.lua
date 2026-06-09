@@ -1,7 +1,9 @@
 ---@type vim.lsp.Config
 return {
-  -- xcrun で動的解決（ハードコードより Xcode 更新に強い）
-  cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) },
+  -- /usr/bin/sourcekit-lsp は Apple のシムで、起動ごとに有効ツールチェインへ
+  -- 再ディスパッチする。xcrun の出力を config 評価時に 1 回キャプチャするより
+  -- Xcode 更新に強く、起動経路から system 呼び出し (約 40-130ms) を排除できる。
+  cmd = { "sourcekit-lsp" },
   filetypes = { "swift", "objc", "objcpp", "c", "cpp" },
   -- buildServer.json (xcode-build-server) を最優先
   root_markers = {
