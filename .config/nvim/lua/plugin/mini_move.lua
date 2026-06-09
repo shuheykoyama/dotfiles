@@ -1,6 +1,6 @@
 return {
   "echasnovski/mini.move",
   branch = "stable",
-  event = "BufReadPost",
+  event = "VeryLazy",
   config = true,
 }
