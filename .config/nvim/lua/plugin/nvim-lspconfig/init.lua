@@ -1,7 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  cmd = { "LspInfo", "LspInstall", "LspStart" },
   dependencies = {
     "saghen/blink.cmp",
     "mason-org/mason.nvim",
@@ -24,7 +23,6 @@ return {
   end,
   config = function()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
-    require("lspconfig.ui.windows").default_options.border = "rounded"
     vim.lsp.config("*", { capabilities = capabilities })
 
     local lsp_servers = require("core.lsp_servers")
