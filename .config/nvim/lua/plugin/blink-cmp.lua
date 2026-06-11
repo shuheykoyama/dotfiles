@@ -10,29 +10,10 @@ return {
     -- dependency for get_lsp_capabilities()). To keep the source-loading cost
     -- off the BufReadPre wave, the heavy sources are split into standalone specs
     -- below, deferred to InsertEnter/CmdlineEnter or first-completion require.
-    -- Only sources cheap enough (or already deferred) to load with blink stay.
+    -- Only friendly-snippets (snippet DATA, no lua module to lazy-require) stays
+    -- as a dependency. Every source PLUGIN is split into a standalone spec below.
     dependencies = {
       "rafamadriz/friendly-snippets",
-      -- sources
-      "ribru17/blink-cmp-spell",
-      "moyiz/blink-emoji.nvim",
-      {
-        "saghen/blink.compat",
-        version = "*",
-        lazy = true,
-        opts = {},
-      },
-      -- lazydev.nvim: Neovim Lua API 補完 (cmp-nvim-lua の代替、lsp ソース経由で動作)
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
-        },
-      },
-      { "Kaiser-Yang/blink-cmp-dictionary", dependencies = { "nvim-lua/plenary.nvim" } },
     },
     opts_extend = {
       "sources.default",
@@ -48,6 +29,35 @@ return {
       appearance = {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = "mono",
+        -- kind icons mirror ryoppippi lspkind symbol_map (codicons preset + overrides)
+        kind_icons = {
+          Text = "󰉿",
+          Method = "󰆧",
+          Function = "󰊕",
+          Constructor = "",
+          Field = "󰜢",
+          Variable = "",
+          Class = "󰠱",
+          Interface = "",
+          Module = "",
+          Property = "󰜢",
+          Unit = "",
+          Value = "󰎠",
+          Enum = "",
+          Keyword = "",
+          Snippet = "",
+          Color = "󰏘",
+          File = "󰈙",
+          Reference = "󰈇",
+          Folder = "󰉋",
+          EnumMember = "",
+          Constant = "󰏿",
+          Struct = "󰙅",
+          Event = "",
+          Operator = "󰆕",
+          TypeParameter = "",
+          Copilot = "",
+        },
       },
       completion = {
         accept = {
@@ -193,7 +203,7 @@ return {
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 200,
+          auto_show_delay_ms = 0, -- ryoppippi(nvim-cmp): docs show immediately on selection
           window = { winblend = 30 },
         },
       },
@@ -201,36 +211,65 @@ return {
         enabled = false, -- ryoppippi: cmp-nvim-lsp-signature-help enabled=false
       },
       fuzzy = {
-        -- ryoppippi: offset, exact, score, cmp-under-comparator, kind, recently_used,
-        --            locality, sort_text, length, order
-        frecency = { enabled = true },  -- recently_used 相当
-        use_proximity = true,           -- locality 相当
+        -- ryoppippi comparator chain: offset, exact, score, under, kind,
+        -- recently_used, locality, sort_text, length, order. blink folds
+        -- recently_used→frecency and locality→proximity into `score`; `offset`
+        -- has no blink equivalent (handled internally). under/length are split
+        -- into custom funcs at ryoppippi's positions; `label` is the
+        -- alphabetical final tiebreak. The sort runs only on the already
+        -- matched/scored list — Rust matching/scoring is untouched.
+        frecency = { enabled = true },  -- recently_used
+        use_proximity = true,           -- locality
         sorts = {
           "exact",
-          "score",
+          "score", -- frecency(recently_used) + proximity(locality) folded in
+          function(a, b) -- under: prefer foo over _foo (ryoppippi: before kind)
+            local _, ua = a.label:find("^_+")
+            local _, ub = b.label:find("^_+")
+            ua, ub = ua or 0, ub or 0
+            if ua ~= ub then
+              return ua < ub
+            end
+          end,
           "kind",
           "sort_text",
-          "label", -- underscore 下位 + アルファベット順 + 短い候補優先 (cmp-under-comparator + length 相当)
+          function(a, b) -- length: shorter label first (ryoppippi: late)
+            if #a.label ~= #b.label then
+              return #a.label < #b.label
+            end
+          end,
+          "label", -- case-aware alphabetical final tiebreak (a<A<b)
         },
       },
       sources = {
+        -- ryoppippi nvim-cmp parity: 2 groups via cmp.config.sources(g1, g2).
+        -- g2 (fallback) shows only when the GATING g1 sources return nothing.
+        -- Only context-shaped sources gate g2: lsp, path, lazydev. snippets and
+        -- emoji stay top-level/non-gating — blink falls back on raw, pre-filter
+        -- item counts and they return full lists, so gating on them would
+        -- over-suppress g2.
         default = {
           "lsp",       -- ryoppippi: priority=100
           "path",      -- ryoppippi: priority=100
-          "snippets",  -- ryoppippi: luasnip priority=20
+          "snippets",  -- friendly-snippets (ryoppippi uses denippet/Deno; excluded by policy)
           "emoji",     -- ryoppippi: priority=50
-          "lazydev",   -- Neovim Lua API 補完 (cmp-nvim-lua 代替)
-          -- fallback group (ryoppippi: group_index=2)
+          -- g2 (ryoppippi group_index=2): shown only when lsp/path/lazydev empty
           "buffer",
           "omni",
           "calc",
           "spell",
           "treesitter",
-          "dictionary", -- ryoppippi の look ソース代替 (cmp-look は nvim-cmp 依存のため)
+          "dictionary", -- ryoppippi の look 相当 (/usr/share/dict/words 英単語補完)
         },
         per_filetype = {
-          -- ryoppippi: git, ghq, luasnip, nvim_lsp, async_path, emoji, codecompanion
-          --          → buffer, omni, spell, calc, treesitter, look
+          -- lua: inherit the default sources and add lazydev (lua-only source).
+          -- inherit_defaults merges with `default` instead of replacing it, so
+          -- lazydev is requested only for lua buffers (never loaded on non-lua).
+          lua = { inherit_defaults = true, "lazydev" },
+          -- ryoppippi {gitcommit, octo, markdown}: g1 git, ghq, nvim_lsp,
+          -- async_path, emoji → g2 buffer, omni, spell, calc, treesitter, look.
+          -- Here git/ghq are top-level/non-gating (see providers); the gating g1
+          -- is lsp/path; g2 = buffer/omni/spell/calc/treesitter/dictionary.
           gitcommit = {
             "git", "ghq", "lsp", "path", "snippets", "emoji",
             "buffer", "omni", "spell", "calc", "treesitter", "dictionary",
@@ -245,11 +284,12 @@ return {
           },
         },
         providers = {
-          -- ryoppippi group1 (priority=100, highest)
+          -- g1 gater (ryoppippi priority=100). Its `fallbacks` ARE the g2 group:
+          -- g2 runs only when this (and the other gaters) return no raw items.
           lsp = {
             name = "LSP",
             score_offset = 5, -- ryoppippi: priority=100, equal to path
-            fallbacks = { "buffer", "omni", "treesitter" },
+            fallbacks = { "buffer", "omni", "calc", "spell", "treesitter", "dictionary" },
             -- ryoppippi: trigger_characters = { "-", ".", "/", ":" }
             override = {
               get_trigger_characters = function(self)
@@ -262,28 +302,32 @@ return {
           path = {
             name = "Path",
             score_offset = 5, -- ryoppippi: priority=100, equal to lsp
-            fallbacks = { "buffer" },
+            fallbacks = { "buffer", "omni", "calc", "spell", "treesitter", "dictionary" },
           },
-          -- ryoppippi group1 (priority=50): nvim_lua → lazydev (blink-cmp native integration)
+          -- g1 gater (ryoppippi nvim_lua, priority=50) → lazydev (lua-only).
           lazydev = {
-            name = "LazyDev",
+            name = "Lua", -- ryoppippi nvim_lua label [Lua]
             module = "lazydev.integrations.blink",
             score_offset = 3, -- ryoppippi: priority=50, same as emoji/nvim_lua
+            fallbacks = { "buffer", "omni", "calc", "spell", "treesitter", "dictionary" },
           },
+          -- non-gating top-level: emoji returns the full table once ":" triggers
+          -- (pre-filter), so gating g2 on it would over-suppress. (ryoppippi g1.)
           emoji = {
             name = "Emoji",
             module = "blink-emoji",
             score_offset = 3, -- ryoppippi: priority=50
-            fallbacks = { "buffer" },
             opts = { insert = true },
           },
-          -- ryoppippi group1 (priority=20, lowest in primary)
+          -- non-gating top-level: blink's snippets source returns all filetype
+          -- snippets (pre-filter), so gating g2 on it would over-suppress.
+          -- friendly-snippets (ryoppippi has no snippet source — denippet excluded).
           snippets = {
             name = "Snippets",
-            score_offset = 0, -- ryoppippi: luasnip priority=20
-            fallbacks = { "buffer" },
+            score_offset = 0,
           },
-          -- ryoppippi group2 (fallback sources)
+          -- g2 (ryoppippi group_index=2): gated via the gaters' `fallbacks`
+          -- above; g2 providers carry no `fallbacks` themselves.
           buffer = {
             name = "Buffer",
             score_offset = -5,
@@ -296,6 +340,10 @@ return {
             name = "Calc",
             module = "blink.compat.source",
             score_offset = -5,
+            -- blink.compat looks the nvim-cmp source up by cmp_name (falls back
+            -- to `name`); cmp-calc registers as lowercase "calc", so set it
+            -- explicitly — otherwise the "Calc" name never matches the registry.
+            opts = { cmp_name = "calc" },
           },
           spell = {
             name = "Spell",
@@ -303,33 +351,45 @@ return {
             score_offset = -5,
           },
           treesitter = {
-            name = "Treesitter",
+            name = "TS", -- ryoppippi label [TS]
             module = "blink.compat.source",
             score_offset = -5,
+            opts = { cmp_name = "treesitter" }, -- match cmp-treesitter's lowercase registry name
           },
+          -- ryoppippi の look 相当 (/usr/share/dict/words 英単語補完)。
+          -- capitalize_first(=convert_case) と capitalize_whole_word(=loud) は
+          -- blink-cmp-dictionary の既定 ON なので追加設定不要。
           dictionary = {
-            name = "Dictionary",
+            name = "Look", -- ryoppippi label [Look]
             module = "blink-cmp-dictionary",
             score_offset = -5,
             min_keyword_length = 2, -- ryoppippi: keyword_length=2
+            opts = { dictionary_files = { "/usr/share/dict/words" } },
           },
+          -- non-gating top-level: ghq returns a broad repo list regardless of
+          -- context (pre-filter), so it must not gate g2.
           ghq = {
-            name = "ghq",
+            name = "GHQ", -- ryoppippi label [GHQ]
             module = "blink-cmp-ghq", -- native blink source (not via blink.compat)
             async = true,             -- shells out to `ghq list -p`; don't block blink
             score_offset = 50,        -- ryoppippi: filetype group1 (high priority)
           },
+          -- non-gating top-level: cmp-git may not call back when no trigger
+          -- matches, which would delay g2; keep it from gating.
           git = {
             name = "Git",
             module = "cmp_git.blink", -- native blink source (not via blink.compat)
-            opts = { filetypes = { "gitcommit", "octo", "markdown" } },
+            opts = { filetypes = { "gitcommit", "octo" } }, -- ryoppippi: not markdown
             score_offset = 50,
           },
           -- Cmdline-only providers
           cmdline_history = {
-            name = "cmdline_history",
+            name = "History", -- ryoppippi label [History]
             module = "blink.compat.source",
             score_offset = -5,
+            -- compat lookup key = opts.cmp_name or name; keep it matching the
+            -- registered "cmdline_history" despite the display rename.
+            opts = { cmp_name = "cmdline_history" },
           },
           lsp_document_symbol = {
             name = "nvim_lsp_document_symbol",
@@ -340,6 +400,18 @@ return {
       },
       cmdline = {
         enabled = true,
+        completion = {
+          -- Auto-show the popup menu while typing in ":" / "/" / "?". blink's
+          -- default only auto-shows in the cmdwin (q:); the normal cmdline needs
+          -- <Tab> otherwise. true matches nvim-cmp/ryoppippi behaviour.
+          menu = { auto_show = true },
+          -- ryoppippi cmdline completeopt "menu,menuone,noselect": no preselect,
+          -- insert allowed (blink default is preselect=true).
+          list = { selection = { preselect = false, auto_insert = true } },
+          -- ryoppippi disables ghost_text globally (experimental.ghost_text=false);
+          -- also avoids copilot conflict. blink enables it for cmdline by default.
+          ghost_text = { enabled = false },
+        },
         sources = function()
           local type = vim.fn.getcmdtype()
           if type == "/" or type == "?" then
@@ -421,4 +493,29 @@ return {
   { "ray-x/cmp-treesitter", event = "InsertEnter" },
   { "dmitmel/cmp-cmdline-history", event = "CmdlineEnter" },
   { "hrsh7th/cmp-nvim-lsp-document-symbol", event = "CmdlineEnter" },
+
+  -- Native sources from sources.default, split out so they don't load on the
+  -- BufReadPre wave; blink requires their module at provider instantiation.
+  { "Kaiser-Yang/blink-cmp-dictionary", lazy = true }, -- v3.0: zero-dependency
+  { "moyiz/blink-emoji.nvim", lazy = true },
+  { "ribru17/blink-cmp-spell", lazy = true },
+  -- blink.compat: loads on demand when a compat source require("cmp")s it, or
+  -- when blink instantiates a compat provider (require("blink.compat.source")).
+  -- Track main, not the latest tag: v2.5.0 calls a cmp source's
+  -- get_keyword_pattern() with NO args, which crashes sources that read
+  -- `params.option` (e.g. cmp-treesitter). The fix (732bfbb, "pass option to
+  -- get_keyword_pattern") is on main but unreleased — v2.5.0 predates it. main
+  -- is dormant (4 commits ahead, last 2025-05) so the risk is minimal.
+  { "saghen/blink.compat", branch = "main", lazy = true, opts = {} },
+  -- lazydev: lua-only (configures lua_ls library). ft=lua loads it for lua
+  -- buffers; its blink source is requested only via per_filetype.lua above.
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 }
