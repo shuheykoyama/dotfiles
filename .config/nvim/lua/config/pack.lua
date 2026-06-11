@@ -21,6 +21,8 @@ lazy.setup({
   defaults = { lazy = true },
   install = { missing = true, colorscheme = { "kanagawa" } },
   checker = { enabled = false },
+  -- Disable config-file watchers (manual `:Lazy reload` after spec edits).
+  change_detection = { enabled = false },
   concurrency = 64,
   local_spec = false,
   pkg = { sources = { "lazy" } },
