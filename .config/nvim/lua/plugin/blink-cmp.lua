@@ -203,7 +203,10 @@ return {
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 0, -- ryoppippi(nvim-cmp): docs show immediately on selection
+          -- blink's default 500ms debounce: avoids firing a docs resolve+render
+          -- on every transient selection. ryoppippi/nvim-cmp is eager (0); we
+          -- adopt blink's debounce as the blink-appropriate choice.
+          auto_show_delay_ms = 500,
           window = { winblend = 30 },
         },
       },
@@ -212,33 +215,22 @@ return {
       },
       fuzzy = {
         -- ryoppippi comparator chain: offset, exact, score, under, kind,
-        -- recently_used, locality, sort_text, length, order. blink folds
-        -- recently_used→frecency and locality→proximity into `score`; `offset`
-        -- has no blink equivalent (handled internally). under/length are split
-        -- into custom funcs at ryoppippi's positions; `label` is the
-        -- alphabetical final tiebreak. The sort runs only on the already
-        -- matched/scored list — Rust matching/scoring is untouched.
+        -- recently_used, locality, sort_text, length, order. Mapped to blink's
+        -- string-only sorts so sorting stays in Rust (a custom Lua sort func
+        -- disables the Rust sort path — fuzzy/init.lua:115 — and blink's docs
+        -- advise against it). frecency(=recently_used) and proximity(=locality)
+        -- fold into `score`; `offset` has no blink equivalent (handled
+        -- internally); under + length are both covered by the built-in `label`
+        -- sort. Only the exact comparator *position* of under/length differs
+        -- (bundled in `label`), which is imperceptible in practice.
         frecency = { enabled = true },  -- recently_used
         use_proximity = true,           -- locality
         sorts = {
           "exact",
           "score", -- frecency(recently_used) + proximity(locality) folded in
-          function(a, b) -- under: prefer foo over _foo (ryoppippi: before kind)
-            local _, ua = a.label:find("^_+")
-            local _, ub = b.label:find("^_+")
-            ua, ub = ua or 0, ub or 0
-            if ua ~= ub then
-              return ua < ub
-            end
-          end,
           "kind",
           "sort_text",
-          function(a, b) -- length: shorter label first (ryoppippi: late)
-            if #a.label ~= #b.label then
-              return #a.label < #b.label
-            end
-          end,
-          "label", -- case-aware alphabetical final tiebreak (a<A<b)
+          "label", -- under (leading "_" deprioritized) + length + case-aware alpha, all in Rust
         },
       },
       sources = {
@@ -364,6 +356,9 @@ return {
             module = "blink-cmp-dictionary",
             score_offset = -5,
             min_keyword_length = 2, -- ryoppippi: keyword_length=2
+            -- blink-cmp-dictionary perf tip: cap items (blink re-fuzzies
+            -- downstream), keeps the per-query fzf/word work cheap.
+            max_items = 8,
             opts = { dictionary_files = { "/usr/share/dict/words" } },
           },
           -- non-gating top-level: ghq returns a broad repo list regardless of
