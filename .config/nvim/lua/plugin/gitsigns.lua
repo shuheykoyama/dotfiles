@@ -2,7 +2,11 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    -- VeryLazy (not the BufReadPost wave): gitsigns' one-time init (~26ms) is
+    -- moved off the file-open critical path. setup() auto-attaches to all open
+    -- buffers (auto_attach defaults true), so signs still appear on the file you
+    -- opened, just after UIEnter. satellite (VeryLazy) already depends on it.
+    event = "VeryLazy",
     dependencies = {
       "tpope/vim-repeat",
     },
