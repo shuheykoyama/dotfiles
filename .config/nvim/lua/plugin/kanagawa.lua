@@ -104,6 +104,15 @@ return {
       end,
       transparent = TRANSPARENT,
       compile = true,
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
     }
   end,
   config = function(_, opts)
