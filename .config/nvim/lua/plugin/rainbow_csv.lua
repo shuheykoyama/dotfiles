@@ -1,6 +1,5 @@
+---@type LazySpec
 return {
   "mechatroner/rainbow_csv",
-  ft = {
-    "csv",
-  },
+  ft = { "csv", "tsv" },
 }
