@@ -1,5 +1,5 @@
+---@type LazySpec
 return {
-  'tidalcycles/vim-tidal',
-  lazy = true,
-  ft = {'tidal'},
+  "tidalcycles/vim-tidal",
+  ft = "tidal",
 }
