@@ -5,6 +5,8 @@ vim.filetype.add({
     mdx = "markdown",
     zon = "zig",
     astro = "astro",
+    log = "log",
+    LOG = "log",
   },
   filename = {
     [".envrc"] = "sh",
@@ -38,5 +40,8 @@ vim.filetype.add({
     ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
     ["compose%.ya?ml"] = "yaml.docker-compose",
     [".*/Dockerfile.*"] = "dockerfile",
+    -- log (generic log files: *_log / *_LOG; *.log / *.LOG handled by extension)
+    [".*_log"] = "log",
+    [".*_LOG"] = "log",
   },
 })
