@@ -4,26 +4,6 @@ return {
   priority = 1000,
   lazy = false,
   init = function()
-    -- Point mermaid-cli (mmdc, used by snacks.image to render ```mermaid```
-    -- fences) at the system Chrome. macOS Homebrew's mermaid-cli bundles a
-    -- puppeteer whose pinned Chromium version drifts from what's cached, so
-    -- it fails with "Could not find Chrome". Set here via vim.env (not the
-    -- fish config) so it's shell-agnostic and scoped to nvim's child procs.
-    if vim.uv.os_uname().sysname == "Darwin" then
-      vim.env.PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    end
-
-    -- snacks.image renders math inline for latex (.tex) too, but editing a .tex
-    -- file with equations swapped for images is disruptive. Only the $math$ in
-    -- markdown should be rendered, so on tex buffers set the internal attach
-    -- flag early to make doc.attach() bail out (markdown is unaffected).
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "tex",
-      callback = function(ev)
-        vim.b[ev.buf].snacks_image_attached = true
-      end,
-    })
-
     _G.dd = function(...)
       Snacks.debug.inspect(...)
     end
@@ -389,12 +369,14 @@ return {
     },
     image = {
       enabled = true,
-      -- doc.inline, math.enabled and convert.mermaid are all enabled by
-      -- default, giving inline rendering of images, ```mermaid``` diagrams
-      -- (via mmdc + Chrome) and LaTeX math in markdown. Rendering in .tex
-      -- buffers is suppressed by the FileType=tex autocmd in init above.
-      -- LaTeX math also needs the latex tree-sitter parser built by
-      -- scripts/build-latex-parser.sh (nvim-treesitter master can't install it).
+      -- Inline document rendering is disabled across every filetype: no images,
+      -- ```mermaid``` diagrams or LaTeX math are drawn inside markdown/html/css/
+      -- js/etc buffers. Opening an image file directly (:e foo.png) still
+      -- previews it — that path is gated by `enabled`, not `doc.enabled`.
+      -- To re-enable, flip to `doc = { enabled = true }`; mermaid then needs
+      -- mmdc pointed at a browser (PUPPETEER_EXECUTABLE_PATH) and LaTeX math
+      -- needs the latex parser from scripts/build-latex-parser.sh.
+      doc = { enabled = false },
     },
     scratch = {
       enabled = true,
