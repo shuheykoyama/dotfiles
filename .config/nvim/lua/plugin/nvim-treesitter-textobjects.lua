@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
+  branch = "main",
   -- Load treesitter first so its config has run before this config requires it.
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   -- Interaction-only (text-object / swap / move keymaps; no visual output).
@@ -11,15 +12,12 @@ return {
   -- reason. The keymaps below are registered in `config` on load.
   event = "VeryLazy",
   config = function()
-    require("nvim-treesitter.configs").setup({
-      textobjects = {
-        select = { enable = true, lookahead = true },
-        move = { enable = true, set_jumps = true },
-        swap = { enable = true },
-      },
+    require("nvim-treesitter-textobjects").setup({
+      select = { lookahead = true },
+      move = { set_jumps = true },
     })
 
-    local select = require("nvim-treesitter.textobjects.select")
+    local select = require("nvim-treesitter-textobjects.select")
     local keymaps = {
       ["af"] = "@function.outer",
       ["if"] = "@function.inner",
@@ -43,13 +41,13 @@ return {
     end
 
     vim.keymap.set("n", "<leader>>", function()
-      require("nvim-treesitter.textobjects.swap").swap_next("@parameter.inner")
+      require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
     end)
     vim.keymap.set("n", "<leader><", function()
-      require("nvim-treesitter.textobjects.swap").swap_previous("@parameter.inner")
+      require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
     end)
 
-    local move = require("nvim-treesitter.textobjects.move")
+    local move = require("nvim-treesitter-textobjects.move")
     vim.keymap.set({ "n", "x", "o" }, "]f", function()
       move.goto_next_start("@function.outer", "textobjects")
     end)
