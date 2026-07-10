@@ -10,11 +10,10 @@ return {
     { "qr", "QuickRun", mode = "ca" },
   },
   dependencies = {
-    "tani/vim-artemis",
     "lambdalisue/vim-quickrun-neovim-job",
   },
   config = function()
-    vimx.g.quickrun_config = {
+    vim.g.quickrun_config = {
       -- グローバル既定（全 type 共通）
       ["_"] = {
         -- Neovim 用の非同期 job runner（vim-quickrun-neovim-job 経由）
