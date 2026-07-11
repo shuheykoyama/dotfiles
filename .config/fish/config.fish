@@ -133,3 +133,7 @@ set -g NA_FUZZYFINDER_OPTIONS --bind 'one:accept' --query '^'
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# BEGIN tirith-hook v1
+tirith init --shell fish | source
+# END tirith-hook
