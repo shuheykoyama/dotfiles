@@ -24,3 +24,5 @@ macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = visible
 
 keybind = shift+enter=text:\x1b\r
+
+working-directory = inherit
