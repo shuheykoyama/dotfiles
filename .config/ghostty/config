@@ -6,19 +6,20 @@ shell-integration-features = no-cursor
 mouse-hide-while-typing = true
 
 cursor-style = block
-cursor-color = #c8c093
+cursor-style-blink = false
 
-theme = Kanagawa Dragon
+theme = "Kanagawa Dragon"
 
 window-theme = auto
 window-height = 48
 window-width = 192
 window-padding-balance = true
 
-background-opacity = 0.7
+background-opacity = 0.70
 background-blur = macos-glass-clear
 background-blur-radius = 20
 
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = visible
 
 keybind = shift+enter=text:\x1b\r
