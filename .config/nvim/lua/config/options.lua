@@ -64,8 +64,6 @@ vim.opt.guicursor:append({ "t:blinkon0" })
 vim.opt.pumblend = 10
 vim.opt.laststatus = 3
 
-vim.opt.signcolumn = "yes"
-vim.opt.statuscolumn = [[%!v:lua.statuscolumn()]]
 vim.opt.cmdheight = 0
 
 -- Undercurl
