@@ -80,6 +80,8 @@ return {
         -- analysis_options.yaml の page_width / tall style を尊重。dart は mise の
         -- flutter SDK 経由で PATH にある）
         dart = { "dart_format" },
+        -- nu: nufmt（cargo install、ryoppippi の treefmt 準拠でオプションなし）
+        nu = { "nufmt" },
       },
       formatters = {
         prettier = {
@@ -122,6 +124,11 @@ return {
         ruff_format = {
           command = "uv",
           args = { "run", "ruff", "format", "--stdin-filename", "$FILENAME", "-" },
+        },
+        -- nufmt は nufmt.nuon をファイルではなく CWD から上方向に探すため、
+        -- treefmt と同じくプロジェクトルートで実行する
+        nufmt = {
+          cwd = require("conform.util").root_file({ ".git" }),
         },
       },
     })

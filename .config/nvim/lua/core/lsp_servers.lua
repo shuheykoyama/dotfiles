@@ -62,5 +62,6 @@ return {
   non_mason = {
     "fish_lsp",  -- brew install fish-lsp
     "sourcekit", -- ships with Xcode
+    "nushell",   -- nu --lsp (cargo install nu)
   },
 }
