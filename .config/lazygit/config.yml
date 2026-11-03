@@ -1,3 +1,7 @@
+os:
+  shell: fish
+  shellArg: -c
+
 git:
   branchPrefix: "shuheykoyama/"
   paging:
