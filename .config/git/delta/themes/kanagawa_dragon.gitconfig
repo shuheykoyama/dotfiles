@@ -1,0 +1,16 @@
+[delta "kanagawa-dragon"]
+	syntax-theme = kanagawa-dragon
+	minus-style                   = syntax "#43242B"
+	minus-non-emph-style          = syntax "#43242B"
+	minus-emph-style              = syntax "#722529"
+	minus-empty-line-marker-style = syntax "#43242B"
+	line-numbers-minus-style      = "#c4746e"
+	plus-style                    = syntax "#2B3328"
+	plus-non-emph-style           = syntax "#2B3328"
+	plus-emph-style               = syntax "#465935"
+	plus-empty-line-marker-style  = syntax "#2B3328"
+	line-numbers-plus-style       = "#8a9a7b"
+	line-numbers-zero-style       = "#727169"
+	file-style                    = "#c5c9c5" bold
+	file-decoration-style         = "#7fb4ca" ul
+	hunk-header-decoration-style  = "#727169" box
