@@ -1,36 +1,36 @@
 [include]
-  path = ~/.config/git/delta/themes/tokyonight_night.gitconfig
+	path = ~/.config/git/delta/themes/tokyonight_night.gitconfig
 [user]
-  name = shuheykoyama
-  email = shuheykoyama@gmail.com
+	name = shuheykoyama
+	email = shuheykoyama@gmail.com
 [core]
-  excludesfile = ~/.gitignore
-  editor = nvim
-  pager = delta
+	excludesfile = ~/.gitignore
+	editor = nvim
+	pager = delta
 [color]
-  ui = auto
+	ui = auto
 [hub]
-  protocol = ssh
+	protocol = ssh
 [github]
-  user = shuheykoyama
+	user = shuheykoyama
 [diff]
-  colorMoved = default
+	colorMoved = default
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-  navigate = true
-  line-numbers = true
-  side-by-side = true
-  true-color = always
-  features = tokyonight_night
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	true-color = always
+	features = tokyonight_night
 [merge]
-  conflictstyle = diff3
+	conflictstyle = diff3
 [init]
 	defaultBranch = main
 [alias]
-  alias = !git config --list | grep ^alias\\.
+	alias = !git config --list | grep ^alias\\.
 	st = status
-  sw = switch
+	sw = switch
 	br = branch
 	bd = branch -d
 	co = checkout
