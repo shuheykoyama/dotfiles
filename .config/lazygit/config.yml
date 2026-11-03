@@ -15,33 +15,35 @@ git:
   parseEmoji: true
 
 # tokyonight_night
-gui:
-  nerdFontsVersion: "3"
-  theme:
-    activeBorderColor:
-      - "#ff9e64"
-      - "bold"
-    inactiveBorderColor:
-      - "#27a1b9"
-    searchingActiveBorderColor:
-      - "#ff9e64"
-      - "bold"
-    optionsTextColor:
-      - "#7aa2f7"
-    selectedLineBgColor:
-      - "#283457"
-    cherryPickedCommitFgColor:
-      - "#7aa2f7"
-    cherryPickedCommitBgColor:
-      - "#bb9af7"
-    markedBaseCommitFgColor:
-      - "#7aa2f7"
-    markedBaseCommitBgColor:
-      - "#e0af68"
-    unstagedChangesColor:
-      - "#db4b4b"
-    defaultFgColor:
-      - "#c0caf5"
+# gui:
+#   nerdFontsVersion: "3"
+#   theme:
+#     activeBorderColor:
+#       - "#ff9e64"
+#       - "bold"
+#     inactiveBorderColor:
+#       - "#27a1b9"
+#     searchingActiveBorderColor:
+#       - "#ff9e64"
+#       - "bold"
+#     optionsTextColor:
+#       - "#7aa2f7"
+#     selectedLineBgColor:
+#       - "#283457"
+#     cherryPickedCommitFgColor:
+#       - "#7aa2f7"
+#     cherryPickedCommitBgColor:
+#       - "#bb9af7"
+#     markedBaseCommitFgColor:
+#       - "#7aa2f7"
+#     markedBaseCommitBgColor:
+#       - "#e0af68"
+#     unstagedChangesColor:
+#       - "#db4b4b"
+#     defaultFgColor:
+#       - "#c0caf5"
+
+# solarized osaka
 # gui:
 #   nerdFontsVersion: "3"
 #   theme:
@@ -69,8 +71,51 @@ gui:
 #       - "#f55350"
 #     defaultFgColor:
 #       - "#839395"
+#   authorColors:
+#     "*": "#b4befe"
+#   showIcons: true
+
+# kanagawa-dragon
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    # アクティブなウィンドウの枠線 (Dragon Red)
+    activeBorderColor:
+      - "#c4746e"
+      - "bold"
+    # 非アクティブなウィンドウの枠線 (Bright Black / Gray)
+    inactiveBorderColor:
+      - "#a6a69c"
+    # 検索中のアクティブ枠線 (Dragon Red)
+    searchingActiveBorderColor:
+      - "#c4746e"
+      - "bold"
+    # 下部のキー操作ガイドの文字色 (Bright Blue)
+    optionsTextColor:
+      - "#7fb4ca"
+    # 選択中の行の背景色 (Selection Background / WaveBlue)
+    selectedLineBgColor:
+      - "#2d4f67"
+    # チェリーピックしたコミットの文字色 (Bright Blue)
+    cherryPickedCommitFgColor:
+      - "#7fb4ca"
+    # チェリーピックしたコミットの背景色 (Bright Magenta)
+    cherryPickedCommitBgColor:
+      - "#938aa9"
+    # マージベースのコミット文字色 (Bright Blue)
+    markedBaseCommitFgColor:
+      - "#7fb4ca"
+    # マージベースのコミット背景色 (Bright Yellow)
+    markedBaseCommitBgColor:
+      - "#e6c384"
+    # 未ステージの変更があるファイルの文字色 (Bright Red)
+    unstagedChangesColor:
+      - "#e46876"
+    # デフォルトの文字色 (Foreground)
+    defaultFgColor:
+      - "#c5c9c5"
   authorColors:
-    "*": "#b4befe"
+    "*": "#7fb4ca"
   showIcons: true
 
 confirmOnQuit: true
