@@ -3,6 +3,7 @@
 [user]
 	name = shuheykoyama
 	email = shuheykoyama@gmail.com
+	signingkey = /Users/shuhey/.ssh/id_ed25519_github
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
@@ -35,3 +36,7 @@
 	bd = branch -d
 	co = checkout
 	cb = checkout -b
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
