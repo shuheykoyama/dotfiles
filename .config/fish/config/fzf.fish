@@ -5,3 +5,4 @@ set -x FZF_FIND_FILE_OPTS '--preview "bat --color=always --style=header,grid --l
 set -x FZF_CTRL_R_OPTS "--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 set -x FZF_LEGACY_KEYBINDINGS 0
 set -x FZF_COMPLETION_TRIGGER '**'
+set -x FZF_DEFAULT_OPTS_FILE $HOME/.config/fzf/config
