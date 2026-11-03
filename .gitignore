@@ -20,3 +20,6 @@
 
 # Rio
 .config/rio/
+
+# lazygit
+.config/lazygit/state.yml
