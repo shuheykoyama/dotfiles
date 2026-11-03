@@ -1,0 +1,149 @@
+# gruvbox-dark's per-category colouring, but every colour is one of the
+# terminal's 16 ANSI palette slots instead of a fixed RGB value. The
+# terminal theme (Ghostty: Kanagawa Dragon) therefore decides the real colours.
+#
+# There is no ANSI orange, so gruvbox's orange maps to red.
+# No fg/bg: normal and regular files keep the terminal's default colours.
+
+colors:
+  black: "ansi:black"
+  red: "ansi:red"
+  green: "ansi:green"
+  yellow: "ansi:yellow"
+  blue: "ansi:blue"
+  magenta: "ansi:magenta"
+  cyan: "ansi:cyan"
+  bright_black: "ansi:bright_black"
+  bright_red: "ansi:bright_red"
+  bright_green: "ansi:bright_green"
+  bright_yellow: "ansi:bright_yellow"
+  bright_blue: "ansi:bright_blue"
+  bright_magenta: "ansi:bright_magenta"
+  bright_cyan: "ansi:bright_cyan"
+
+core:
+  normal_text: {}
+  regular_file: {}
+  reset_to_normal: {}
+
+  directory:
+    foreground: blue
+
+  symlink:
+    foreground: bright_blue
+    font-style: italic
+
+  multi_hard_link:
+    font-style: bold
+
+  fifo:
+    foreground: magenta
+
+  socket:
+    foreground: magenta
+    font-style: bold
+
+  door:
+    foreground: bright_magenta
+    font-style: bold
+
+  block_device:
+    foreground: yellow
+    font-style: bold
+
+  character_device:
+    foreground: bright_yellow
+    font-style: italic
+
+  broken_symlink:
+    foreground: bright_red
+    font-style: italic
+
+  missing_symlink_target:
+    foreground: black
+    background: bright_red
+
+  setuid:
+    foreground: black
+    background: red
+
+  setgid:
+    foreground: black
+    background: red
+
+  file_with_capability:
+    foreground: black
+    background: red
+
+  sticky_other_writable:
+    foreground: black
+    background: blue
+    font-style: italic
+
+  other_writable:
+    foreground: bright_green
+    font-style: bold
+
+  sticky:
+    foreground: black
+    background: blue
+
+  executable_file:
+    foreground: bright_green
+    font-style: bold
+
+text:
+  special:
+    foreground: bright_yellow
+    font-style: bold
+
+  todo:
+    foreground: bright_green
+
+  licenses:
+    font-style: italic
+
+  configuration:
+    foreground: bright_yellow
+
+  other: {}
+
+markup:
+  foreground: yellow
+
+programming:
+  source:
+    foreground: green
+
+  tooling:
+    foreground: bright_green
+    font-style: italic
+
+    continuous-integration:
+      foreground: bright_blue
+
+media:
+  foreground: cyan
+
+  video:
+    foreground: bright_cyan
+    font-style: bold
+
+office:
+  foreground: bright_blue
+  font-style: bold
+
+archives:
+  foreground: red
+
+  images:
+    foreground: bright_red
+    font-style: bold
+
+executable:
+  foreground: bright_green
+  font-style: bold
+
+unimportant:
+  foreground: bright_black
+  font-style: [italic, faint]

@@ -102,7 +102,7 @@ if not test -f "$CONFIG_CACHE"; or test "$FISH_CONFIG" -nt "$CONFIG_CACHE"
     ensure_installed zoxide init fish >>$tmp_cache
 
     # set vivid colors
-    echo "set -gx LS_COLORS '$(ensure_installed vivid generate gruvbox-dark)'" >>$tmp_cache
+    echo "set -gx LS_COLORS '$(ensure_installed vivid generate ansi-colorful)'" >>$tmp_cache
 
     # jj
     ensure_installed jj util completion fish >>$tmp_cache
