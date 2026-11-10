@@ -1,12 +1,17 @@
+# solarized-osaka.nvim extras/delta/solarized_osaka_dark.gitconfig as a feature, plus its bat theme for syntax
+# highlighting (bat/themes/solarized_osaka_dark.tmTheme). Selected by DELTA_FEATURES from
+# fish/config/delta.fish; navigate, line-numbers and side-by-side come from [delta] in git/config.
 [delta "solarized_osaka_dark"]
-	minus-style                   = syntax "#db302d"
-	minus-non-emph-style          = syntax "#db302d"
-	minus-emph-style              = syntax "#b7211f"
-	minus-empty-line-marker-style = syntax "#db302d"
-	line-numbers-minus-style      = "#f55350"
-	plus-style                    = syntax "#849900"
-	plus-non-emph-style           = syntax "#849900"
-	plus-emph-style               = syntax "#586600"
-	plus-empty-line-marker-style  = syntax "#849900"
-	line-numbers-plus-style       = "#b7f900"
+	dark = true
+	syntax-theme = solarized_osaka_dark
+	minus-style                   = syntax "#380605"
+	minus-non-emph-style          = syntax "#380605"
+	minus-emph-style              = syntax "#570f0e"
+	minus-empty-line-marker-style = syntax "#380605"
+	line-numbers-minus-style      = "#db302d"
+	plus-style                    = syntax "#103a3c"
+	plus-non-emph-style           = syntax "#103a3c"
+	plus-emph-style               = syntax "#2c3300"
+	plus-empty-line-marker-style  = syntax "#103a3c"
+	line-numbers-plus-style       = "#849900"
 	line-numbers-zero-style       = "#576d74"
