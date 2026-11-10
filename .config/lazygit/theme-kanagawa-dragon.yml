@@ -1,0 +1,40 @@
+# Kanagawa Dragon colours. Layered over config.yml through LG_CONFIG_FILE (fish/config/lazygit.fish).
+gui:
+  theme:
+    # アクティブなウィンドウの枠線 (Dragon Red)
+    activeBorderColor:
+      - "#c4746e"
+      - "bold"
+    # 非アクティブなウィンドウの枠線 (Bright Black / Gray)
+    inactiveBorderColor:
+      - "#a6a69c"
+    # 検索中のアクティブ枠線 (Dragon Red)
+    searchingActiveBorderColor:
+      - "#c4746e"
+      - "bold"
+    # 下部のキー操作ガイドの文字色 (Bright Blue)
+    optionsTextColor:
+      - "#7fb4ca"
+    # 選択中の行の背景色 (Selection Background / WaveBlue)
+    selectedLineBgColor:
+      - "#2d4f67"
+    # チェリーピックしたコミットの文字色 (Bright Blue)
+    cherryPickedCommitFgColor:
+      - "#7fb4ca"
+    # チェリーピックしたコミットの背景色 (Bright Magenta)
+    cherryPickedCommitBgColor:
+      - "#938aa9"
+    # マージベースのコミット文字色 (Bright Blue)
+    markedBaseCommitFgColor:
+      - "#7fb4ca"
+    # マージベースのコミット背景色 (Bright Yellow)
+    markedBaseCommitBgColor:
+      - "#e6c384"
+    # 未ステージの変更があるファイルの文字色 (Bright Red)
+    unstagedChangesColor:
+      - "#e46876"
+    # デフォルトの文字色 (Foreground)
+    defaultFgColor:
+      - "#c5c9c5"
+  authorColors:
+    "*": "#7fb4ca"
