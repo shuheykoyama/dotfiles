@@ -16,8 +16,22 @@ for file in $FISH_CONFIG_DIR/config/*.fish
     source $file
 end
 
-# theme
-source $FISH_CONFIG_DIR/themes/kanagawa.fish
+# theme (syntax highlighting): follows the Ghostty theme
+# fish installs its default theme before config.fish runs, tagged --theme=default. When that tag is
+# gone, an earlier source of this file replaced it (`sc` after a theme switch): reset first so
+# variables only the other theme defines do not linger.
+if not contains -- --theme=default $fish_color_command
+    for var in (set --names | string match -r '^fish_(pager_)?color_\w*')
+        set -eg $var
+    end
+    fish_config theme choose default
+end
+switch (_prompt_ghostty_theme)
+    case 'Solarized Dark - Vivid'
+        source $FISH_CONFIG_DIR/themes/fish-3.3-default.fish
+    case '*'
+        source $FISH_CONFIG_DIR/themes/kanagawa.fish
+end
 
 # general bin paths
 fish_add_path $HOME/.local/bin
