@@ -1,0 +1,29 @@
+# Solarized Osaka colours: solarized-osaka.nvim extras/lazygit/solarized_osaka_dark.yml (gui.theme only;
+# nerdFontsVersion stays in config.yml). Layered over config.yml through LG_CONFIG_FILE
+# (fish/config/lazygit.fish).
+gui:
+  theme:
+    activeBorderColor:
+      - "#c94c16"
+      - "bold"
+    inactiveBorderColor:
+      - "#664c00"
+    searchingActiveBorderColor:
+      - "#c94c16"
+      - "bold"
+    optionsTextColor:
+      - "#268bd3"
+    selectedLineBgColor:
+      - "#1a6397"
+    cherryPickedCommitFgColor:
+      - "#268bd3"
+    cherryPickedCommitBgColor:
+      - "#d23681"
+    markedBaseCommitFgColor:
+      - "#268bd3"
+    markedBaseCommitBgColor:
+      - "#b28500"
+    unstagedChangesColor:
+      - "#f55350"
+    defaultFgColor:
+      - "#839395"
