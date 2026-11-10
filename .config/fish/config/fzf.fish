@@ -6,3 +6,11 @@ set -x FZF_CTRL_R_OPTS "--preview 'echo {}' --preview-window down:3:hidden:wrap 
 set -x FZF_LEGACY_KEYBINDINGS 0
 set -x FZF_COMPLETION_TRIGGER '**'
 set -x FZF_DEFAULT_OPTS_FILE $HOME/.config/fzf/config
+
+# Colours follow the Ghostty theme. fzf/config holds the Kanagawa Dragon colours (it is also what zsh and
+# any shell without detection get). Solarized Dark - Vivid uses fzf's built-in colours, like craftzdog's
+# fzf, which sets none; --color=dark resets the base scheme and drops the colours from fzf/config.
+switch (_prompt_ghostty_theme)
+    case 'Solarized Dark - Vivid'
+        set -x FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --color=dark"
+end
