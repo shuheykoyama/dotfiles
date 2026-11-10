@@ -1,5 +1,6 @@
 [include]
 	path = ~/.config/git/delta/themes/kanagawa_dragon.gitconfig
+	path = ~/.config/git/delta/themes/solarized_dark_vivid.gitconfig
 [user]
 	name = shuheykoyama
 	email = shuheykoyama@gmail.com
