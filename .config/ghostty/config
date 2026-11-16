@@ -2,7 +2,7 @@ font-family = "PlemolJP Console NF"
 font-size = 14
 
 shell-integration = fish
-shell-integration-features = no-cursor
+shell-integration-features = ssh-env,ssh-terminfo,no-cursor
 
 mouse-hide-while-typing = true
 
