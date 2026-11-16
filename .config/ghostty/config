@@ -13,9 +13,11 @@ cursor-style-blink = false
 theme = "Solarized Dark - Vivid"
 
 window-theme = auto
-window-height = 48
-window-width = 192
+window-height = 40
+window-width = 144
 window-padding-balance = true
+window-padding-x = 8
+window-padding-y = 8
 
 background-opacity = 0.80
 background-blur = 20
