@@ -1,0 +1,22 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "shuheykoyama"
+email = "shuheykoyama@gmail.com"
+
+# delta for the commands whose output is a plain diff.
+[[--scope]]
+--when.commands = ["diff", "show", "interdiff"]
+[--scope.ui]
+pager = "delta"
+diff-formatter = ":git"
+
+# `jj log --no-graph -p` goes through delta too. delta cannot parse a diff indented under the graph, so with
+# the graph `jj log -p` still prints a git-format diff coloured by jj. Conditions cannot look at flags, so
+# the whole command is scoped; delta hands its output to `less -FRXK` like jj's default pager, which keeps a
+# plain `jj log` on screen after quitting (delta's own less would clear it).
+[[--scope]]
+--when.commands = ["log"]
+[--scope.ui]
+pager = { command = ["delta", "--pager", "less -FRXK"], env = { LESSCHARSET = "utf-8" } }
+diff-formatter = ":git"
