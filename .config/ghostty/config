@@ -14,7 +14,6 @@ cursor-style-blink = true
 # theme = "Kanagawa Dragon"
 theme = "Solarized Dark - Vivid"
 
-window-theme = auto
 window-height = 40
 window-width = 144
 window-padding-balance = true
@@ -24,8 +23,6 @@ window-padding-y = 8
 background-opacity = 0.80
 background-blur = 20
 
-macos-titlebar-style = transparent
-macos-titlebar-proxy-icon = visible
 
 keybind = shift+enter=text:\x1b\r
 
