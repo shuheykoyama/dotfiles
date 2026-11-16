@@ -6,6 +6,8 @@ shell-integration-features = ssh-env,ssh-terminfo,no-cursor
 
 mouse-hide-while-typing = true
 
+desktop-notifications = true
+
 cursor-style = block
 cursor-style-blink = true
 
