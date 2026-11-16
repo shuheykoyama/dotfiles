@@ -24,6 +24,5 @@ background-opacity = 0.80
 background-blur = 20
 
 
-keybind = shift+enter=text:\x1b\r
 
 working-directory = inherit
