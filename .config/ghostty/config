@@ -9,7 +9,8 @@ mouse-hide-while-typing = true
 cursor-style = block
 cursor-style-blink = false
 
-theme = "Kanagawa Dragon"
+# theme = "Kanagawa Dragon"
+theme = "Solarized Dark - Vivid"
 
 window-theme = auto
 window-height = 48
