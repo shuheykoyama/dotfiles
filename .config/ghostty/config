@@ -17,9 +17,8 @@ window-height = 48
 window-width = 192
 window-padding-balance = true
 
-background-opacity = 0.70
-background-blur = macos-glass-clear
-background-blur-radius = 20
+background-opacity = 0.80
+background-blur = 20
 
 macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = visible
