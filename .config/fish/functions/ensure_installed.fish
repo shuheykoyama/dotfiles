@@ -1,9 +1,11 @@
-function ensure_installed -d "ensure the command is on PATH"
+function ensure_installed --description 'Run a command if available'
     set -l cmd $argv[1]
-    if type -q $cmd
-        $cmd $argv[2..-1]
+
+    if not type -q $cmd
+        echo "# command $cmd not found"
         return 0
     end
-    echo "# command $cmd not found"
-    return 0
+
+    $cmd $argv[2..-1]
+    return $status
 end
