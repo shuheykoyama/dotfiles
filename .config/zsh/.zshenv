@@ -3,6 +3,9 @@ export LC_ALL=en_US.utf-8
 export DOTPATH=~/dotfiles
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# Add user's local bin directory to PATH
+export PATH="$HOME/bin:$PATH"
+
 # Java
 # handle Japanese well with UTF-8 code system
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
