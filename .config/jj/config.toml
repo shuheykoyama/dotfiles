@@ -11,6 +11,15 @@ backend = "ssh"
 behavior = "own"
 key = "~/.ssh/id_ed25519_github"
 
+# `jj bookmark advance` moves main to the closest commit that can be pushed instead of the working copy,
+# which is empty and has no description. jj refuses to push commits without a description.
+[revsets]
+bookmark-advance-to = "closest_pushable(@)"
+
+[revset-aliases]
+# Closest mutable ancestor of `to` that has a description and is either non-empty or a merge.
+"closest_pushable(to)" = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
+
 # delta for the commands whose output is a plain diff.
 [[--scope]]
 --when.commands = ["diff", "show", "interdiff"]
