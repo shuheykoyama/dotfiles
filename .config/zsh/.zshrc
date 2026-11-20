@@ -55,12 +55,6 @@ eval $(thefuck --alias fk)
 # bun completions
 [ -s "/Users/shuhey/.bun/_bun" ] && source "/Users/shuhey/.bun/_bun"
 
-# Sheldon
-eval "$(sheldon source)"
-
-# Starship
-eval "$(starship init zsh)"
-
 # GitHub CLI
 eval "$(gh completion -s zsh)"
 
