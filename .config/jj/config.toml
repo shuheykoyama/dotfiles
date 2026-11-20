@@ -20,6 +20,25 @@ bookmark-advance-to = "closest_pushable(@)"
 # Closest mutable ancestor of `to` that has a description and is either non-empty or a merge.
 "closest_pushable(to)" = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
+# Guidance shown in the editor for a commit without a description, following ~/.claude/rules/commit-rules.md.
+# Only `JJ:` lines are removed when saving, so leaving the editor untouched keeps the description empty
+# (which jj refuses to push) instead of saving placeholder text.
+[template-aliases]
+default_commit_description = '''
+"
+
+JJ: <type>(<scope>): <subject>
+JJ:
+JJ: types: feat fix docs style refactor perf test build ci chore
+JJ: subject: English, imperative, lowercase start, no trailing period,
+JJ:          <= 50 chars (72 max); breaking change: <type>(<scope>)!:
+JJ: scope: subsystem noun, never a file or class name; omit if cross-cutting
+JJ: body: why and any non-obvious what, wrapped at ~72 chars
+JJ: footer: Refs #N / Closes #N / Fixes #N, BREAKING CHANGE: ...
+JJ: no emoji, no issue ID in the subject, one logical change per commit
+"
+'''
+
 # delta for the commands whose output is a plain diff.
 [[--scope]]
 --when.commands = ["diff", "show", "interdiff"]
