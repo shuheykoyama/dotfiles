@@ -82,7 +82,7 @@ set -g tide_kubectl_bg_color 282727
 set -g tide_kubectl_color blue
 set -g tide_kubectl_icon 󱃾
 set -g tide_left_prompt_frame_enabled false
-set -g tide_left_prompt_items pwd git newline character
+set -g tide_left_prompt_items pwd vcs newline character
 set -g tide_left_prompt_prefix 
 set -g tide_left_prompt_separator_diff_color 
 set -g tide_left_prompt_separator_same_color 
@@ -196,4 +196,14 @@ set -g tide_git_staged_color black
 set -g tide_git_stash_color black
 set -g tide_git_untracked_color black
 set -g tide_git_upstream_color black
+# jj item (_tide_item_jj): the same colours as the git item above. `vcs` shows it in jj repos, git's elsewhere.
+set -g tide_jj_bg_color brblue
+set -g tide_jj_bg_color_unstable bryellow
+set -g tide_jj_bg_color_urgent brred
+set -g tide_jj_color_branch black
+set -g tide_jj_color_conflicted black
+set -g tide_jj_color_dirty black
+set -g tide_jj_color_marker black
+set -g tide_jj_color_upstream black
+set -g tide_jj_icon 
 set -g tide_pwd_bg_color 393836
