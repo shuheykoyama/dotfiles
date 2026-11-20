@@ -29,9 +29,9 @@ To validate changes without launching the interactive UI:
 - `nvim --headless -l <file>.lua` — Lua syntax / runtime error check for a single file
 - `nvim --headless "+Lazy! sync" +qa` — verify plugin specs load cleanly
 
-## Rules & Skills
+## Rules
 
-Documentation, rules, and skills files are written in English. Consult these before making non-trivial changes.
+Documentation and rules files are written in English. Consult them before making non-trivial changes.
 
 Rules (`.claude/rules/`) — conventions and constraints:
 
@@ -39,12 +39,6 @@ Rules (`.claude/rules/`) — conventions and constraints:
 - `lsp-conventions.md` — LSP / formatter / linter setup rules per language
 - `plugin-conventions.md` — how to write lazy.nvim plugin specs
 - `keymap-conventions.md` — where to define keymaps
-
-Skills (`.claude/skills/`) — step-by-step workflows:
-
-- `add-plugin/` — adding a new plugin
-- `add-lsp/` — adding a new LSP server
-- `add-lang/` — setting up a new language (LSP + formatter + linter)
 
 ## `/plan-review` Triggers
 
