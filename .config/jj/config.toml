@@ -4,6 +4,13 @@
 name = "shuheykoyama"
 email = "shuheykoyama@gmail.com"
 
+# Sign every commit jj creates or rewrites with the same SSH key git uses. A private key path works
+# without an agent. Signatures are not verified locally (no allowed-signers file); GitHub verifies them.
+[signing]
+backend = "ssh"
+behavior = "own"
+key = "~/.ssh/id_ed25519_github"
+
 # delta for the commands whose output is a plain diff.
 [[--scope]]
 --when.commands = ["diff", "show", "interdiff"]
