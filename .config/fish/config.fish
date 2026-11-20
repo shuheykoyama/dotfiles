@@ -28,7 +28,7 @@ if not contains -- --theme=default $fish_color_command
 end
 switch (_prompt_ghostty_theme)
     case 'Solarized Dark - Vivid'
-        source $FISH_CONFIG_DIR/themes/solarized_osaka_dark.fish
+        source $FISH_CONFIG_DIR/themes/fish-3.3-default.fish
     case '*'
         source $FISH_CONFIG_DIR/themes/kanagawa.fish
 end
