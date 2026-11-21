@@ -113,9 +113,6 @@ return {
   {
     "linrongbin16/gitlinker.nvim",
     cmd = "GitLink",
-    keys = {
-      { "<leader>gl", mode = { "n", "x" } },
-    },
     opts = {},
   },
 
