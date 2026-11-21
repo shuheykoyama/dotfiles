@@ -1,14 +1,16 @@
-vim.loader.enable()
-
--- Interactive startup profiling via Snacks.profiler.
--- Run: `PROF=1 nvim foo.lua` to open the profile picker after startup.
--- This is loaded early (before lazy.nvim) so it can capture the full cascade.
-if vim.env.PROF then
-  local snacks_path = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
-  vim.opt.rtp:append(snacks_path)
-  require("snacks.profiler").startup({
-    startup = { event = "UIEnter", after = true },
-  })
+if vim.loader then
+  vim.loader.enable()
 end
 
-require("config")
+-- _G.dd = function(...)
+--     require("util.debug").dump(...)
+-- end
+-- vim.print = _G.dd
+
+_G.Shuhey = require("shuhey.utils")
+require("shuhey.config.options")
+require("shuhey.config.keymaps")
+require("shuhey.config.autocmds")
+require("shuhey.config.commands")
+require("shuhey.config.workarounds")
+require("shuhey.plugins")
