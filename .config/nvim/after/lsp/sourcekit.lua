@@ -4,7 +4,7 @@ return {
   -- 再ディスパッチする。xcrun の出力を config 評価時に 1 回キャプチャするより
   -- Xcode 更新に強く、起動経路から system 呼び出し (約 40-130ms) を排除できる。
   cmd = { "sourcekit-lsp" },
-  filetypes = { "swift", "objc", "objcpp", "c", "cpp" },
+  filetypes = { "swift" },
   -- buildServer.json (xcode-build-server) を最優先
   root_markers = {
     "buildServer.json",
