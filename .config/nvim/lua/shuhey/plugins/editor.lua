@@ -1,6 +1,8 @@
 -- Colors (plugin-independent, runs at import time)
 vim.lsp.document_color.enable(false)
 
+local oxfmtFormatter = { "oxfmt", "prettierd", "prettier", stop_after_first = true }
+
 return {
   -- Completion
   {
@@ -115,6 +117,73 @@ return {
       { "<leader>gl", mode = { "n", "x" } },
     },
     opts = {},
+  },
+
+  -- Formatting
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = function()
+      return {
+        default_format_opts = {
+          timeout_ms = 3000,
+          async = false,
+          quiet = false,
+          lsp_format = "fallback",
+        },
+        formatters_by_ft = {
+          javascript = oxfmtFormatter,
+          typescript = oxfmtFormatter,
+          javascriptreact = oxfmtFormatter,
+          typescriptreact = oxfmtFormatter,
+          json = oxfmtFormatter,
+          css = oxfmtFormatter,
+          html = oxfmtFormatter,
+          markdown = oxfmtFormatter,
+          yaml = oxfmtFormatter,
+          less = oxfmtFormatter,
+          scss = oxfmtFormatter,
+          ["markdown.mdx"] = oxfmtFormatter,
+          svelte = oxfmtFormatter,
+          astro = oxfmtFormatter,
+          lua = { "stylua" },
+          sh = { "shfmt" },
+          fish = { "fish_indent" },
+          python = { "ruff_format" },
+          swift = { "swiftformat" },
+          c = { "clang-format" },
+          cpp = { "clang-format" },
+          sql = { "sqruff" },
+          nu = { "nufmt" },
+        },
+        formatters = {
+          oxfmt = {
+            -- Treat oxfmt as available only when the project has an oxfmt config
+            -- (.oxfmtrc.json / .oxfmtrc.jsonc). Without it, oxfmt is skipped and the
+            -- formatter list falls back to prettier.
+            require_cwd = true,
+          },
+          ruff_format = {
+            command = "uv",
+            args = { "run", "ruff", "format", "--stdin-filename", "$FILENAME", "-" },
+          },
+          -- nufmt looks up nufmt.nuon from the cwd upwards, so run it at the project root
+          nufmt = {
+            cwd = require("conform.util").root_file({ ".git" }),
+          },
+        },
+        format_on_save = function(bufnr)
+          if vim.b[bufnr].disable_autoformat then
+            return
+          end
+          return {
+            timeout_ms = 500,
+            lsp_fallback = true,
+          }
+        end,
+      }
+    end,
   },
 
   -- Colors
