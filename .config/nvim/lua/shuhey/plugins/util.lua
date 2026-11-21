@@ -95,4 +95,39 @@ return {
       require("livepreview.config").set(opts)
     end,
   },
+
+  -- quickfix (same specs as ryoppippi/dotfiles)
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    config = function()
+      require("bqf").enable()
+    end,
+  },
+  {
+    "https://github.com/stevearc/quicker.nvim",
+    ft = { "qf" },
+    keys = {
+      {
+        "<leader>R",
+        function()
+          require("quicker").refresh()
+        end,
+      },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("BufReadPost", {
+        pattern = "qf",
+        once = true,
+        callback = function()
+          local refresh = require("quicker").refresh
+
+          refresh()
+        end,
+      })
+    end,
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
+  },
 }
