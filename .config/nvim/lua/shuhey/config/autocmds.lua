@@ -110,3 +110,13 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
   end,
 })
 
+-- Formatting on save is opt-in per buffer: :ToggleFormatter turns it on.
+-- Only an unset value is defaulted, so the toggle is never reset on re-entry.
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile", "BufEnter" }, {
+  group = augroup,
+  callback = function(args)
+    if vim.b[args.buf].disable_autoformat == nil then
+      vim.b[args.buf].disable_autoformat = true
+    end
+  end,
+})
