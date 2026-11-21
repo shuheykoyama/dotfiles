@@ -186,7 +186,7 @@ return {
   -- Linting
   {
     "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile" },
+    ft = "swift",
     config = function()
       local lint = require("lint")
 
@@ -194,11 +194,14 @@ return {
         swift = { "swiftlint" },
       }
 
-      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+      vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
         callback = function()
           lint.try_lint()
         end,
       })
+
+      -- The first swift buffer has already been read by the time this plugin loads.
+      lint.try_lint()
     end,
   },
 
