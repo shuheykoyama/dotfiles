@@ -1,4 +1,14 @@
-local lsp_utils = require("plugin.nvim-lspconfig.utils")
+local typescriptInlayHints = {
+  parameterNames = {
+    enabled = "literals", -- 'none' | 'literals' | 'all'
+    suppressWhenArgumentMatchesName = true,
+  },
+  parameterTypes = { enabled = false },
+  variableTypes = { enabled = false },
+  propertyDeclarationTypes = { enabled = true },
+  functionLikeReturnTypes = { enabled = false },
+  enumMemberValues = { enabled = true },
+}
 
 ---@type vim.lsp.Config
 return {
@@ -16,7 +26,7 @@ return {
       enable = false,
     },
     typescript = {
-      inlayHints = lsp_utils.typescriptInlayHints,
+      inlayHints = typescriptInlayHints,
     },
   },
 }
