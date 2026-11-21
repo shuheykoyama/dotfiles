@@ -30,9 +30,4 @@ require("lazy").setup({
   change_detection = { enabled = false },
   local_spec = false,
   pkg = { sources = { "lazy" } },
-  performance = {
-    rtp = {
-      disabled_plugins = { "gzip", "tarPlugin", "zipPlugin", "tutor", "rplugin", "spellfile", "shada" },
-    },
-  },
 })
