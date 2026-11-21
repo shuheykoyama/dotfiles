@@ -67,7 +67,7 @@ return {
   -- csv / tsv column colors
   {
     "mechatroner/rainbow_csv",
-    ft = { "csv", "tsv" },
+    ft = { "csv" },
   },
 
   {
