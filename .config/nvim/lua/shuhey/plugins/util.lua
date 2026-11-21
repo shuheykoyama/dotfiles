@@ -59,11 +59,6 @@ return {
     },
   },
 
-  -- Required by after/ftplugin/gitcommit.lua (plenary.path); loaded on require.
-  {
-    "nvim-lua/plenary.nvim",
-  },
-
   -- csv / tsv column colors
   {
     "mechatroner/rainbow_csv",
