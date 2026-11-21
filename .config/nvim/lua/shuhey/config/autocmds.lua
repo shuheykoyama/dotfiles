@@ -36,3 +36,50 @@ vim.filetype.add({
   },
 })
 
+-- Additional filetypes (mdx is registered in plugins/treesitter.lua)
+vim.filetype.add({
+  extension = {
+    jax = "help",
+    kbd = "lisp",
+    zon = "zig",
+    astro = "astro",
+    log = "log",
+    LOG = "log",
+  },
+  filename = {
+    [".envrc"] = "sh",
+    ["tsconfig.json"] = "jsonc",
+    ["Podfile"] = "ruby",
+  },
+  pattern = {
+    -- git
+    [".*/%.git/config"] = "gitconfig",
+    [".*/%.git/.*%.conf"] = "gitconfig",
+    [".*/git/config"] = "gitconfig",
+    [".*/git/.*%.conf"] = "gitconfig",
+    [".*/%.git/ignore"] = "gitignore",
+    [".*/git/ignore"] = "gitignore",
+    -- ssh
+    [".*/%.ssh/config"] = "sshconfig",
+    [".*/%.ssh/.*%.conf"] = "sshconfig",
+    [".*/ssh/.*%.conf"] = "sshconfig",
+    -- env
+    [".*/env.development"] = "sh",
+    [".*/env.production"] = "sh",
+    [".*/env.staging"] = "sh",
+    [".*/env.local"] = "sh",
+    [".*/%.env%.local"] = "sh",
+    [".*/%.env%.development"] = "sh",
+    [".*/%.env%.production"] = "sh",
+    [".*/%.env%.staging"] = "sh",
+    -- docker & compose
+    [".*/%.github/workflows/.*%.ya?ml"] = "yaml.github",
+    ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+    ["compose%.ya?ml"] = "yaml.docker-compose",
+    [".*/Dockerfile.*"] = "dockerfile",
+    -- log (generic log files: *_log / *_LOG; *.log / *.LOG handled by extension)
+    [".*_log"] = "log",
+    [".*_LOG"] = "log",
+  },
+})
+
