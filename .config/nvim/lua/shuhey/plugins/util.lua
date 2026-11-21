@@ -62,7 +62,6 @@ return {
   -- Required by after/ftplugin/gitcommit.lua (plenary.path); loaded on require.
   {
     "nvim-lua/plenary.nvim",
-    lazy = true,
   },
 
   -- csv / tsv column colors
