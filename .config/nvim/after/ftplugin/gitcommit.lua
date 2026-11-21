@@ -1,5 +1,19 @@
 local Path = require("plenary.path")
-local has = require("core.plugin").has
+
+---Convert a value to a boolean
+local function tb(value)
+	if value == nil then
+		return false
+	elseif type(value) == "boolean" then
+		return value
+	elseif type(value) == "number" then
+		return value ~= 0
+	elseif type(value) == "string" then
+		return string.lower(value) == "true"
+	else
+		return false
+	end
+end
 
 local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or ""
 local git_hooks_path = vim.fn.systemlist("git config --get core.hooksPath")[1] or ".git/hooks"
