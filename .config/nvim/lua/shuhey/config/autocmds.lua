@@ -83,3 +83,30 @@ vim.filetype.add({
   },
 })
 
+-- Auto-save on InsertLeave and TextChanged
+local auto_save_group = vim.api.nvim_create_augroup("AutoSave", { clear = true })
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  group = auto_save_group,
+  pattern = "*",
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+    local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+    local filename = vim.api.nvim_buf_get_name(buf)
+    if filetype == "bigfile" then
+      return
+    end
+    if
+      buftype == ""
+      and filetype ~= ""
+      and filename ~= ""
+      and vim.api.nvim_buf_get_option(buf, "modified")
+      and vim.api.nvim_buf_get_option(buf, "modifiable")
+    then
+      vim.cmd("silent! write")
+      local relpath = vim.fn.fnamemodify(filename, ":.")
+      vim.notify("AutoSave: saved " .. relpath .. " at " .. vim.fn.strftime("%H:%M:%S"), vim.log.levels.INFO)
+    end
+  end,
+})
+
