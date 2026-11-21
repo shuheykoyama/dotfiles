@@ -26,6 +26,9 @@ return {
         "vtsls",
         "copilot-language-server",
         "rust-analyzer",
+        -- css-lsp provides vscode-css-language-server (cssls); glsl_analyzer is enabled below
+        "css-lsp",
+        "glsl_analyzer",
         -- languages kept from the previous setup
         "html-lsp",
         "superhtml",
