@@ -12,16 +12,9 @@ local typescriptInlayHints = {
 
 ---@type vim.lsp.Config
 return {
-  on_attach = function(client, _)
-    vim.api.nvim_create_autocmd("BufWritePost", {
-      pattern = { "*.js", "*.ts" },
-      callback = function(ctx)
-        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-      end,
-    })
-  end,
   single_file_support = true,
   settings = {
+    -- Disable LSP formatting in favor of prettier
     format = {
       enable = false,
     },
