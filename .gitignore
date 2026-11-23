@@ -2,7 +2,6 @@
 .DS_Store
 
 # Neovim
-.config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
 .config/nvim/.nvimlog
 .config/nvim/.claude/
