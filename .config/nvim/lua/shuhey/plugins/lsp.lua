@@ -15,7 +15,6 @@ return {
         "lua-language-server",
         "prettier",
         "prettierd",
-        "selene",
         "shellcheck",
         "shfmt",
         "stylua",
