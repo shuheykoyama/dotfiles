@@ -14,9 +14,13 @@ local typescriptInlayHints = {
 return {
   single_file_support = true,
   settings = {
-    -- Disable LSP formatting in favor of prettier
-    format = {
-      enable = false,
+    svelte = {
+      plugin = {
+        svelte = {
+          -- Disable LSP formatting in favor of prettier via conform.nvim
+          format = { enable = false },
+        },
+      },
     },
     typescript = {
       inlayHints = typescriptInlayHints,
