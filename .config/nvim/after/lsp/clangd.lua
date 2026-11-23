@@ -6,7 +6,6 @@ return {
     "--clang-tidy",
     "--header-insertion=iwyu",
     "--completion-style=detailed",
-    "--function-arg-placeholders",
     "--fallback-style=llvm",
     "--offset-encoding=utf-16",
   },
