@@ -62,10 +62,6 @@ vim.filetype.add({
     [".*/env.production"] = "sh",
     [".*/env.staging"] = "sh",
     [".*/env.local"] = "sh",
-    -- docker & compose
-    [".*/%.github/workflows/.*%.ya?ml"] = "yaml.github",
-    ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
-    ["compose%.ya?ml"] = "yaml.docker-compose",
     -- log (generic log files: *_log / *_LOG; *.log / *.LOG handled by extension)
     [".*_log"] = "log",
     [".*_LOG"] = "log",
