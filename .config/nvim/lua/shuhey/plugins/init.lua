@@ -28,7 +28,6 @@ require("lazy").setup({
     { import = "shuhey.plugins.util" },
     { import = "shuhey.plugins.keymaps" },
   },
-  defaults = { lazy = true },
   install = { missing = true, colorscheme = { "solarized-osaka" } },
   checker = { enabled = false },
   change_detection = { enabled = false },
