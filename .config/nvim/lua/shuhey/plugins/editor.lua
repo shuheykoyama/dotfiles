@@ -161,9 +161,10 @@ return {
             -- formatter list falls back to prettier.
             require_cwd = true,
           },
+          -- Prefer the project's own ruff (.venv/bin/ruff, e.g. a uv dev dependency) so the
+          -- version matches the project; otherwise use the Mason one from PATH.
           ruff_format = {
-            command = "uv",
-            args = { "run", "ruff", "format", "--stdin-filename", "$FILENAME", "-" },
+            command = require("conform.util").find_executable({ ".venv/bin/ruff" }, "ruff"),
           },
           -- nufmt looks up nufmt.nuon from the cwd upwards, so run it at the project root
           nufmt = {
