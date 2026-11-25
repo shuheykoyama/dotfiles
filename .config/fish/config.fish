@@ -47,11 +47,11 @@ else
     fish_add_path /usr/local/opt/curl/bin
 end
 
-# Java
-set -gx _JAVA_OPTIONS "-Dfile.encoding=UTF-8"
-if type -q /usr/libexec/java_home
-    set -gx JAVA_HOME (/usr/libexec/java_home -v "20")
-end
+# Java - Not in use right now, so commenting out below.
+# set -gx _JAVA_OPTIONS "-Dfile.encoding=UTF-8"
+# if type -q /usr/libexec/java_home
+#     set -gx JAVA_HOME (/usr/libexec/java_home -v "20")
+# end
 
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm"
