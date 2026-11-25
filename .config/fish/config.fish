@@ -42,10 +42,8 @@ fish_add_path "$HOME/.antigravity/antigravity/bin"
 
 # arch-specific paths (Intel: /usr/local, arm64: /opt/homebrew)
 if test (uname -m) = arm64
-    fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
     fish_add_path /opt/homebrew/opt/curl/bin
 else
-    fish_add_path /usr/local/opt/coreutils/libexec/gnubin
     fish_add_path /usr/local/opt/curl/bin
 end
 
