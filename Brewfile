@@ -18,6 +18,7 @@ brew "ffmpeg"
 
 cask "ghostty"
 cask "numi"
+cask "typewhisper"
 
 # Fonts
 cask "font-plemol-jp-nf"
