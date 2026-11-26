@@ -8,6 +8,8 @@ I have stripped away features that became unnecessary now that I no longer write
 
 ## Contents
 
+Going to manage with [chezmoi](https://www.chezmoi.io/) (might use Nix later...).
+
 - Neovim config
 - herdr config
 - Ghostty config
@@ -51,6 +53,7 @@ Installed as Homebrew casks from the `Brewfile`:
 - [bat](https://github.com/sharkdp/bat) - A `cat` clone with wings
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
 - [fzf](https://github.com/PatrickF1/fzf.fish) - Interactive filtering
+- [jj](https://github.com/jj-vcs/jj) - A Git-compatible VCS that is both simple and powerful
 
 ## Acknowledgments
 
